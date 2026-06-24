@@ -1,7 +1,7 @@
 // app.js — IdeaMotor main controller
 
 import { getAllProjects, saveProject, getProject, updateRating, deleteProject, getRatingsByArchetype } from './storage.js';
-import { getKey, getAllKeys, saveAllKeys, saveKey } from './settings.js';
+import { getKey, getAllKeys, saveAllKeys, saveKey, loadKeys } from './settings.js';
 import { SpeechCapture } from './speech.js';
 import { analyzeIdea, buildRatingsContext } from './gemini-engine.js';
 import { renderProjectList, renderProjectDetail, initWaveform, drawWaveform } from './ui.js';
@@ -32,7 +32,13 @@ function showView(name) {
 }
 
 // On load, show list
-function init() {
+async function init() {
+  // Hide all views until we know whether a Gemini key exists (avoids a flash)
+  Object.values(views).forEach(el => { el.style.display = 'none'; el.classList.remove('active'); });
+
+  // Load API keys from IndexedDB into the in-memory cache before deciding the view
+  await loadKeys();
+
   // First access: no Gemini key yet → show welcome onboarding instead of the list
   const firstView = getKey('gemini') ? 'list' : 'welcome';
   Object.entries(views).forEach(([name, el]) => {

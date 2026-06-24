@@ -1,8 +1,9 @@
 // storage.js — IndexedDB wrapper for IdeaMotor projects
 
-const DB_NAME    = 'ideamotor-db';
-const DB_VERSION = 1;
-const STORE      = 'projects';
+const DB_NAME        = 'ideamotor-db';
+const DB_VERSION     = 2;
+const STORE          = 'projects';
+const STORE_SETTINGS = 'settings';
 
 let _db = null;
 
@@ -17,6 +18,9 @@ async function openDB() {
         const store = db.createObjectStore(STORE, { keyPath: 'id', autoIncrement: true });
         store.createIndex('archetipo',  'archetipo',  { unique: false });
         store.createIndex('created_at', 'created_at', { unique: false });
+      }
+      if (!db.objectStoreNames.contains(STORE_SETTINGS)) {
+        db.createObjectStore(STORE_SETTINGS); // key-value store: API keys, prefs
       }
     };
     req.onsuccess = (e) => { _db = e.target.result; resolve(_db); };
@@ -94,4 +98,26 @@ export async function getRatingsByArchetype(archetipo) {
     .filter(p => p.archetipo === archetipo && p.rating)
     .slice(0, 5)
     .map(p => ({ nome_progetto: p.nome_progetto, archetipo: p.archetipo, rating: p.rating }));
+}
+
+// ── Settings store (key-value: API keys, prefs) ────────────────────────────
+// IndexedDB persists more reliably than localStorage in iOS standalone PWAs.
+
+export async function getSetting(key) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(STORE_SETTINGS, 'readonly').objectStore(STORE_SETTINGS).get(key);
+    req.onsuccess = (e) => resolve(e.target.result);
+    req.onerror   = (e) => reject(e.target.error);
+  });
+}
+
+export async function setSetting(key, value) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const store = db.transaction(STORE_SETTINGS, 'readwrite').objectStore(STORE_SETTINGS);
+    const req   = (value == null || value === '') ? store.delete(key) : store.put(value, key);
+    req.onsuccess = () => resolve();
+    req.onerror   = (e) => reject(e.target.error);
+  });
 }
