@@ -22,7 +22,7 @@ IdeaMotor è una PWA (Progressive Web App) installabile su iPhone e Android che 
 - IndexedDB per storage locale dei progetti
 - Web Speech API per trascrizione vocale
 - Web Audio API per visualizzazione waveform
-- Gemini 1.5 Flash (free tier) come motore AI
+- Gemini 2.5 Flash (free tier) come motore AI
 - PWA: manifest + service worker per installazione offline
 
 ---

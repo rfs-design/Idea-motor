@@ -1,6 +1,6 @@
-// gemini-engine.js — Core AI intelligence (Gemini 1.5 Flash, free tier)
+// gemini-engine.js — Core AI intelligence (Gemini 2.5 Flash, free tier)
 
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
 // ── System prompt ──────────────────────────────────────────────────────────
 
