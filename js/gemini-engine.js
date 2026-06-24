@@ -79,8 +79,9 @@ export async function analyzeIdea(transcript, ratingsContext = '', apiKey) {
       },
       generationConfig: {
         temperature:      0.72,
-        maxOutputTokens:  2048,
+        maxOutputTokens:  8192,
         topP:             0.9,
+        responseMimeType: 'application/json',
       }
     })
   });
@@ -92,7 +93,9 @@ export async function analyzeIdea(transcript, ratingsContext = '', apiKey) {
   }
 
   const data   = await res.json();
-  const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  // Gemini 2.5 may split the answer across multiple parts — concatenate them all
+  const parts   = data?.candidates?.[0]?.content?.parts;
+  const rawText = Array.isArray(parts) ? parts.map(p => (p && p.text) || '').join('').trim() : '';
 
   if (!rawText) throw new Error('Risposta vuota da Gemini. Riprova.');
 

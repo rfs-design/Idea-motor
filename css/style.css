@@ -379,6 +379,8 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 .fab:active { transform: scale(0.92); box-shadow: 0 2px 12px var(--accent-glow); }
+/* Secondary FAB (scrivi) — same treatment as the mic, placed to its left */
+.fab-write { right: calc(24px + 62px + 16px); }
 
 /* ── Capture Screen ── */
 .capture-screen {
