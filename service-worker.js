@@ -1,18 +1,18 @@
 // service-worker.js — IdeaMotor PWA caching
 
-const CACHE_NAME = 'ideamotor-v1';
+const CACHE_NAME = 'ideamotor-v2';
 
 const PRECACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/css/style.css',
-  '/js/app.js',
-  '/js/storage.js',
-  '/js/settings.js',
-  '/js/speech.js',
-  '/js/gemini-engine.js',
-  '/js/ui.js',
+  './',
+  './index.html',
+  './manifest.json',
+  './css/style.css',
+  './js/app.js',
+  './js/storage.js',
+  './js/settings.js',
+  './js/speech.js',
+  './js/gemini-engine.js',
+  './js/ui.js',
 ];
 
 self.addEventListener('install', (e) => {

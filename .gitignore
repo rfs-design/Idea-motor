@@ -16,5 +16,8 @@ Thumbs.db
 .idea/
 *.swp
 
+# Claude Code — config locale dell'ambiente, non dell'app
+.claude/
+
 # Build artifacts
 dist/

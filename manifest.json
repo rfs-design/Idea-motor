@@ -2,7 +2,7 @@
   "name": "IdeaMotor",
   "short_name": "IdeaMotor",
   "description": "Cattura idee vocali, genera workflow AI — HUB09 AI Lab",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0A0A0B",

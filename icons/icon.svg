@@ -1,25 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Background -->
-  <rect width="512" height="512" rx="112" fill="#0A0A0B"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+  <!-- Generator: Adobe Illustrator 30.5.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #d888ae;
+      }
 
-  <!-- Outer ring -->
-  <circle cx="256" cy="256" r="150" fill="none" stroke="#FF5C35" stroke-width="6" opacity="0.3"/>
+      .st0, .st1, .st2, .st3 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
 
-  <!-- Waveform bars (mirrored, centered) -->
-  <g fill="#FF5C35">
-    <!-- Center bars (tallest) -->
-    <rect x="240" y="186" width="16" height="140" rx="8" opacity="1"/>
-    <!-- Bars stepping outward -->
-    <rect x="210" y="206" width="14" height="100" rx="7" opacity="0.85"/>
-    <rect x="274" y="206" width="14" height="100" rx="7" opacity="0.85"/>
-    <rect x="182" y="224" width="12" height="64" rx="6" opacity="0.65"/>
-    <rect x="300" y="224" width="12" height="64" rx="6" opacity="0.65"/>
-    <rect x="156" y="238" width="10" height="36" rx="5" opacity="0.45"/>
-    <rect x="326" y="238" width="10" height="36" rx="5" opacity="0.45"/>
-    <rect x="132" y="246" width="8" height="20" rx="4" opacity="0.25"/>
-    <rect x="350" y="246" width="8" height="20" rx="4" opacity="0.25"/>
+      .st0, .st2 {
+        stroke-width: 40px;
+      }
+
+      .st4 {
+        fill: #eaeaea;
+      }
+
+      .st1, .st2 {
+        stroke: #303d8b;
+      }
+
+      .st1, .st3 {
+        stroke-width: 38px;
+      }
+
+      .st5 {
+        fill: #303d8b;
+      }
+
+      .st3 {
+        stroke: #a06fa2;
+      }
+    </style>
+  </defs>
+  <rect class="st4" width="512" height="512" rx="112" ry="112"/>
+  <circle class="st5" cx="255.1" cy="99.2" r="27.3"/>
+  <line class="st2" x1="256.8" y1="192.3" x2="256.8" y2="322.6"/>
+  <g>
+    <line class="st1" x1="187.9" y1="145.4" x2="187.9" y2="393.8"/>
+    <line class="st3" x1="112.5" y1="205.1" x2="112.5" y2="328.7"/>
+    <line class="st0" x1="47.2" y1="229.6" x2="47.2" y2="299"/>
   </g>
-
-  <!-- Center dot -->
-  <circle cx="256" cy="256" r="10" fill="#FF5C35"/>
+  <g>
+    <line class="st1" x1="331.8" y1="145.4" x2="331.8" y2="393.8"/>
+    <line class="st3" x1="406.8" y1="205.1" x2="406.8" y2="328.7"/>
+    <line class="st0" x1="469.7" y1="229.6" x2="469.7" y2="299"/>
+  </g>
 </svg>

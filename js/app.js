@@ -1,7 +1,7 @@
 // app.js — IdeaMotor main controller
 
 import { getAllProjects, saveProject, getProject, updateRating, deleteProject, getRatingsByArchetype } from './storage.js';
-import { getKey, getAllKeys, saveAllKeys } from './settings.js';
+import { getKey, getAllKeys, saveAllKeys, saveKey } from './settings.js';
 import { SpeechCapture } from './speech.js';
 import { analyzeIdea, buildRatingsContext } from './gemini-engine.js';
 import { renderProjectList, renderProjectDetail, initWaveform, drawWaveform } from './ui.js';
@@ -13,6 +13,7 @@ let currentProjectId = null;
 
 // ── DOM refs ───────────────────────────────────────────────────────────────
 const views = {
+  welcome: document.getElementById('view-welcome'),
   list:    document.getElementById('view-list'),
   capture: document.getElementById('view-capture'),
   detail:  document.getElementById('view-detail'),
@@ -32,9 +33,12 @@ function showView(name) {
 
 // On load, show list
 function init() {
-  // Ensure all non-active views are hidden
+  // First access: no Gemini key yet → show welcome onboarding instead of the list
+  const firstView = getKey('gemini') ? 'list' : 'welcome';
   Object.entries(views).forEach(([name, el]) => {
-    el.style.display = name === 'list' ? 'flex' : 'none';
+    const on = name === firstView;
+    el.style.display = on ? 'flex' : 'none';
+    el.classList.toggle('active', on);
   });
 
   loadProjectList();
@@ -223,6 +227,24 @@ function bindEvents() {
   // List view
   document.getElementById('btn-capture').addEventListener('click', enterCaptureMode);
   document.getElementById('btn-settings').addEventListener('click', openSettings);
+
+  // Welcome / onboarding (first access)
+  const welcomeKey = document.getElementById('welcome-key');
+  const welcomeBtn = document.getElementById('btn-welcome-start');
+  if (welcomeKey && welcomeBtn) {
+    welcomeKey.addEventListener('input', () => {
+      welcomeBtn.disabled = welcomeKey.value.trim().length === 0;
+    });
+    const startApp = () => {
+      const k = welcomeKey.value.trim();
+      if (!k) return;
+      saveKey('gemini', k);
+      welcomeKey.value = '';
+      showView('list');
+    };
+    welcomeBtn.addEventListener('click', startApp);
+    welcomeKey.addEventListener('keydown', (e) => { if (e.key === 'Enter') startApp(); });
+  }
 
   // Capture view
   document.getElementById('btn-capture-close').addEventListener('click', exitCaptureMode);

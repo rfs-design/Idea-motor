@@ -58,6 +58,105 @@ body {
   transform: translateX(0);
 }
 
+/* ── Welcome / Onboarding (primo accesso) ── */
+.welcome-screen {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: calc(var(--safe-top) + 32px) 28px calc(var(--safe-bottom) + 32px);
+}
+.welcome-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.welcome-logo { filter: drop-shadow(0 0 18px var(--accent-glow)); }
+.welcome-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-1);
+}
+.welcome-sub {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.55;
+  max-width: 32ch;
+}
+.welcome-form { display: flex; flex-direction: column; }
+.welcome-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  margin-bottom: 10px;
+}
+.welcome-input {
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  color: var(--text-1);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.welcome-input:focus { border-color: var(--accent); }
+.welcome-input::placeholder { color: var(--text-3); font-family: var(--font-body); }
+.welcome-link {
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+.welcome-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.welcome-btn:active { transform: scale(0.98); }
+.welcome-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.welcome-safety {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 15px;
+}
+.welcome-safety-icon { color: var(--success); flex-shrink: 0; margin-top: 1px; }
+.welcome-safety p {
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.welcome-safety strong { color: var(--text-1); font-weight: 500; }
+
 /* ── App Header ── */
 .app-header {
   display: flex;
