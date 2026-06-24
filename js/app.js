@@ -17,6 +17,7 @@ const views = {
   list:    document.getElementById('view-list'),
   capture: document.getElementById('view-capture'),
   detail:  document.getElementById('view-detail'),
+  write:   document.getElementById('view-write'),
 };
 
 // ── View navigation ────────────────────────────────────────────────────────
@@ -141,9 +142,19 @@ async function finalizeCaptureAndProcess() {
     return;
   }
 
-  // Show processing overlay
-  document.getElementById('processing-overlay').classList.add('visible');
-  document.getElementById('capture-status').textContent = 'Elaborazione…';
+  await processIdea(transcript);
+}
+
+// Shared pipeline: turn a raw idea (from voice OR text) into a saved workflow
+async function processIdea(rawText) {
+  const transcript = (rawText || '').trim();
+  if (transcript.length < 8) {
+    alert('Servono almeno qualche parola per elaborare un workflow.');
+    return false;
+  }
+
+  const overlay = document.getElementById('processing-overlay');
+  overlay.classList.add('visible');
 
   try {
     const apiKey = getKey('gemini');
@@ -161,13 +172,16 @@ async function finalizeCaptureAndProcess() {
     // Save to DB
     const newId = await saveProject({ transcript, ...result });
 
+    overlay.classList.remove('visible');
     await loadProjectList();
     await openProject(newId);
+    return true;
 
   } catch (err) {
-    document.getElementById('processing-overlay').classList.remove('visible');
+    overlay.classList.remove('visible');
     alert('Errore: ' + err.message);
     showView('list');
+    return false;
   }
 }
 
@@ -259,6 +273,24 @@ function bindEvents() {
   // Detail view
   document.getElementById('btn-detail-back').addEventListener('click', () => showView('list'));
   document.getElementById('btn-delete-project').addEventListener('click', handleDeleteProject);
+
+  // Write view (text idea — alternative to voice)
+  const writeInput = document.getElementById('write-input');
+  const writeBtn   = document.getElementById('btn-write-process');
+  document.getElementById('btn-write').addEventListener('click', () => {
+    writeInput.value  = '';
+    writeBtn.disabled = true;
+    showView('write');
+    setTimeout(() => writeInput.focus(), 250);
+  });
+  document.getElementById('btn-write-back').addEventListener('click', () => showView('list'));
+  writeInput.addEventListener('input', () => {
+    writeBtn.disabled = writeInput.value.trim().length < 8;
+  });
+  writeBtn.addEventListener('click', async () => {
+    const ok = await processIdea(writeInput.value);
+    if (ok) writeInput.value = '';
+  });
 
   // Settings drawer
   document.getElementById('btn-save-keys').addEventListener('click', persistSettings);

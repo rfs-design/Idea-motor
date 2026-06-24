@@ -158,6 +158,49 @@ body {
 }
 .welcome-safety strong { color: var(--text-1); font-weight: 500; }
 
+/* ── Header actions (write + settings) ── */
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ── Scrivi idea ── */
+.write-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.write-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 20px calc(var(--safe-bottom) + 24px);
+}
+.write-input {
+  flex: 1;
+  min-height: 160px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--text-1);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.write-input:focus { border-color: var(--accent); }
+.write-input::placeholder { color: var(--text-3); }
+
+/* Disabled primary button (shared: welcome + write) — neutral grey, not faded orange */
+.save-btn:disabled {
+  background: var(--surface-3);
+  color: var(--text-3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 /* ── App Header ── */
 .app-header {
   display: flex;
