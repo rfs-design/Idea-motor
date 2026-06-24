@@ -1,0 +1,264 @@
+// app.js — IdeaMotor main controller
+
+import { getAllProjects, saveProject, getProject, updateRating, deleteProject, getRatingsByArchetype } from './storage.js';
+import { getKey, getAllKeys, saveAllKeys } from './settings.js';
+import { SpeechCapture } from './speech.js';
+import { analyzeIdea, buildRatingsContext } from './gemini-engine.js';
+import { renderProjectList, renderProjectDetail, initWaveform, drawWaveform } from './ui.js';
+
+// ── State ──────────────────────────────────────────────────────────────────
+let speech          = null;
+let waveFrameId     = null;
+let currentProjectId = null;
+
+// ── DOM refs ───────────────────────────────────────────────────────────────
+const views = {
+  list:    document.getElementById('view-list'),
+  capture: document.getElementById('view-capture'),
+  detail:  document.getElementById('view-detail'),
+};
+
+// ── View navigation ────────────────────────────────────────────────────────
+function showView(name) {
+  Object.values(views).forEach(v => {
+    v.classList.remove('active');
+    v.style.display = 'none';
+  });
+  const v = views[name];
+  v.style.display = 'flex';
+  // Force reflow before adding class for CSS transition
+  requestAnimationFrame(() => v.classList.add('active'));
+}
+
+// On load, show list
+function init() {
+  // Ensure all non-active views are hidden
+  Object.entries(views).forEach(([name, el]) => {
+    el.style.display = name === 'list' ? 'flex' : 'none';
+  });
+
+  loadProjectList();
+  registerServiceWorker();
+  bindEvents();
+}
+
+// ── Project list ───────────────────────────────────────────────────────────
+async function loadProjectList() {
+  const projects = await getAllProjects();
+  renderProjectList(projects, openProject);
+}
+
+async function openProject(id) {
+  const project = await getProject(id);
+  if (!project) return;
+  currentProjectId = id;
+
+  renderProjectDetail(project, {
+    onRating: handleRating,
+  });
+  showView('detail');
+}
+
+async function handleRating(id, rating) {
+  await updateRating(id, rating);
+  const updated = await getProject(id);
+  renderProjectDetail(updated, { onRating: handleRating });
+  // Also refresh the list in background
+  loadProjectList();
+}
+
+// ── Voice capture ──────────────────────────────────────────────────────────
+function enterCaptureMode() {
+  const apiKey = getKey('gemini');
+  if (!apiKey) {
+    alert('⚙️ Configura prima la tua API key Gemini nelle Impostazioni.');
+    openSettings();
+    return;
+  }
+
+  // Reset UI
+  const transcriptEl   = document.getElementById('transcript-display');
+  const statusEl       = document.getElementById('capture-status');
+  const processingEl   = document.getElementById('processing-overlay');
+  transcriptEl.textContent  = 'Inizia a parlare…';
+  statusEl.textContent      = 'In ascolto';
+  processingEl.classList.remove('visible');
+
+  showView('capture');
+
+  // Init canvas
+  const canvas = document.getElementById('waveform');
+  // Wait for view to be visible before measuring
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      initWaveform(canvas);
+      startWaveformLoop();
+    });
+  });
+
+  // Start speech
+  speech = new SpeechCapture({
+    onTranscript(final, interim) {
+      const display = final + (interim ? ' ' + interim : '');
+      transcriptEl.textContent = display || 'Inizia a parlare…';
+    },
+    onError(msg) {
+      statusEl.textContent = msg;
+    },
+    onStatusChange(s) {
+      if (s === 'listening') statusEl.textContent = 'In ascolto';
+    }
+  });
+  speech.start();
+}
+
+function exitCaptureMode() {
+  if (speech) { speech.stop(); speech = null; }
+  stopWaveformLoop();
+  showView('list');
+}
+
+async function finalizeCaptureAndProcess() {
+  if (!speech) return;
+
+  const transcript = speech.stop();
+  speech = null;
+  stopWaveformLoop();
+
+  if (!transcript || transcript.trim().length < 8) {
+    alert('Nessuna trascrizione rilevata. Riprova.');
+    showView('list');
+    return;
+  }
+
+  // Show processing overlay
+  document.getElementById('processing-overlay').classList.add('visible');
+  document.getElementById('capture-status').textContent = 'Elaborazione…';
+
+  try {
+    const apiKey = getKey('gemini');
+
+    // First pass: get archetype and initial workflow
+    let result = await analyzeIdea(transcript, '', apiKey);
+
+    // Second pass: enrich with ratings context for this archetype
+    const ratings = await getRatingsByArchetype(result.archetipo);
+    if (ratings.length > 0) {
+      const ratingsCtx = buildRatingsContext(ratings);
+      result = await analyzeIdea(transcript, ratingsCtx, apiKey);
+    }
+
+    // Save to DB
+    const newId = await saveProject({ transcript, ...result });
+
+    await loadProjectList();
+    await openProject(newId);
+
+  } catch (err) {
+    document.getElementById('processing-overlay').classList.remove('visible');
+    alert('Errore: ' + err.message);
+    showView('list');
+  }
+}
+
+// ── Waveform animation ─────────────────────────────────────────────────────
+function startWaveformLoop() {
+  function frame() {
+    const data = speech?.getFrequencyData?.() || null;
+    drawWaveform(data);
+    waveFrameId = requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+function stopWaveformLoop() {
+  if (waveFrameId) { cancelAnimationFrame(waveFrameId); waveFrameId = null; }
+}
+
+// ── Settings drawer ────────────────────────────────────────────────────────
+function openSettings() {
+  const keys = getAllKeys();
+  document.getElementById('key-gemini').value     = keys.gemini     || '';
+  document.getElementById('key-claude').value     = keys.claude     || '';
+  document.getElementById('key-openai').value     = keys.openai     || '';
+  document.getElementById('key-perplexity').value = keys.perplexity || '';
+
+  document.getElementById('settings-drawer').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('visible');
+}
+
+function closeSettings() {
+  document.getElementById('settings-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('visible');
+}
+
+function persistSettings() {
+  saveAllKeys({
+    gemini:     document.getElementById('key-gemini').value.trim(),
+    claude:     document.getElementById('key-claude').value.trim(),
+    openai:     document.getElementById('key-openai').value.trim(),
+    perplexity: document.getElementById('key-perplexity').value.trim(),
+  });
+  closeSettings();
+
+  // Feedback on save button
+  const btn  = document.getElementById('btn-save-keys');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Salvato';
+  setTimeout(() => { btn.textContent = orig; }, 1800);
+}
+
+// ── Delete project ─────────────────────────────────────────────────────────
+async function handleDeleteProject() {
+  if (!currentProjectId) return;
+  if (!confirm('Eliminare questo progetto? L'operazione è irreversibile.')) return;
+  await deleteProject(currentProjectId);
+  currentProjectId = null;
+  await loadProjectList();
+  showView('list');
+}
+
+// ── Event bindings ─────────────────────────────────────────────────────────
+function bindEvents() {
+  // List view
+  document.getElementById('btn-capture').addEventListener('click', enterCaptureMode);
+  document.getElementById('btn-settings').addEventListener('click', openSettings);
+
+  // Capture view
+  document.getElementById('btn-capture-close').addEventListener('click', exitCaptureMode);
+  document.getElementById('btn-stop-capture').addEventListener('click', finalizeCaptureAndProcess);
+
+  // Detail view
+  document.getElementById('btn-detail-back').addEventListener('click', () => showView('list'));
+  document.getElementById('btn-delete-project').addEventListener('click', handleDeleteProject);
+
+  // Settings drawer
+  document.getElementById('btn-save-keys').addEventListener('click', persistSettings);
+  document.getElementById('drawer-overlay').addEventListener('click', closeSettings);
+
+  // Show/hide key buttons
+  document.querySelectorAll('.show-key-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      input.type  = input.type === 'password' ? 'text' : 'password';
+    });
+  });
+
+  // Handle device back gesture / popstate (Android)
+  window.addEventListener('popstate', () => {
+    const active = Object.entries(views).find(([, el]) => el.classList.contains('active'));
+    if (active && active[0] !== 'list') showView('list');
+  });
+}
+
+// ── Service Worker ─────────────────────────────────────────────────────────
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js').catch(err => {
+      console.warn('SW registration failed:', err);
+    });
+  }
+}
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+init();

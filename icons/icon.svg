@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#0A0A0B"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#FF5C35" stroke-width="6" opacity="0.3"/>
+
+  <!-- Waveform bars (mirrored, centered) -->
+  <g fill="#FF5C35">
+    <!-- Center bars (tallest) -->
+    <rect x="240" y="186" width="16" height="140" rx="8" opacity="1"/>
+    <!-- Bars stepping outward -->
+    <rect x="210" y="206" width="14" height="100" rx="7" opacity="0.85"/>
+    <rect x="274" y="206" width="14" height="100" rx="7" opacity="0.85"/>
+    <rect x="182" y="224" width="12" height="64" rx="6" opacity="0.65"/>
+    <rect x="300" y="224" width="12" height="64" rx="6" opacity="0.65"/>
+    <rect x="156" y="238" width="10" height="36" rx="5" opacity="0.45"/>
+    <rect x="326" y="238" width="10" height="36" rx="5" opacity="0.45"/>
+    <rect x="132" y="246" width="8" height="20" rx="4" opacity="0.25"/>
+    <rect x="350" y="246" width="8" height="20" rx="4" opacity="0.25"/>
+  </g>
+
+  <!-- Center dot -->
+  <circle cx="256" cy="256" r="10" fill="#FF5C35"/>
+</svg>

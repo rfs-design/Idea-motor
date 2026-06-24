@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0A0B">
+  <title>IdeaMotor</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="IdeaMotor">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ─── VIEW: LISTA PROGETTI ─── -->
+    <div id="view-list" class="view active">
+      <header class="app-header">
+        <div class="logo">
+          <svg class="logo-icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" fill="var(--accent)"/>
+            <path d="M12 2 Q14 7 12 12 Q10 7 12 2" fill="var(--accent)" opacity="0.5"/>
+          </svg>
+          <span class="logo-text">IdeaMotor</span>
+        </div>
+        <button class="icon-btn" id="btn-settings" aria-label="Impostazioni">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </header>
+
+      <main class="project-list" id="project-list">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-pulse"></div>
+          <p class="empty-title">Nessuna idea catturata</p>
+          <p class="empty-sub">Premi il microfono per iniziare</p>
+        </div>
+      </main>
+
+      <button class="fab" id="btn-capture" aria-label="Cattura idea">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ─── VIEW: CATTURA ─── -->
+    <div id="view-capture" class="view">
+      <div class="capture-screen">
+        <button class="close-capture-btn" id="btn-capture-close" aria-label="Chiudi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+
+        <div class="capture-top">
+          <span class="capture-status" id="capture-status">In ascolto</span>
+          <span class="capture-dot" id="capture-dot"></span>
+        </div>
+
+        <canvas id="waveform" class="waveform"></canvas>
+
+        <p class="transcript" id="transcript-display">Inizia a parlare…</p>
+
+        <button class="stop-btn" id="btn-stop-capture">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="3" y="3" width="18" height="18" rx="3"/>
+          </svg>
+          Elabora idea
+        </button>
+
+        <div class="processing-overlay" id="processing-overlay">
+          <div class="processing-inner">
+            <div class="spinner"></div>
+            <p>IdeaMotor sta elaborando…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── VIEW: DETTAGLIO PROGETTO ─── -->
+    <div id="view-detail" class="view">
+      <header class="detail-header">
+        <button class="icon-btn" id="btn-detail-back" aria-label="Indietro">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <span class="archetype-chip" id="detail-archetype-chip"></span>
+        <button class="icon-btn danger" id="btn-delete-project" aria-label="Elimina progetto">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14H6L5 6"/>
+            <path d="M10 11v6"/><path d="M14 11v6"/>
+            <path d="M9 6V4h6v2"/>
+          </svg>
+        </button>
+      </header>
+      <div class="detail-content" id="detail-content"></div>
+    </div>
+
+    <!-- ─── SETTINGS DRAWER ─── -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="settings-drawer" id="settings-drawer">
+      <div class="drawer-handle"></div>
+      <h2 class="drawer-title">Impostazioni</h2>
+
+      <div class="settings-section">
+        <h3 class="settings-section-title">API Keys</h3>
+        <p class="settings-note">Le chiavi sono salvate <strong>solo localmente</strong> sul tuo dispositivo e non vengono mai trasmesse a terzi.</p>
+
+        <div class="api-key-field">
+          <label for="key-gemini">Gemini <span class="engine-badge">Motore</span></label>
+          <div class="key-wrap">
+            <input type="password" id="key-gemini" placeholder="AIzaSy…" autocomplete="off" spellcheck="false">
+            <button class="show-key-btn" data-target="key-gemini" aria-label="Mostra/nascondi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="api-key-field">
+          <label for="key-claude">Claude (Anthropic)</label>
+          <div class="key-wrap">
+            <input type="password" id="key-claude" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
+            <button class="show-key-btn" data-target="key-claude" aria-label="Mostra/nascondi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="api-key-field">
+          <label for="key-openai">OpenAI</label>
+          <div class="key-wrap">
+            <input type="password" id="key-openai" placeholder="sk-…" autocomplete="off" spellcheck="false">
+            <button class="show-key-btn" data-target="key-openai" aria-label="Mostra/nascondi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="api-key-field">
+          <label for="key-perplexity">Perplexity</label>
+          <div class="key-wrap">
+            <input type="password" id="key-perplexity" placeholder="pplx-…" autocomplete="off" spellcheck="false">
+            <button class="show-key-btn" data-target="key-perplexity" aria-label="Mostra/nascondi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button class="save-btn" id="btn-save-keys">Salva</button>
+      </div>
+
+      <div class="settings-section">
+        <h3 class="settings-section-title">App</h3>
+        <p class="settings-note settings-version">IdeaMotor v1.0 · HUB09 AI Lab · 2025</p>
+      </div>
+    </div>
+
+  </div><!-- #app -->
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
