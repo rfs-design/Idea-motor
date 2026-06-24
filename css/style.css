@@ -136,7 +136,8 @@ body {
 }
 .welcome-btn:active { transform: scale(0.98); }
 .welcome-btn:disabled {
-  opacity: 0.4;
+  background: var(--surface-3);
+  color: var(--text-3);
   cursor: not-allowed;
   box-shadow: none;
 }
