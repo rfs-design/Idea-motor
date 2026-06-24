@@ -215,7 +215,7 @@ function persistSettings() {
 // ── Delete project ─────────────────────────────────────────────────────────
 async function handleDeleteProject() {
   if (!currentProjectId) return;
-  if (!confirm('Eliminare questo progetto? L'operazione è irreversibile.')) return;
+  if (!confirm("Eliminare questo progetto? L'operazione è irreversibile.")) return;
   await deleteProject(currentProjectId);
   currentProjectId = null;
   await loadProjectList();
