@@ -321,4 +321,9 @@ function registerServiceWorker() {
 }
 
 // ── Boot ───────────────────────────────────────────────────────────────────
+// Block pinch-zoom (iOS ignores user-scalable=no in the viewport meta)
+['gesturestart', 'gesturechange', 'gestureend'].forEach(evt =>
+  document.addEventListener(evt, (e) => e.preventDefault())
+);
+
 init();
