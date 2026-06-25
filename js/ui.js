@@ -228,9 +228,9 @@ export function drawWaveform(frequencyData) {
     // Draw mirrored bar (expands from center up and down)
     const drawHalf = (fromY, dir) => {
       const grad = ctx.createLinearGradient(0, fromY, 0, fromY + dir * halfH);
-      grad.addColorStop(0,   'rgba(255, 92, 53, 0.85)');
-      grad.addColorStop(0.6, 'rgba(255, 92, 53, 0.35)');
-      grad.addColorStop(1,   'rgba(255, 92, 53, 0)');
+      grad.addColorStop(0,   'rgba(160, 111, 162, 0.9)');
+      grad.addColorStop(0.6, 'rgba(48, 61, 139, 0.45)');
+      grad.addColorStop(1,   'rgba(48, 61, 139, 0)');
       ctx.fillStyle = grad;
       ctx.beginPath();
       if (ctx.roundRect) {

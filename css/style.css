@@ -7,9 +7,10 @@
   --border:    #222228;
   --border-2:  #2E2E36;
 
-  --accent:    #FF5C35;
-  --accent-lo: rgba(255, 92, 53, 0.12);
-  --accent-glow: rgba(255, 92, 53, 0.25);
+  --accent:    #a06fa2;
+  --accent-lo: rgba(160, 111, 162, 0.12);
+  --accent-glow: rgba(160, 111, 162, 0.28);
+  --accent-gradient: linear-gradient(135deg, #303d8b 0%, #a06fa2 100%);
   --success:   #00D4AA;
   --success-lo: rgba(0, 212, 170, 0.12);
 
@@ -122,7 +123,7 @@ body {
 .welcome-btn {
   width: 100%;
   padding: 15px;
-  background: var(--accent);
+  background: var(--accent-gradient);
   border: none;
   border-radius: var(--radius-md);
   color: white;
@@ -367,7 +368,7 @@ body {
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-gradient);
   border: none;
   color: white;
   display: flex;
@@ -816,7 +817,7 @@ body {
 .save-btn {
   width: 100%;
   padding: 14px;
-  background: var(--accent);
+  background: var(--accent-gradient);
   border: none;
   border-radius: var(--radius-md);
   color: white;
