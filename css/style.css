@@ -383,6 +383,39 @@ body {
 /* Secondary FAB (scrivi) — same treatment as the mic, placed to its left */
 .fab-write { right: calc(24px + 62px + 16px); }
 
+/* ── API service chip (header) ── */
+.api-chip {
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 15px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s;
+}
+.api-chip:active { transform: scale(0.96); }
+
+/* ── Copia prompt ── */
+.copy-prompt-btn {
+  margin-top: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  padding: 7px 13px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.copy-prompt-btn:active { background: var(--surface-3); color: var(--text-1); }
+
 /* ── Capture Screen ── */
 .capture-screen {
   flex: 1;

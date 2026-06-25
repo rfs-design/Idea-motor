@@ -123,6 +123,7 @@ export function renderProjectDetail(project, { onRating }) {
         <details class="step-prompt-details">
           <summary>Prompt</summary>
           <pre class="step-prompt">${esc(s.prompt)}</pre>
+          <button class="copy-prompt-btn" type="button">Copia prompt</button>
         </details>
         <p class="step-output"><span class="output-label">Output →</span> ${esc(s.output_atteso)}</p>
       </div>
@@ -168,6 +169,19 @@ export function renderProjectDetail(project, { onRating }) {
 
   container.querySelectorAll('.rating-btn').forEach(btn => {
     btn.addEventListener('click', () => onRating(project.id, btn.dataset.rating));
+  });
+
+  container.querySelectorAll('.copy-prompt-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const pre = btn.closest('.step-prompt-details')?.querySelector('.step-prompt');
+      if (!pre) return;
+      try {
+        await navigator.clipboard.writeText(pre.textContent);
+        const orig = btn.textContent;
+        btn.textContent = 'Copiato ✓';
+        setTimeout(() => { btn.textContent = orig; }, 1500);
+      } catch (e) { /* clipboard non disponibile (contesto non sicuro) */ }
+    });
   });
 }
 

@@ -78,12 +78,7 @@
           </svg>
           <span class="logo-text">IdeaMotor</span>
         </div>
-        <button class="icon-btn" id="btn-settings" aria-label="Impostazioni">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-          </svg>
-        </button>
+        <button class="api-chip" id="btn-settings" aria-label="API service">API service</button>
       </header>
 
       <main class="project-list" id="project-list">
@@ -191,7 +186,8 @@
 
       <div class="settings-section">
         <h3 class="settings-section-title">API Keys</h3>
-        <p class="settings-note">Le chiavi sono salvate <strong>solo localmente</strong> sul tuo dispositivo e non vengono mai trasmesse a terzi.</p>
+        <p class="settings-note">Le chiavi sono salvate <strong>solo localmente</strong> sul tuo dispositivo: non le salviamo da nessuna parte, le usa solo il tuo browser per parlare con i servizi AI.</p>
+        <p class="settings-note">Il <strong>motore</strong> che interpreta le idee è <strong>Gemini</strong>. La possibilità di scegliere quale modello fa da motore (Claude, GPT, Perplexity) arriva a breve.</p>
 
         <div class="api-key-field">
           <label for="key-gemini">Gemini <span class="engine-badge">Motore</span></label>
