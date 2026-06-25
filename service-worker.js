@@ -1,6 +1,6 @@
 // service-worker.js — IdeaMotor PWA caching
 
-const CACHE_NAME = 'ideamotor-v5';
+const CACHE_NAME = 'ideamotor-v6';
 
 const PRECACHE = [
   './',
@@ -13,6 +13,9 @@ const PRECACHE = [
   './js/speech.js',
   './js/gemini-engine.js',
   './js/ui.js',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', (e) => {
