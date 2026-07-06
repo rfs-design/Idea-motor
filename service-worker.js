@@ -1,6 +1,6 @@
 // service-worker.js — IdeaMotor PWA caching
 
-const CACHE_NAME = 'ideamotor-v13';
+const CACHE_NAME = 'ideamotor-v14';
 
 const PRECACHE = [
   './',

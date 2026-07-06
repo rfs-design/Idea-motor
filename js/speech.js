@@ -12,6 +12,7 @@ export class SpeechCapture {
     this.stream         = null;
     this.isListening    = false;
     this.finalTranscript = '';
+    this.lastInterim     = '';
   }
 
   static isSupported() {
@@ -30,6 +31,7 @@ export class SpeechCapture {
     }
 
     this.finalTranscript = '';
+    this.lastInterim     = '';
     this.isListening     = true;
 
     // ── Speech Recognition ──
@@ -49,6 +51,7 @@ export class SpeechCapture {
           interim = r[0].transcript;
         }
       }
+      this.lastInterim = interim;
       this.onTranscript(this.finalTranscript.trim(), interim);
     };
 
@@ -126,6 +129,9 @@ export class SpeechCapture {
       this.analyser  = null;
     }
 
-    return this.finalTranscript.trim();
+    // Include the last interim result. On iOS the engine often never flips results
+    // to isFinal, so the visible transcript lives entirely in interim; without this,
+    // "Elabora" sees an empty finalTranscript and wrongly reports "nessuna trascrizione".
+    return (this.finalTranscript + ' ' + this.lastInterim).trim();
   }
 }
