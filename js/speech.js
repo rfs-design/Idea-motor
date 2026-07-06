@@ -18,6 +18,11 @@ export class SpeechCapture {
     return !!(window.SpeechRecognition || window.webkitSpeechRecognition);
   }
 
+  static isIOS() {
+    return /iP(hone|od|ad)/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS desktop UA
+  }
+
   async start() {
     if (!SpeechCapture.isSupported()) {
       this.onError('Speech recognition non supportato. Usa Safari su iOS o Chrome su Android.');
@@ -72,17 +77,24 @@ export class SpeechCapture {
     }
 
     // ── Audio Visualization ──
-    try {
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-      this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      this.analyser = this.audioCtx.createAnalyser();
-      this.analyser.fftSize = 512;
-      this.analyser.smoothingTimeConstant = 0.75;
-      const src = this.audioCtx.createMediaStreamSource(this.stream);
-      src.connect(this.analyser);
-    } catch (e) {
-      // Visualization fails silently — speech still works
-      console.warn('Audio visualization unavailable:', e.message);
+    // On iOS, opening getUserMedia here competes with SpeechRecognition for the mic
+    // and silently kills the transcript. Skip it there: the waveform falls back to its
+    // idle animation (drawWaveform handles null) and dictation keeps the mic to itself.
+    if (SpeechCapture.isIOS()) {
+      console.info('iOS: waveform mic disabled to protect speech recognition');
+    } else {
+      try {
+        this.stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        this.analyser = this.audioCtx.createAnalyser();
+        this.analyser.fftSize = 512;
+        this.analyser.smoothingTimeConstant = 0.75;
+        const src = this.audioCtx.createMediaStreamSource(this.stream);
+        src.connect(this.analyser);
+      } catch (e) {
+        // Visualization fails silently — speech still works
+        console.warn('Audio visualization unavailable:', e.message);
+      }
     }
   }
 
