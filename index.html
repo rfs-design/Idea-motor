@@ -241,6 +241,16 @@
       </div>
 
       <div class="settings-section">
+        <h3 class="settings-section-title">Backup dello storico</h3>
+        <p class="settings-note">I tuoi progetti restano <strong>solo sul dispositivo</strong>. Esporta un backup prima di reinstallare l'app o cambiare device, poi reimportalo per ripristinare lo storico.</p>
+        <div style="display:flex; gap:10px;">
+          <button class="save-btn" id="btn-export" style="flex:1">Esporta storico</button>
+          <button class="save-btn" id="btn-import" style="flex:1">Importa storico</button>
+        </div>
+        <input type="file" id="import-file" accept="application/json,.json" hidden>
+      </div>
+
+      <div class="settings-section">
         <h3 class="settings-section-title">App</h3>
         <p class="settings-note settings-version">IdeaMotor v1.0 · HUB09 AI Lab · 2025</p>
       </div>

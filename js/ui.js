@@ -41,6 +41,24 @@ function esc(s = '') {
     .replace(/"/g, '&quot;');
 }
 
+// Plain-text rendering of a project, for the native share sheet / clipboard
+function buildShareText(p) {
+  const L = [];
+  L.push(`IDEAMOTOR — ${p.nome_progetto || 'Workflow'}`);
+  L.push(archetypeLabel(p.archetipo));
+  if (p.sintesi)            L.push('', p.sintesi);
+  if (p.lettura_strategica) L.push('', `LETTURA STRATEGICA`, p.lettura_strategica);
+  if (p.consiglio)          L.push('', `CONSIGLIO`, p.consiglio);
+  L.push('', '— WORKFLOW —');
+  (p.workflow || []).forEach(s => {
+    L.push('', `STEP ${s.step} · ${s.tool}`, s.azione || '');
+    if (s.prompt)        L.push(`Prompt:`, s.prompt);
+    if (s.output_atteso) L.push(`Output → ${s.output_atteso}`);
+  });
+  L.push('', 'Generato con IdeaMotor · HUB09 AI Lab');
+  return L.join('\n');
+}
+
 function archetypeColor(archetipo) {
   return (ARCHETYPE_META[archetipo] || ARCHETYPE_META.altro).color;
 }
@@ -143,10 +161,19 @@ export function renderProjectDetail(project, { onRating }) {
 
   const rMeta = project.rating ? RATING_META[project.rating] : null;
 
+  const letturaHTML = project.lettura_strategica
+    ? `<div class="consiglio-box lettura-box">
+        <span class="consiglio-label">🔍 Lettura strategica</span>
+        <p class="consiglio-text">${esc(project.lettura_strategica)}</p>
+      </div>`
+    : '';
+
   container.innerHTML = `
     <div class="detail-inner">
       <h2 class="detail-title">${esc(project.nome_progetto)}</h2>
       <p class="detail-sintesi">${esc(project.sintesi)}</p>
+
+      ${letturaHTML}
 
       <div class="consiglio-box">
         <span class="consiglio-label">💡 Consiglio IdeaMotor</span>
@@ -164,6 +191,8 @@ export function renderProjectDetail(project, { onRating }) {
         <div class="rating-buttons">${ratingBtns}</div>
         ${rMeta ? `<p class="current-rating" style="color:${rMeta.color}">${rMeta.emoji} Valutato: ${rMeta.label}</p>` : ''}
       </div>
+
+      <button class="save-btn share-workflow-btn" type="button">Condividi workflow</button>
     </div>
   `;
 
@@ -183,6 +212,24 @@ export function renderProjectDetail(project, { onRating }) {
       } catch (e) { /* clipboard non disponibile (contesto non sicuro) */ }
     });
   });
+
+  const shareBtn = container.querySelector('.share-workflow-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const text  = buildShareText(project);
+      const title = `IdeaMotor — ${project.nome_progetto || 'Workflow'}`;
+      try {
+        if (navigator.share) {
+          await navigator.share({ title, text });        // native iOS/Android share sheet
+        } else {
+          await navigator.clipboard.writeText(text);      // fallback: clipboard
+          const orig = shareBtn.textContent;
+          shareBtn.textContent = 'Copiato negli appunti ✓';
+          setTimeout(() => { shareBtn.textContent = orig; }, 1800);
+        }
+      } catch (e) { /* utente ha annullato lo share, o API non disponibile */ }
+    });
+  }
 }
 
 // ── Waveform Canvas ────────────────────────────────────────────────────────

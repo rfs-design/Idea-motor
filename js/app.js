@@ -1,6 +1,6 @@
 // app.js — IdeaMotor main controller
 
-import { getAllProjects, saveProject, getProject, updateRating, deleteProject, getRatingsByArchetype } from './storage.js';
+import { getAllProjects, saveProject, getProject, updateRating, deleteProject, getRatingsByArchetype, importProjects } from './storage.js';
 import { getKey, getAllKeys, saveAllKeys, saveKey, loadKeys } from './settings.js';
 import { SpeechCapture } from './speech.js';
 import { analyzeIdea, buildRatingsContext } from './gemini-engine.js';
@@ -242,6 +242,50 @@ async function handleDeleteProject() {
   showView('list');
 }
 
+// ── Backup: export / import history ────────────────────────────────────────
+async function handleExport() {
+  const projects = await getAllProjects();
+  const payload  = { app: 'IdeaMotor', schema: 1, exported_at: new Date().toISOString(), projects };
+  const json     = JSON.stringify(payload, null, 2);
+  const fname    = `ideamotor-backup-${new Date().toISOString().slice(0, 10)}.json`;
+
+  // Prefer the native share sheet with a file — most reliable on iOS standalone PWAs
+  const file = new File([json], fname, { type: 'application/json' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: 'Backup IdeaMotor' }); }
+    catch (e) { /* utente ha annullato: non fare il download di ripiego */ }
+    return;
+  }
+
+  // Fallback: classic download
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = fname;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function handleImportFile(e) {
+  const file = e.target.files && e.target.files[0];
+  e.target.value = ''; // reset so the same file can be picked again
+  if (!file) return;
+  try {
+    const data     = JSON.parse(await file.text());
+    const projects = Array.isArray(data) ? data : (data.projects || []);
+    if (!Array.isArray(projects) || projects.length === 0) {
+      alert('Il file non contiene progetti validi.');
+      return;
+    }
+    if (!confirm(`Importare ${projects.length} progetti? Verranno aggiunti allo storico attuale.`)) return;
+    const n = await importProjects(projects);
+    await loadProjectList();
+    alert(`✓ Importati ${n} progetti.`);
+  } catch (err) {
+    alert('File non valido o illeggibile: ' + err.message);
+  }
+}
+
 // ── Event bindings ─────────────────────────────────────────────────────────
 function bindEvents() {
   // List view
@@ -295,6 +339,12 @@ function bindEvents() {
   // Settings drawer
   document.getElementById('btn-save-keys').addEventListener('click', persistSettings);
   document.getElementById('drawer-overlay').addEventListener('click', closeSettings);
+
+  // Backup: export / import history
+  const importFile = document.getElementById('import-file');
+  document.getElementById('btn-export').addEventListener('click', handleExport);
+  document.getElementById('btn-import').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', handleImportFile);
 
   // Show/hide key buttons
   document.querySelectorAll('.show-key-btn').forEach(btn => {

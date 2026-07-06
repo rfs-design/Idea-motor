@@ -91,6 +91,38 @@ export async function deleteProject(id) {
   });
 }
 
+/**
+ * Import an array of projects (from a backup file) into the store.
+ * Ids are dropped and reassigned by autoIncrement to avoid collisions with existing
+ * rows; items are added oldest-first so the chronological order is preserved.
+ * Returns the number of projects imported.
+ */
+export async function importProjects(projects) {
+  const list = Array.isArray(projects) ? projects : [];
+  if (list.length === 0) return 0;
+
+  // Oldest first → lowest id, so getAllProjects() (newest-first) stays correct.
+  const ordered = list.slice().sort(
+    (a, b) => new Date(a.created_at || 0) - new Date(b.created_at || 0)
+  );
+
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx    = db.transaction(STORE, 'readwrite');
+    const store = tx.objectStore(STORE);
+    let count = 0;
+    ordered.forEach(p => {
+      const { id, ...rest } = p; // drop the old id
+      if (!rest.created_at) rest.created_at = new Date().toISOString();
+      if (!rest.updated_at) rest.updated_at = rest.created_at;
+      store.add(rest);
+      count++;
+    });
+    tx.oncomplete = () => resolve(count);
+    tx.onerror    = (e) => reject(e.target.error);
+  });
+}
+
 /** Returns up to 5 rated projects of the given archetype (for feedback loop context) */
 export async function getRatingsByArchetype(archetipo) {
   const all = await getAllProjects();
