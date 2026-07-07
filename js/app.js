@@ -20,6 +20,33 @@ const views = {
   write:   document.getElementById('view-write'),
 };
 
+// ── Loading phrases (cycled while processing) ────────────────────────────────
+const LOADING_PHRASES = [
+  'Sto processando l\'idea…',
+  'Le buone idee vanno lasciate respirare…',
+  'Scelgo gli strumenti, uno per uno…',
+  'Cucio i prompt sulla tua idea…',
+  'Sto collegando i puntini…',
+  'Vale la pena aspettare un\'idea buona…',
+  'Metto in fila i passi del workflow…',
+];
+let loadingTimer = null;
+
+function startLoadingPhrases() {
+  const el = document.getElementById('processing-text');
+  if (!el) return;
+  let i = 0;
+  el.textContent = LOADING_PHRASES[0];
+  loadingTimer = setInterval(() => {
+    i = (i + 1) % LOADING_PHRASES.length;
+    el.textContent = LOADING_PHRASES[i];
+  }, 2600);
+}
+
+function stopLoadingPhrases() {
+  if (loadingTimer) { clearInterval(loadingTimer); loadingTimer = null; }
+}
+
 // ── View navigation ────────────────────────────────────────────────────────
 function showView(name) {
   Object.values(views).forEach(v => {
@@ -142,7 +169,19 @@ async function finalizeCaptureAndProcess() {
     return;
   }
 
-  await processIdea(transcript);
+  // Let the user review and correct the dictated text before processing it.
+  const writeInput = document.getElementById('write-input');
+  const writeBtn   = document.getElementById('btn-write-process');
+  const writeTitle = document.querySelector('.write-title');
+  if (writeTitle) writeTitle.textContent = 'Rivedi e correggi';
+  writeInput.value  = transcript;
+  writeBtn.disabled = transcript.trim().length < 8;
+  showView('write');
+  setTimeout(() => {
+    writeInput.focus();
+    const len = writeInput.value.length;
+    writeInput.setSelectionRange(len, len); // cursor at end of the dictated text
+  }, 250);
 }
 
 // Shared pipeline: turn a raw idea (from voice OR text) into a saved workflow
@@ -155,6 +194,7 @@ async function processIdea(rawText) {
 
   const overlay = document.getElementById('processing-overlay');
   overlay.classList.add('visible');
+  startLoadingPhrases();
 
   try {
     const apiKey = getKey('gemini');
@@ -172,12 +212,14 @@ async function processIdea(rawText) {
     // Save to DB
     const newId = await saveProject({ transcript, ...result });
 
+    stopLoadingPhrases();
     overlay.classList.remove('visible');
     await loadProjectList();
     await openProject(newId);
     return true;
 
   } catch (err) {
+    stopLoadingPhrases();
     overlay.classList.remove('visible');
     alert('Errore: ' + err.message);
     showView('list');
@@ -322,6 +364,8 @@ function bindEvents() {
   const writeInput = document.getElementById('write-input');
   const writeBtn   = document.getElementById('btn-write-process');
   document.getElementById('btn-write').addEventListener('click', () => {
+    const writeTitle = document.querySelector('.write-title');
+    if (writeTitle) writeTitle.textContent = "Scrivi un'idea";
     writeInput.value  = '';
     writeBtn.disabled = true;
     showView('write');
@@ -339,6 +383,7 @@ function bindEvents() {
   // Settings drawer
   document.getElementById('btn-save-keys').addEventListener('click', persistSettings);
   document.getElementById('drawer-overlay').addEventListener('click', closeSettings);
+  document.getElementById('btn-close-settings').addEventListener('click', closeSettings);
 
   // Backup: export / import history
   const importFile = document.getElementById('import-file');
