@@ -408,11 +408,23 @@ function bindEvents() {
 
 // ── Service Worker ─────────────────────────────────────────────────────────
 function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').catch(err => {
-      console.warn('SW registration failed:', err);
-    });
-  }
+  if (!('serviceWorker' in navigator)) return;
+
+  // If a new SW takes control (new version deployed + activated), reload once so the
+  // page runs the fresh assets. Guarded so it doesn't reload on the first-ever install.
+  const hadController = !!navigator.serviceWorker.controller;
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing || !hadController) return;
+    refreshing = true;
+    window.location.reload();
+  });
+
+  // updateViaCache:'none' → always re-fetch service-worker.js bypassing the HTTP cache
+  // (GitHub Pages serves it with max-age=600, which otherwise delays updates ~10 min).
+  navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' })
+    .then(reg => { reg.update().catch(() => {}); })
+    .catch(err => console.warn('SW registration failed:', err));
 }
 
 // ── Boot ───────────────────────────────────────────────────────────────────
