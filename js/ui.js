@@ -55,7 +55,7 @@ function buildShareText(p) {
     if (s.prompt)        L.push(`Prompt:`, s.prompt);
     if (s.output_atteso) L.push(`Output → ${s.output_atteso}`);
   });
-  L.push('', 'Generato con IdeaMotor · HUB09 AI Lab');
+  L.push('', 'Generato con IdeaMotor · rfs-design');
   return L.join('\n');
 }
 

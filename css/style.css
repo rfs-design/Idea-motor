@@ -958,3 +958,16 @@ body {
 }
 .install-hint[hidden] { display: none; }
 .install-hint strong { color: var(--text-1); font-weight: 500; }
+
+/* ── Dictation review note ── */
+.write-hint {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--accent-lo);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.write-hint[hidden] { display: none; }

@@ -1,7 +1,7 @@
 # IdeaMotor ◎
 
 > Cattura idee vocali → genera workflow AI azionabili → impara dai tuoi feedback.
-> HUB09 AI Lab · 2025
+> rfs-design · 2026
 
 ---
 

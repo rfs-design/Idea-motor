@@ -244,6 +244,8 @@ async function finalizeCaptureAndProcess() {
   const writeBtn   = document.getElementById('btn-write-process');
   const writeTitle = document.querySelector('.write-title');
   if (writeTitle) writeTitle.textContent = 'Rivedi e correggi';
+  const writeHint = document.getElementById('write-hint');
+  if (writeHint) writeHint.hidden = false;   // friendly note: only in dictation review
   writeInput.value  = transcript;
   writeBtn.disabled = transcript.trim().length < 8;
   showView('write');
@@ -436,6 +438,8 @@ function bindEvents() {
   document.getElementById('btn-write').addEventListener('click', () => {
     const writeTitle = document.querySelector('.write-title');
     if (writeTitle) writeTitle.textContent = "Scrivi un'idea";
+    const writeHint = document.getElementById('write-hint');
+    if (writeHint) writeHint.hidden = true;   // hide the dictation note when writing fresh
     writeInput.value  = '';
     writeBtn.disabled = true;
     showView('write');

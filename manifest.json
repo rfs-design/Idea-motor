@@ -1,7 +1,7 @@
 {
   "name": "IdeaMotor",
   "short_name": "IdeaMotor",
-  "description": "Cattura idee vocali, genera workflow AI — HUB09 AI Lab",
+  "description": "Cattura idee vocali, genera workflow AI — rfs-design",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
