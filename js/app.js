@@ -47,6 +47,75 @@ function stopLoadingPhrases() {
   if (loadingTimer) { clearInterval(loadingTimer); loadingTimer = null; }
 }
 
+// ── Install banner (biscotto) ────────────────────────────────────────────────
+let deferredInstallPrompt = null;
+const INSTALL_DISMISS_KEY  = 'im_install_dismissed_at';
+const INSTALL_DISMISS_DAYS = 14;
+
+// Capture the native install event (Android / desktop Chrome) as early as possible
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  maybeShowInstallBanner();
+});
+
+function installEligible() {
+  // Already added to home / running as app → never show
+  const standalone = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+  if (standalone) return false;
+  // Dismissed recently → stay quiet for a while
+  try {
+    const t = parseInt(localStorage.getItem(INSTALL_DISMISS_KEY) || '0', 10);
+    if (t && (Date.now() - t) < INSTALL_DISMISS_DAYS * 86400000) return false;
+  } catch (_) { /* localStorage unavailable */ }
+  return true;
+}
+
+function maybeShowInstallBanner() {
+  const banner = document.getElementById('install-banner');
+  if (!banner || !installEligible()) return;
+  banner.hidden = false;
+  requestAnimationFrame(() => banner.classList.add('visible'));
+}
+
+function dismissInstallBanner() {
+  const banner = document.getElementById('install-banner');
+  if (banner) {
+    banner.classList.remove('visible');
+    setTimeout(() => { banner.hidden = true; }, 350);
+  }
+  try { localStorage.setItem(INSTALL_DISMISS_KEY, String(Date.now())); } catch (_) {}
+}
+
+function initInstallBanner() {
+  const banner = document.getElementById('install-banner');
+  if (!banner) return;
+
+  const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  document.getElementById('install-close').addEventListener('click', dismissInstallBanner);
+  document.getElementById('install-dismiss').addEventListener('click', dismissInstallBanner);
+  document.getElementById('install-accept').addEventListener('click', async () => {
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();                       // native install (Android/desktop)
+      try { await deferredInstallPrompt.userChoice; } catch (_) {}
+      deferredInstallPrompt = null;
+      dismissInstallBanner();
+    } else if (isIOS) {
+      const hint = document.getElementById('install-ios-hint');
+      if (hint) hint.hidden = false;                        // iOS: show Add-to-Home instructions
+    } else {
+      dismissInstallBanner();
+    }
+  });
+
+  // iOS never fires beforeinstallprompt → show after a short beat.
+  // Other cases show when beforeinstallprompt fires (handled above).
+  if (isIOS) setTimeout(maybeShowInstallBanner, 1200);
+}
+
 // ── View navigation ────────────────────────────────────────────────────────
 function showView(name) {
   Object.values(views).forEach(v => {
@@ -78,6 +147,7 @@ async function init() {
   loadProjectList();
   registerServiceWorker();
   bindEvents();
+  initInstallBanner();
 }
 
 // ── Project list ───────────────────────────────────────────────────────────

@@ -869,3 +869,92 @@ body {
   font-size: 12px;
   margin-bottom: 0;
 }
+
+/* ── Install banner (biscotto) ── */
+.install-banner {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(14px + var(--safe-bottom));
+  z-index: 300;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+  transform: translateY(160%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s;
+}
+.install-banner.visible { transform: translateY(0); opacity: 1; }
+.install-banner[hidden] { display: none; }
+
+.install-top { display: flex; align-items: flex-start; gap: 12px; }
+.install-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #14121c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.install-text { flex: 1; min-width: 0; }
+.install-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-1);
+  font-size: 16px;
+}
+.install-sub {
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin-top: 3px;
+}
+.install-close {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  padding: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.install-actions { display: flex; gap: 10px; margin-top: 14px; }
+.install-btn {
+  flex: 1;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.install-primary {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.install-primary:active { transform: scale(0.98); }
+.install-secondary {
+  background: var(--surface-3);
+  color: var(--text-1);
+  border: 1px solid var(--border-2);
+}
+
+.install-hint {
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--surface-3);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+.install-hint[hidden] { display: none; }
+.install-hint strong { color: var(--text-1); font-weight: 500; }
