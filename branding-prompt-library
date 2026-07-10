@@ -1,0 +1,364 @@
+
+## 1. Sezione – Brand naming
+
+### 1.1 Prompt “generatore + filtro critico”
+
+**Titolo voce libreria:** `BN-01 · Brand naming – generazione, scoring e rischi`  
+**Use case:** creazione da zero di una shortlist ragionata di nomi.
+
+**Prompt IT**
+
+> Agisci come **esperto di naming strategist** per brand premium.  
+> Ti fornirò un breve brief.  
+>  
+> **Brief**  
+> - Settore: [settore]  
+> - Prodotto/servizio: [descrizione_prodotto]  
+> - Pubblico: [descrizione_target]  
+> - Brand vibe (3–5 aggettivi): [vibe_brand]  
+> - Stile di nome preferito: [descrittivo/evocativo/inventato/ibrido]  
+> - Mercati/lingue principali: [mercati]  
+> - Parole vietate / cliché da evitare: [lista_parole_vietate]  
+> - Principali competitor e relativi nomi: [lista_competitor]  
+>  
+> **Cosa devi fare**  
+> 1. Genera **30 possibili nomi** coerenti con il brief, in elenco numerato.  
+> 2. Seleziona i **10 migliori** e, per ciascuno:  
+>    - assegna un punteggio 1–10 su: memorabilità, chiarezza, unicità, pronuncia, coerenza con la vibe;  
+>    - spiega in **1 riga** perché funziona.  
+> 3. Per i **5 migliori**:  
+>    - elenca **3 potenziali rischi** (ambiguità di significato, possibili confusioni con brand noti, problemi di pronuncia/spelling);  
+>    - proponi **1 tagline** sotto le 7 parole per ogni nome.  
+> 4. Chiudi con una **tabella riassuntiva** dei 5 finalisti (Nome, Punteggio totale, Rischio principale, Tagline).  
+>  
+> **Regole**  
+> - Evita inglesismi gratuiti se non richiesti.  
+> - Non proporre nomi troppo simili ai competitor indicati.  
+> - Mantieni, dove possibile, nomi entro 3 sillabe.  
+> - Se il brief è ambiguo, fai prima **3 domande di chiarimento**, poi procedi.  
+
+**Prompt EN**
+
+> Act as an **expert brand naming strategist** for premium brands.  
+> I will give you a short brief.  
+>  
+> **Brief**  
+> - Industry: [industry]  
+> - Product/service: [product_description]  
+> - Audience: [target_description]  
+> - Brand vibe (3–5 adjectives): [brand_vibe]  
+> - Preferred name style: [descriptive/evocative/invented/hybrid]  
+> - Main markets/languages: [markets]  
+> - Forbidden words / clichés to avoid: [forbidden_words_list]  
+> - Main competitors and their brand names: [competitors_list]  
+>  
+> **Your tasks**  
+> 1. Generate **30 potential brand names** that fit the brief, as a numbered list.  
+> 2. Select the **top 10** and for each one:  
+>    - score 1–10 on memorability, clarity, uniqueness, pronunciation, vibe fit;  
+>    - add a **one-line** explanation of why it works.  
+> 3. For the **top 5** names:  
+>    - list **3 potential risks** (ambiguity, similarity to known brands, pronunciation/spelling issues);  
+>    - propose **1 tagline** under 7 words for each name.  
+> 4. End with a **summary table** of the 5 finalists (Name, Total score, Main risk, Tagline).  
+>  
+> **Rules**  
+> - Avoid gratuitous English words if not requested.  
+> - Do not propose names too close to the listed competitors.  
+> - Prefer names with up to 3 syllables when possible.  
+> - If the brief is ambiguous, ask **3 clarifying questions** before proceeding.[2][3][4]
+
+***
+
+### 1.2 Prompt “refiner” per shortlist di nomi
+
+**Titolo voce libreria:** `BN-02 · Naming – valutazione e raffinamento shortlist`  
+**Use case:** hai già una lista di nomi grezzi.
+
+**Prompt IT**
+
+> Agisci come **consulente di naming**.  
+> Ecco una lista di possibili nomi per un brand: [descrizione_brand]  
+>  
+> Lista nomi: [lista_nomi]  
+>  
+> 1. Valuta ciascun nome con punteggio 1–10 su:  
+>    - memorabilità  
+>    - chiarezza  
+>    - unicità  
+>    - facilità di pronuncia  
+>    - percezione “premium”  
+> 2. Ordina i nomi dal migliore al peggiore e, per ognuno, aggiungi **1 riga di motivazione**.  
+> 3. Per i **primi 3 nomi in classifica**, genera **5 varianti** ciascuno, mantenendo lo stesso mood ma semplificando dove possibile spelling e pronuncia.  
+> 4. Evidenzia possibili problemi culturali o di significato nei mercati: [mercati].  
+
+**Prompt EN**
+
+> Act as a **brand naming consultant**.  
+> Here is a list of potential names for a brand: [brand_description]  
+>  
+> Name list: [name_list]  
+>  
+> 1. Rate each name on a 1–10 scale for:  
+>    - memorability  
+>    - clarity  
+>    - uniqueness  
+>    - ease of pronunciation  
+>    - premium feel  
+> 2. Rank all names from best to worst and add a **one-line explanation** for each.  
+> 3. For the **top 3 names**, generate **5 variations** each, keeping the same overall vibe but simplifying spelling and pronunciation where possible.  
+> 4. Highlight potential cultural or meaning issues in these markets: [markets].[2]
+
+***
+
+## 2. Sezione – Posizionamento di brand
+
+### 2.1 Prompt per posizionamento completo + messaggi chiave
+
+**Titolo voce libreria:** `BP-01 · Brand positioning – statement, griglia e messaggi per canali`  
+**Use case:** definire o riscrivere il posizionamento a partire da un brief.
+
+**Prompt IT**
+
+> Agisci come **brand strategist senior**.  
+> Ti fornisco un brief di brand.  
+>  
+> **Brief**  
+> - Categoria di mercato: [categoria]  
+> - Target principale (persona sintetica): [descrizione_target]  
+> - Problemi che risolviamo: [lista_problemi]  
+> - Benefici chiave: [lista_benefici]  
+> - Principali competitor + come sono percepiti: [lista_competitor]  
+> - Differenze chiave rispetto ai competitor: [lista_differenze]  
+> - Tono di voce desiderato (3–5 aggettivi): [tono_voce]  
+>  
+> **Cosa devi produrre**  
+> 1. Una **frase di posizionamento** nel formato:  
+>    “Per [target], [brand] è il/la [categoria] che offre [beneficio principale] a differenza di [alternative chiave], perché [reason why/prova].”  
+> 2. **3 varianti** di posizionamento con registro diverso:  
+>    - più strategico  
+>    - più emotivo  
+>    - più diretto/commerciale  
+> 3. Una tabella “**Chi siamo / Chi non siamo**” con almeno 5 righe (es. ‘accessibili / non cheap’).  
+> 4. **5 messaggi chiave** adattati a:  
+>    - Hero section sito  
+>    - Bio Instagram  
+>    - Elevator pitch 30 secondi  
+>    - Email di presentazione B2B  
+>    - Annuncio paid breve (max 90 caratteri)  
+>  
+> **Regole**  
+> - Evita buzzword generiche (“innovativo”, “disruptive”) se non strettamente necessarie.  
+> - Ogni messaggio deve essere comprensibile a qualcuno esterno al settore.  
+
+**Prompt EN**
+
+> Act as a **senior brand strategist**.  
+> I will share a brand brief with you.  
+>  
+> **Brief**  
+> - Market category: [category]  
+> - Primary target (short persona): [target_description]  
+> - Problems we solve: [problems_list]  
+> - Key benefits: [benefits_list]  
+> - Main competitors + perceived positioning: [competitors_list]  
+> - Key differences vs competitors: [differences_list]  
+> - Desired tone of voice (3–5 adjectives): [tone_of_voice]  
+>  
+> **Deliverables**  
+> 1. A **positioning statement** in the format:  
+>    “For [audience], [brand] is the [category] that [main benefit] unlike [key alternatives], because [reason to believe].”  
+> 2. **3 alternative versions** of the positioning:  
+>    - more strategic  
+>    - more emotional  
+>    - more direct/sales-oriented  
+> 3. A “**What we are / What we are not**” table with at least 5 rows.  
+> 4. **5 key messages** tailored for:  
+>    - Website hero section  
+>    - Instagram bio  
+>    - 30-second elevator pitch  
+>    - B2B cold outreach email  
+>    - Short paid ad (max 90 characters)  
+>  
+> **Rules**  
+> - Avoid empty buzzwords unless they are specifically justified.  
+> - Keep each message understandable for a non-expert reader.[5][6][1]
+
+***
+
+### 2.2 Prompt per confronto e scelta del posizionamento
+
+**Titolo voce libreria:** `BP-02 · Valutare e scegliere tra opzioni di posizionamento`  
+
+**Prompt IT**
+
+> Agisci come **consulente di posizionamento**.  
+> Ti fornisco 3 proposte di posizionamento per il brand [nome_brand] che opera in [categoria].  
+>  
+> Posizionamento A: [testo_A]  
+> Posizionamento B: [testo_B]  
+> Posizionamento C: [testo_C]  
+>  
+> Obiettivo principale del brand: [es. crescita rapida / premiumizzazione / difesa quota].  
+>  
+> 1. Valuta ogni proposta con punteggio 1–10 su: chiarezza, differenziazione, credibilità, allineamento al target.  
+> 2. Spiega in **3–4 righe** punti forti e deboli di ciascuna opzione.  
+> 3. Indica quale opzione sceglieresti rispetto all’obiettivo principale e perché.  
+> 4. Propone una **versione “sintesi”** che unisce i migliori elementi delle 3, motivando le scelte.  
+
+**Prompt EN**
+
+> Act as a **brand positioning consultant**.  
+> I will give you 3 positioning options for the brand [brand_name] in [category].  
+>  
+> Positioning A: [text_A]  
+> Positioning B: [text_B]  
+> Positioning C: [text_C]  
+>  
+> Main brand objective: [e.g. rapid growth / premiumisation / defense].  
+>  
+> 1. Rate each option 1–10 on clarity, differentiation, credibility, and target fit.  
+> 2. Describe strengths and weaknesses of each option in **3–4 sentences**.  
+> 3. Recommend which option to choose given the objective, and explain why.  
+> 4. Propose a **“combined” positioning** that merges the best elements of all three and explain your reasoning.[7][8][1]
+
+***
+
+## 3. Sezione – Logo e identità visiva
+
+### 3.1 Prompt per 3 direzioni di logo
+
+**Titolo voce libreria:** `BL-01 · Logo e identità – 3 direzioni creative`  
+**Use case:** definire concept di logo + palette + tipografia + prompt per generatori immagine.[9][10][11][12]
+
+**Prompt IT**
+
+> Agisci come **brand designer e art director**.  
+> Devo definire tre direzioni di logo e identità visiva per un brand.  
+>  
+> **Brief**  
+> - Nome brand: [nome_brand]  
+> - Posizionamento sintetico (1 frase): [posizionamento]  
+> - Personalità (3–5 tratti): [personalità_brand]  
+> - Riferimenti di stile (brand o keyword): [riferimenti]  
+> - Elementi da evitare (simboli, cliché, colori): [da_evitare]  
+> - Touchpoint principali (digitale, stampa, packaging, ecc.): [touchpoint]  
+>  
+> **Cosa devi fare**  
+> 1. Proponi **3 direzioni di logo**:  
+>    - Direzione 1: solo wordmark  
+>    - Direzione 2: wordmark + icona figurativa  
+>    - Direzione 3: logo astratto/simbolico  
+> 2. Per ciascuna direzione descrivi:  
+>    - stile generale (es. minimal, geometric, organico)  
+>    - tipografia suggerita (tipologia e feeling, non solo font specifici)  
+>    - palette colore (3–5 colori) con **significato psicologico** per il brand  
+>    - eventuali metafore o simboli e il relativo senso.  
+> 3. Per ogni direzione fornisci **2 prompt testuali** pronti per un generatore di immagini (es. Midjourney / DALL·E), includendo:  
+>    - subject (tipo di logo)  
+>    - stile visivo  
+>    - palette indicativa  
+>    - mood/emozione  
+>    - eventuali elementi da escludere (negative prompting).  
+> 4. Spiega come testare la versatilità del logo:  
+>    - uso in monocromatico  
+>    - riduzione a favicon / piccola icona  
+>    - uso su sfondo chiaro, scuro e fotografico.  
+>  
+> **Regole**  
+> - Preferisci soluzioni semplici, leggibili e riconoscibili.  
+> - Almeno **1 direzione** deve sfidare i cliché visivi tipici del settore.  
+
+**Prompt EN**
+
+> Act as a **brand designer and art director**.  
+> I need three logo and visual identity directions for a brand.  
+>  
+> **Brief**  
+> - Brand name: [brand_name]  
+> - Short positioning (1 sentence): [positioning]  
+> - Personality (3–5 traits): [brand_personality]  
+> - Style references (brands or keywords): [references]  
+> - Elements to avoid (symbols, clichés, colors): [to_avoid]  
+> - Main touchpoints (digital, print, packaging, etc.): [touchpoints]  
+>  
+> **Your tasks**  
+> 1. Propose **3 logo directions**:  
+>    - Direction 1: wordmark only  
+>    - Direction 2: wordmark + figurative icon  
+>    - Direction 3: abstract/symbolic logo  
+> 2. For each direction describe:  
+>    - overall style (e.g. minimal, geometric, organic)  
+>    - suggested typography (type and feel, not just specific fonts)  
+>    - color palette (3–5 colors) with **psychological meaning** for the brand  
+>    - any metaphors or symbols and what they communicate.  
+> 3. For each direction provide **2 text prompts** ready for an image generator (Midjourney / DALL·E, etc.), including:  
+>    - subject (type of logo)  
+>    - visual style  
+>    - indicative color palette  
+>    - mood/emotion  
+>    - negative elements to exclude.  
+> 4. Explain how to test logo versatility:  
+>    - single-color usage  
+>    - favicon / small icon reduction  
+>    - usage on light, dark and photographic backgrounds.  
+>  
+> **Rules**  
+> - Prefer simple, legible, highly recognizable solutions.  
+> - At least **one direction** should challenge common visual clichés in this industry.[10][11][13][14][9]
+
+***
+
+### 3.2 Prompt per audit e riallineamento di un logo esistente
+
+**Titolo voce libreria:** `BL-02 · Audit logo – coerenza con posizionamento`  
+
+**Prompt IT**
+
+> Agisci come **brand designer senior e consulente di identità visiva**.  
+>  
+> Ti descrivo un logo esistente e il posizionamento del brand.  
+> - Descrizione logo (forma, stile, tipografia, colori): [descrizione_logo]  
+> - Posizionamento attuale: [posizionamento]  
+> - Target e messaggi chiave: [riassunto_target_messaggi]  
+>  
+> 1. Valuta se il logo comunica in modo coerente personalità e posizionamento del brand.  
+> 2. Elenca **5 elementi che funzionano** e che è consigliabile preservare.  
+> 3. Elenca **5 elementi da migliorare** (es. leggibilità, distintività, flessibilità cross-canale).  
+> 4. Proponi **3 direzioni di restyling**:  
+>    - restyling “soft”  
+>    - restyling “medio”  
+>    - restyling “radicale”  
+>    Per ciascuna spiega cosa cambieresti e perché.  
+> 5. Suggerisci una **micro‑guida** (5 bullet) per documentare il nuovo uso del logo in un brand book:  
+>    - varianti consentite  
+>    - spazi di rispetto  
+>    - sfondi consigliati/sconsigliati  
+>    - minime dimensioni  
+>    - errori da evitare.  
+
+**Prompt EN**
+
+> Act as a **senior brand designer and visual identity consultant**.  
+>  
+> I will describe an existing logo and the brand positioning.  
+> - Logo description (shape, style, typography, colors): [logo_description]  
+> - Current positioning: [positioning]  
+> - Target and key messages: [target_and_messages]  
+>  
+> 1. Assess whether the logo clearly reflects the brand’s personality and positioning.  
+> 2. List **5 elements that work well** and should be preserved.  
+> 3. List **5 elements that should be improved** (e.g. legibility, distinctiveness, cross-channel flexibility).  
+> 4. Propose **3 redesign directions**:  
+>    - “soft” refresh  
+>    - “medium” refresh  
+>    - “radical” redesign  
+>    Explain what you would change and why for each.  
+> 5. Suggest a **5-bullet mini guideline** for the brand book:  
+>    - approved logo variants  
+>    - clear space rules  
+>    - recommended/avoided backgrounds  
+>    - minimum sizes  
+>    - common misuse to avoid.[12][15][16][9]
+
+***

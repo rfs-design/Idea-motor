@@ -194,8 +194,8 @@
 
       <div class="settings-section">
         <h3 class="settings-section-title">API Keys</h3>
-        <p class="settings-note">Le chiavi sono salvate <strong>solo localmente</strong> sul tuo dispositivo: non le salviamo da nessuna parte, le usa solo il tuo browser per parlare con i servizi AI.</p>
-        <p class="settings-note">Il <strong>motore</strong> che interpreta le idee è <strong>Gemini</strong>. La possibilità di scegliere quale modello fa da motore (Claude, GPT, Perplexity) arriva a breve.</p>
+        <p class="settings-note">La chiave è salvata <strong>solo localmente</strong> sul tuo dispositivo: non la salviamo da nessuna parte, la usa solo il tuo browser per parlare con Gemini.</p>
+        <p class="settings-note">Il <strong>motore</strong> che interpreta le idee è <strong>Gemini</strong>.</p>
 
         <div class="api-key-field">
           <label for="key-gemini">Gemini <span class="engine-badge">Motore</span></label>
@@ -209,7 +209,7 @@
           </div>
         </div>
 
-        <div class="api-key-field">
+        <div class="api-key-field" hidden style="display:none">
           <label for="key-claude">Claude (Anthropic)</label>
           <div class="key-wrap">
             <input type="password" id="key-claude" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
@@ -221,7 +221,7 @@
           </div>
         </div>
 
-        <div class="api-key-field">
+        <div class="api-key-field" hidden style="display:none">
           <label for="key-openai">OpenAI</label>
           <div class="key-wrap">
             <input type="password" id="key-openai" placeholder="sk-…" autocomplete="off" spellcheck="false">
@@ -233,7 +233,7 @@
           </div>
         </div>
 
-        <div class="api-key-field">
+        <div class="api-key-field" hidden style="display:none">
           <label for="key-perplexity">Perplexity</label>
           <div class="key-wrap">
             <input type="password" id="key-perplexity" placeholder="pplx-…" autocomplete="off" spellcheck="false">
