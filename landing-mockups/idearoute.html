@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaRoute — From idea to route</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;--surface:#111113;--surface-2:#18181C;--surface-3:#1E1E23;--border:#222228;--border-2:#2E2E36;
+    --malva:#a06fa2;--peri:#7b84d8;--malva-lt:#d888ae;--indigo:#303d8b;
+    --lo:rgba(160,111,162,.12);--glow:rgba(160,111,162,.28);--grad:linear-gradient(135deg,#303d8b 0%,#a06fa2 100%);
+    --success:#00D4AA;--t1:#EEEEED;--t2:#88888F;--t3:#44444A;
+    --disp:'Syne',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--t1);font-family:var(--body);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand .mk{width:30px;height:30px;flex-shrink:0;filter:drop-shadow(0 0 10px var(--glow))}
+  .brand .wm{font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.3px;color:var(--t1)}
+  .brand .wm .i{color:var(--t2)}
+  .mock{position:fixed;bottom:12px;left:12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2);border:1px solid var(--border-2);border-radius:20px;padding:5px 12px;background:rgba(10,10,11,.72);backdrop-filter:blur(8px);z-index:40}
+
+  /* Masthead */
+  .masthead{border-bottom:2px solid var(--t1);margin:0 40px;max-width:1080px;margin:0 auto;padding:20px 40px 14px;display:flex;align-items:center;justify-content:space-between}
+  .issue{font-family:var(--disp);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--t2)}
+  .subtop{max-width:1080px;margin:0 auto;padding:10px 40px 0;display:flex;justify-content:space-between;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3)}
+
+  /* Feature opener */
+  .opener{padding:60px 0 40px;border-bottom:1px solid var(--border)}
+  .kicker{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--malva-lt);margin-bottom:22px}
+  .headline{font-family:var(--disp);font-weight:800;font-size:clamp(46px,7.5vw,96px);line-height:.95;letter-spacing:-2.5px;max-width:14ch}
+  .headline .i{color:var(--t2)}
+  .standfirst{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px;align-items:start}
+  .standfirst .lead{font-family:var(--disp);font-weight:600;font-size:22px;line-height:1.35;color:var(--t1)}
+  .byline{font-size:13px;color:var(--t2);letter-spacing:.3px;border-top:1px solid var(--border-2);padding-top:12px}
+  .byline b{color:var(--malva-lt);font-weight:600}
+
+  /* Body — magazine columns */
+  .feature{padding:48px 0;border-bottom:1px solid var(--border)}
+  .cols{column-count:2;column-gap:44px;font-size:16px;color:#c9c9cf;line-height:1.72}
+  .cols p{margin:0 0 16px;break-inside:avoid}
+  .cols p:first-child::first-letter{font-family:var(--disp);font-weight:800;font-size:64px;line-height:.72;float:left;padding:6px 12px 0 0;color:var(--malva-lt)}
+  .cols em{color:var(--t1);font-style:normal;font-weight:600}
+
+  /* Pull quote */
+  .pull{padding:56px 0;text-align:center;border-bottom:1px solid var(--border)}
+  .pull blockquote{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.4vw,46px);line-height:1.14;letter-spacing:-1px;max-width:18ch;margin:0 auto;
+    background:linear-gradient(120deg,#7b84d8,#a06fa2,#d888ae);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .pull cite{display:block;margin-top:20px;font-style:normal;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2)}
+
+  /* Stages — editorial numbered list */
+  .stages{padding:52px 0;border-bottom:1px solid var(--border)}
+  .st-h{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:30px}
+  .stage{display:grid;grid-template-columns:120px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--border-2);align-items:baseline}
+  .stage:last-child{border-bottom:1px solid var(--border-2)}
+  .stage .no{font-family:var(--disp);font-weight:800;font-size:60px;line-height:.8;color:var(--surface-3);-webkit-text-stroke:1px var(--border-2)}
+  .stage h3{font-family:var(--disp);font-weight:700;font-size:24px;letter-spacing:-.5px;margin-bottom:8px}
+  .stage p{color:var(--t2);font-size:15.5px;max-width:60ch}
+  .stage .tool{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--malva-lt);margin-bottom:10px}
+
+  /* Support — as a subscribe box */
+  .support{padding:56px 0 30px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+  .support h2{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,40px);letter-spacing:-1px;margin-bottom:14px;max-width:16ch}
+  .support p{color:var(--t2);max-width:44ch}
+  .support .r{text-align:right}
+  .tip{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#fff;font-family:var(--disp);font-weight:700;font-size:17px;padding:16px 30px;border-radius:14px;box-shadow:0 6px 24px var(--glow);cursor:pointer;transition:.15s}
+  .tip:hover{transform:translateY(-2px)}.tip small{font-weight:500;opacity:.85;font-family:var(--body);font-size:13px}
+  .note{margin-top:14px;font-size:12px;letter-spacing:.5px;color:var(--t3)}
+  footer{border-top:2px solid var(--t1);padding:24px 0;color:var(--t3);font-family:var(--disp);font-size:12px;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media(max-width:820px){.standfirst{grid-template-columns:1fr;gap:18px}.cols{column-count:1}.stage{grid-template-columns:60px 1fr;gap:18px}.support{grid-template-columns:1fr}.support .r{text-align:left}}
+</style>
+</head>
+<body>
+<span class="mock">Mockup · Editorial / magazine</span>
+<div class="subtop"><span>rfs-design field notes</span><span>Naming study — 2026</span></div>
+<div class="masthead">
+  <a class="brand" href="index.html"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><span class="wm"><span class="i">Idea</span>Route</span></a>
+  <span class="issue">The Journey Issue · № 01</span>
+</div>
+
+<main class="wrap">
+  <section class="opener">
+    <div class="kicker">Recommended #2 — the most literal</div>
+    <h1 class="headline"><span class="i">Idea</span>Route</h1>
+    <div class="standfirst">
+      <p class="lead">“From idea to route.” A spoken idea, charted turn-by-turn into the operational path that gets it made.</p>
+      <p class="byline">Words by <b>the engine</b> · Voice → AI workflow · Reading time: as long as it takes to speak your idea aloud. IdeaRoute doesn't map your mind — it plots the route your idea should travel.</p>
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="cols">
+      <p>You have the idea already. What you don't have — not yet — is the road it takes to become real: which tool first, what to ask it, what to carry into the next stop. That gap is where most ideas stall.</p>
+      <p>IdeaRoute closes it. Speak the idea in your own words and it recognises the <em>creative archetype</em> underneath — a campaign, a film, a deck, a piece of AI graphics — then draws the route to match. Not a mind-map of loose bubbles, but a sequence with a direction.</p>
+      <p>Each waypoint names the right instrument — Perplexity to survey the terrain, Claude to shape the concept, Midjourney to set the look — and hands you a dense, <em>paste-ready prompt</em> written for this idea, not a generic one.</p>
+      <p>The result reads like a field guide to your own project: turn here, ask this, expect that. You bring the vision; IdeaRoute brings the map that respects it.</p>
+    </div>
+  </section>
+
+  <section class="pull">
+    <blockquote>It doesn't map your mind. It plots the route.</blockquote>
+    <cite>— the wedge, in five words</cite>
+  </section>
+
+  <section class="stages">
+    <div class="st-h">The route, in four stages</div>
+    <div class="stage"><div class="no">01</div><div><div class="tool">Input · voice</div><h3>Speak the idea</h3><p>Say it out loud, messy and unedited. Your voice becomes the brief — the lowest-friction on-ramp there is.</p></div></div>
+    <div class="stage"><div class="no">02</div><div><div class="tool">Engine · Gemini</div><h3>Read the terrain</h3><p>The archetype is recognised — web, comms, AI graphics, deck, spot, research — and the route is chosen to fit it.</p></div></div>
+    <div class="stage"><div class="no">03</div><div><div class="tool">Orchestration</div><h3>Plot the waypoints</h3><p>A multi-tool workflow is drawn end to end, each stop feeding the next with its own paste-ready prompt.</p></div></div>
+    <div class="stage"><div class="no">04</div><div><div class="tool">Output · prompts</div><h3>Arrive</h3><p>Copy the prompts, follow the route, and take the idea all the way to production.</p></div></div>
+  </section>
+
+  <section class="support">
+    <div>
+      <h2>Keep the route open</h2>
+      <p>You bring your own Gemini key, so IdeaRoute is free to run. A small one-off tip supports the maker — and the next expansions on the map.</p>
+      <p class="note">Bring-your-own-key · client-only · no subscription</p>
+    </div>
+    <div class="r"><button class="tip">✦ Support&nbsp; <small>€5 · one-off</small></button></div>
+  </section>
+</main>
+<footer class="wrap"><span>IdeaRoute — naming mockup · rfs-design</span><span>Concept exploration</span></footer>
+</body>
+</html>

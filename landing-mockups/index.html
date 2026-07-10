@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaMotor — Naming Landing Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;--surface:#111113;--surface-2:#18181C;--surface-3:#1E1E23;--border:#222228;--border-2:#2E2E36;
+    --malva:#a06fa2;--peri:#7b84d8;--malva-lt:#d888ae;--indigo:#303d8b;
+    --lo:rgba(160,111,162,.12);--glow:rgba(160,111,162,.28);--grad:linear-gradient(135deg,#303d8b 0%,#a06fa2 100%);
+    --success:#00D4AA;--t1:#EEEEED;--t2:#88888F;--t3:#44444A;
+    --disp:'Syne',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--t1);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 30px}
+  .head{text-align:center;padding:66px 0 40px}
+  .brandbig{display:inline-flex;align-items:center;gap:12px;margin-bottom:24px}
+  .brandbig .mk{width:46px;height:46px;filter:drop-shadow(0 0 18px var(--glow))}
+  .brandbig .wm{font-family:var(--disp);font-weight:700;font-size:26px;letter-spacing:-.5px}
+  .brandbig .wm .i{color:var(--t2)}
+  .waveform{width:100%;max-width:520px;height:64px;margin:0 auto 24px;display:block}
+  .kicker{font-family:var(--disp);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--malva-lt);font-weight:700}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(32px,5.5vw,58px);letter-spacing:-2px;line-height:1;margin:14px 0 16px}
+  .lead{color:var(--t2);font-size:17px;max-width:64ch;margin:0 auto}
+  .lead b{color:var(--t1);font-weight:600}
+  .meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 10px}
+  .chip{font-size:12px;color:var(--t2);border:1px solid var(--border-2);border-radius:24px;padding:6px 14px}
+  .chip b{color:var(--malva-lt)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;padding:40px 0 30px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:.18s;display:flex;flex-direction:column;position:relative}
+  .card:hover{border-color:var(--malva-lt);transform:translateY(-4px)}
+  .preview{height:150px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+  .preview .nm{font-family:var(--disp);font-weight:800;font-size:30px;letter-spacing:-1px;z-index:2}
+  .preview .nm .i{color:var(--t2)}
+  .dir{position:absolute;bottom:10px;left:12px;z-index:4;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--t2);background:rgba(10,10,11,.6);border:1px solid var(--border-2);border-radius:20px;padding:4px 10px;backdrop-filter:blur(6px)}
+  .badge{position:absolute;top:12px;right:12px;font-size:10px;letter-spacing:.5px;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:20px;z-index:3}
+  .badge.rec{background:rgba(0,212,170,.12);color:var(--success);border:1px solid rgba(0,212,170,.4)}
+  .badge.warn{background:var(--surface-3);color:var(--t2);border:1px solid var(--border-2)}
+  .cbody{padding:20px 22px 22px}
+  .cbody .pay{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--malva-lt);margin-bottom:10px}
+  .cbody p{color:var(--t2);font-size:14px;margin-bottom:18px}
+  .open{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--t1)}
+  .open .arw{transition:.15s}.card:hover .open .arw{transform:translateX(4px);color:var(--malva-lt)}
+
+  .p-runway{background:linear-gradient(180deg,#241a3a,#a06fa2 160%)}
+  .p-route{background:var(--surface-2);border-bottom:2px solid var(--t1)!important}
+  .p-route .nm{border-bottom:2px solid var(--t1);padding-bottom:4px}
+  .p-blueprint{background:var(--surface-2);background-image:linear-gradient(rgba(48,61,139,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(48,61,139,.2) 1px,transparent 1px);background-size:20px 20px}
+  .p-drive{background:linear-gradient(115deg,var(--indigo),var(--malva))}
+  .p-drive .nm{color:#fff}.p-drive .nm .i{color:rgba(255,255,255,.6)}
+  .p-engine{background:var(--surface-2)}
+  .p-engine .rr{position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid var(--glow)}
+  .p-engine .rr.b{width:78px;height:78px;border-color:rgba(123,132,216,.4)}
+  .p-pilot{background:var(--surface-2)}
+  .p-pilot .cn{position:absolute;width:20px;height:20px;border:2px solid var(--malva-lt);opacity:.6}
+  .p-pilot .tl{top:14px;left:14px;border-right:0;border-bottom:0}.p-pilot .tr{top:14px;right:14px;border-left:0;border-bottom:0}
+  .p-pilot .bl{bottom:14px;left:14px;border-right:0;border-top:0}.p-pilot .br{bottom:14px;right:14px;border-left:0;border-top:0}
+  .p-flow{background:var(--surface-2)}
+
+  footer{border-top:1px solid var(--border);padding:34px 0;color:var(--t3);font-size:13px;text-align:center;margin-top:20px}
+  footer b{color:var(--t2)}
+</style>
+</head>
+<body>
+<header class="head wrap">
+  <div class="brandbig">
+    <svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg>
+    <span class="wm"><span class="i">Idea</span>Motor</span>
+  </div>
+  <div class="kicker">Naming exploration</div>
+  <h1>Seven names, seven designs</h1>
+  <p class="lead">One shared visual system — the app's real palette (<b>malva + indigo</b>), <b>Syne + DM Sans</b>, the header logo treatment and the signature waveform — used as glue. Each landing then takes a <b>different design approach</b>: not just a new colour, a new structure.</p>
+  <div class="meta">
+    <span class="chip"><b>◎</b> Recommended: IdeaRunway · IdeaRoute</span>
+    <span class="chip">Payoff: <b>“From idea to route”</b></span>
+    <span class="chip">rfs-design · 2026</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="grid">
+    <a class="card" href="idearunway.html">
+      <div class="preview p-runway"><span class="nm"><span class="i">Idea</span>Runway</span><span class="badge rec">Recommended #1</span><span class="dir">Image-led</span></div>
+      <div class="cbody"><div class="pay">“Give every idea a runway.”</div><p>Full-bleed generated hero graphic — a runway at dusk with approach lights. Visuals lead, text follows.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="idearoute.html">
+      <div class="preview p-route"><span class="nm"><span class="i">Idea</span>Route</span><span class="badge rec">Recommended #2</span><span class="dir">Editorial / magazine</span></div>
+      <div class="cbody"><div class="pay">“From idea to route.”</div><p>A magazine feature: masthead, drop cap, two-column body, a big pull quote and numbered stages.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="ideablueprint.html">
+      <div class="preview p-blueprint"><span class="nm"><span class="i">Idea</span>Blueprint</span><span class="dir">Bento grid</span></div>
+      <div class="cbody"><div class="pay">“The blueprint behind every idea.”</div><p>A modular bento of tiles — brand, statement, values, stat, steps and CTA in one dense grid.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="ideadrive.html">
+      <div class="preview p-drive"><span class="nm"><span class="i">Idea</span>Drive</span><span class="dir">Type-driven</span></div>
+      <div class="cbody"><div class="pay">“Drive every idea to done.”</div><p>Text is the design: enormous type, minimal chrome, oversized numbered lines. Pure impact.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="ideaengine.html">
+      <div class="preview p-engine"><span class="rr"></span><span class="rr b"></span><span class="nm"><span class="i">Idea</span>Engine</span><span class="badge warn">Crowded name</span><span class="dir">Expressive / motion</span></div>
+      <div class="cbody"><div class="pay">“The engine behind every idea.”</div><p>Animated core, orbiting rings, a scrolling tool marquee and an aurora. Kinetic and alive.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="ideapilot.html">
+      <div class="preview p-pilot"><span class="cn tl"></span><span class="cn tr"></span><span class="cn bl"></span><span class="cn br"></span><span class="nm"><span class="i">Idea</span>Pilot</span><span class="badge warn">Trademark risk</span><span class="dir">Product-UI led</span></div>
+      <div class="cbody"><div class="pay">“Put your idea on autopilot.”</div><p>Shows the actual product: phone frames rendering the real app UI — capture, workflow, ratings.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+    <a class="card" href="ideaflow.html">
+      <div class="preview p-flow"><svg width="100%" height="100%" viewBox="0 0 330 150" preserveAspectRatio="none" style="position:absolute;inset:0;opacity:.6"><path d="M0,80 C90,30 190,110 330,60" stroke="#7b84d8" stroke-width="1.5" fill="none"/><path d="M0,95 C90,140 210,40 330,90" stroke="#d888ae" stroke-width="1.5" fill="none"/></svg><span class="nm"><span class="i">Idea</span>Flow</span><span class="badge warn">Direct clash</span><span class="dir">Minimal / whitespace</span></div>
+      <div class="cbody"><div class="pay">“From idea to flow.”</div><p>Extreme restraint: big logo, one flowing line, vast whitespace, sparse type. Calm and quiet.</p><span class="open">Open landing <span class="arw">→</span></span></div>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <b>IdeaMotor</b> — landing mockups · concept explorations, not final brands · rfs-design 2026<br>
+  Shared system: real app palette, Syne + DM Sans, header logo treatment & signature waveform · one distinct design direction per page
+</footer>
+
+<script>
+  const wf=document.getElementById('wf');
+  if(wf){const N=42,W=520,H=64,mid=H/2,gap=W/N,cols=['#d888ae','#7b84d8'];let s='';
+  for(let i=0;i<N;i++){const x=i*gap+gap/2;const env=Math.sin(Math.PI*(i+.5)/N);const h=Math.abs((0.12+0.88*env*(0.55+0.45*Math.sin(i*1.9)))*mid);
+    s+=`<line x1="${x}" y1="${mid-h}" x2="${x}" y2="${mid+h}" stroke="${i%2?cols[1]:cols[0]}" stroke-width="3" stroke-linecap="round"/>`;}
+  wf.innerHTML=s;}
+</script>
+</body>
+</html>

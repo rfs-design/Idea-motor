@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaFlow — From idea to flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;--surface:#111113;--border:#222228;--border-2:#2E2E36;
+    --malva:#a06fa2;--peri:#7b84d8;--malva-lt:#d888ae;--indigo:#303d8b;
+    --glow:rgba(160,111,162,.28);--grad:linear-gradient(135deg,#303d8b 0%,#a06fa2 100%);
+    --t1:#EEEEED;--t2:#88888F;--t3:#44444A;
+    --disp:'Syne',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--t1);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 40px}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand .mk{width:30px;height:30px;flex-shrink:0;filter:drop-shadow(0 0 10px var(--glow))}
+  .brand .wm{font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.3px;color:var(--t1)}
+  .brand .wm .i{color:var(--t2)}
+  .mock{position:fixed;bottom:12px;left:12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2);border:1px solid var(--border-2);border-radius:20px;padding:5px 12px;background:rgba(10,10,11,.72);backdrop-filter:blur(8px);z-index:40}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:40px 40px;max-width:900px;margin:0 auto}
+  .navcta{font-size:13px;color:var(--t3);transition:.15s}
+  .navcta:hover{color:var(--t1)}
+
+  /* ── MINIMAL / WHITESPACE ── */
+  .hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0}
+  .biglogo{margin-bottom:44px}
+  .biglogo .mk{width:76px;height:76px;filter:drop-shadow(0 0 28px var(--glow))}
+  .tag{font-family:var(--disp);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);margin-bottom:26px}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(52px,10vw,120px);line-height:1;letter-spacing:-3px}
+  h1 .i{color:var(--t2)}
+  h1 .w{background:linear-gradient(120deg,#7b84d8,#a06fa2,#d888ae);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .payoff{font-family:var(--disp);font-weight:600;font-size:clamp(17px,2.2vw,22px);color:var(--t2);margin:32px 0 0;letter-spacing:.2px}
+  .flowline{width:min(680px,80vw);height:60px;margin:56px auto 0}
+  .cta{margin-top:56px}
+  .cta a{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--t1);border-bottom:2px solid var(--malva);padding-bottom:4px;transition:.15s}
+  .cta a:hover{color:var(--malva-lt)}
+
+  /* huge spacing between sparse sections */
+  .sec{padding:16vh 0;border-top:1px solid var(--border)}
+  .sec-lbl{font-family:var(--disp);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:40px;text-align:center}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+  .three h3{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:10px}
+  .three p{color:var(--t2);font-size:14px;max-width:26ch;margin:0 auto}
+  .three .dot{width:8px;height:8px;border-radius:50%;background:var(--malva-lt);margin:0 auto 20px}
+
+  .steps{max-width:520px;margin:0 auto;text-align:center}
+  .st{padding:28px 0;border-bottom:1px solid var(--border)}
+  .st:last-child{border-bottom:none}
+  .st .n{font-family:var(--disp);font-size:12px;letter-spacing:2px;color:var(--malva-lt);margin-bottom:8px}
+  .st h4{font-family:var(--disp);font-weight:700;font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+  .st p{color:var(--t2);font-size:14px}
+
+  .support{text-align:center;padding:16vh 0;border-top:1px solid var(--border)}
+  .support h2{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5vw,52px);letter-spacing:-1.5px;margin-bottom:18px}
+  .support p{color:var(--t2);max-width:40ch;margin:0 auto 34px;font-size:15px}
+  .tip{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#fff;font-family:var(--disp);font-weight:700;font-size:16px;padding:16px 34px;border-radius:30px;box-shadow:0 8px 30px var(--glow);cursor:pointer;transition:.15s}
+  .tip:hover{transform:translateY(-2px)}.tip small{font-weight:500;opacity:.85;font-family:var(--body);font-size:13px}
+  .note{margin-top:20px;font-size:12px;letter-spacing:.5px;color:var(--t3)}
+  footer{border-top:1px solid var(--border);padding:40px 0;color:var(--t3);font-size:12px;text-align:center}
+  @media(max-width:720px){.three{grid-template-columns:1fr;gap:50px}}
+</style>
+</head>
+<body>
+<span class="mock">Mockup · Minimal / whitespace</span>
+<nav>
+  <a class="brand" href="index.html"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><span class="wm"><span class="i">Idea</span>Flow</span></a>
+  <a class="navcta" href="index.html">← all concepts</a>
+</nav>
+
+<header class="hero wrap">
+  <div class="biglogo"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg></div>
+  <div class="tag">Voice → AI workflow</div>
+  <h1><span class="i">Idea</span><span class="w">Flow</span></h1>
+  <p class="payoff">“From idea to flow.”</p>
+  <svg class="flowline" viewBox="0 0 680 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="#7b84d8"/><stop offset=".5" stop-color="#a06fa2"/><stop offset="1" stop-color="#d888ae"/></linearGradient></defs><path d="M0,30 C170,-6 340,66 510,30 C595,12 640,30 680,30" stroke="url(#fl)" stroke-width="2" fill="none"/></svg>
+  <div class="cta"><a href="#">Start the flow →</a></div>
+</header>
+
+<main>
+  <section class="sec wrap">
+    <div class="sec-lbl">Why it flows</div>
+    <div class="three">
+      <div><div class="dot"></div><h3>Voice, effortless</h3><p>Speak your idea — no forms, no friction.</p></div>
+      <div><div class="dot"></div><h3>Tools in sequence</h3><p>Perplexity, Claude, Midjourney — one into the next.</p></div>
+      <div><div class="dot"></div><h3>Prompts that carry</h3><p>Each step ships a paste-ready prompt.</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="sec-lbl">One continuous stream</div>
+    <div class="steps">
+      <div class="st"><div class="n">01</div><h4>Speak</h4><p>Say the raw idea out loud.</p></div>
+      <div class="st"><div class="n">02</div><h4>Classify</h4><p>The engine reads the archetype.</p></div>
+      <div class="st"><div class="n">03</div><h4>Route</h4><p>A workflow forms, step into step.</p></div>
+      <div class="st"><div class="n">04</div><h4>Execute</h4><p>Copy the prompts and carry it on.</p></div>
+    </div>
+  </section>
+
+  <section class="support wrap">
+    <h2>Keep it flowing</h2>
+    <p>You bring your own Gemini key, so the flow is free. A small one-off tip supports the maker and the next currents.</p>
+    <button class="tip">✦ Support this project&nbsp; <small>€5 · one-off</small></button>
+    <p class="note">Bring-your-own-key · client-only · no subscription</p>
+  </section>
+</main>
+<footer>IdeaFlow — naming mockup · rfs-design 2026 · concept exploration</footer>
+</body>
+</html>

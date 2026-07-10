@@ -959,6 +959,65 @@ body {
 .install-hint[hidden] { display: none; }
 .install-hint strong { color: var(--text-1); font-weight: 500; }
 
+/* ── Backup info (mini-guida) ── */
+.settings-title-row { display: flex; align-items: center; gap: 8px; }
+.info-btn {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  padding: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.info-btn:active { color: var(--text-1); }
+
+.info-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+  z-index: 400;
+}
+.info-overlay.visible { opacity: 1; pointer-events: auto; }
+
+.info-modal {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + var(--safe-bottom));
+  max-width: 480px;
+  margin: 0 auto;
+  z-index: 401;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+  transform: translateY(160%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s;
+}
+.info-modal.open { transform: translateY(0); opacity: 1; }
+
+.info-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.info-modal-head h3 { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-1); }
+.info-body { color: var(--text-2); font-size: 13.5px; line-height: 1.55; }
+.info-body strong { color: var(--text-1); font-weight: 500; }
+.info-note {
+  margin-top: 12px;
+  background: var(--accent-lo);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.info-note[hidden] { display: none; }
+.info-note-label { display: block; color: var(--accent); font-weight: 500; font-size: 12px; margin-bottom: 3px; }
+
 /* ── Dictation review note ── */
 .write-hint {
   color: var(--text-2);

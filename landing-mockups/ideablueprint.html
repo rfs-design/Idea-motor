@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaBlueprint — The blueprint behind every idea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;--surface:#111113;--surface-2:#18181C;--surface-3:#1E1E23;--border:#222228;--border-2:#2E2E36;
+    --malva:#a06fa2;--peri:#7b84d8;--malva-lt:#d888ae;--indigo:#303d8b;
+    --lo:rgba(160,111,162,.12);--glow:rgba(160,111,162,.28);--grad:linear-gradient(135deg,#303d8b 0%,#a06fa2 100%);
+    --success:#00D4AA;--t1:#EEEEED;--t2:#88888F;--t3:#44444A;
+    --disp:'Syne',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--t1);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 26px}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand .mk{width:30px;height:30px;flex-shrink:0;filter:drop-shadow(0 0 10px var(--glow))}
+  .brand .wm{font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.3px;color:var(--t1)}
+  .brand .wm .i{color:var(--t2)}
+  .mock{position:fixed;bottom:12px;left:12px;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--t2);border:1px solid var(--border-2);border-radius:20px;padding:5px 12px;background:rgba(10,10,11,.72);backdrop-filter:blur(8px);z-index:40}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;max-width:1200px;margin:0 auto}
+  .navcta{font-family:var(--mono);font-size:13px;color:var(--t2);border:1px solid var(--border-2);padding:8px 15px;border-radius:8px;transition:.15s}
+  .navcta:hover{color:var(--t1);border-color:var(--malva)}
+
+  .lead-line{max-width:1200px;margin:6px auto 20px;padding:0 26px;font-family:var(--mono);font-size:12px;color:var(--t3);letter-spacing:1px;display:flex;gap:18px;flex-wrap:wrap}
+
+  /* ── BENTO GRID ── */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:14px;margin-bottom:70px}
+  .cell{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;position:relative;overflow:hidden}
+  .cell .tag{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:1px}
+  /* brand cell */
+  .c-brand{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;
+    background:linear-gradient(155deg,rgba(48,61,139,.28),var(--surface));
+    background-image:linear-gradient(rgba(48,61,139,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(48,61,139,.14) 1px,transparent 1px);background-size:26px 26px}
+  .c-brand .big{display:flex;align-items:center;gap:14px}
+  .c-brand .big .mk{width:56px;height:56px;filter:drop-shadow(0 0 20px var(--glow))}
+  .c-brand h1{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4.4vw,58px);letter-spacing:-2px;line-height:.95}
+  .c-brand h1 .i{color:var(--t2)}
+  .c-brand .pf{font-family:var(--mono);font-size:14px;color:var(--malva-lt)}
+  /* payoff/statement */
+  .c-say{grid-column:span 2;display:flex;align-items:center;background:linear-gradient(135deg,#303d8b,#a06fa2);border:none}
+  .c-say p{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.5px;color:#fff;line-height:1.15}
+  /* value cells */
+  .c-val .mk{width:26px;height:26px;margin-bottom:10px}
+  .c-val h3{font-family:var(--disp);font-weight:700;font-size:16px;margin-bottom:5px}
+  .c-val p{color:var(--t2);font-size:13px}
+  /* stat */
+  .c-stat{display:flex;flex-direction:column;justify-content:center;text-align:left}
+  .c-stat .k{font-family:var(--disp);font-weight:800;font-size:46px;letter-spacing:-1px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .c-stat .l{color:var(--t2);font-size:13px;margin-top:4px}
+  /* steps wide */
+  .c-steps{grid-column:span 3;display:flex;align-items:center;gap:0;padding:0}
+  .c-steps .st{flex:1;padding:22px;border-right:1px solid var(--border);height:100%;display:flex;flex-direction:column;justify-content:center}
+  .c-steps .st:last-child{border-right:none}
+  .c-steps .n{font-family:var(--mono);font-size:11px;color:var(--malva-lt);margin-bottom:8px}
+  .c-steps h4{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:4px}
+  .c-steps p{color:var(--t2);font-size:12px}
+  /* cta */
+  .c-cta{grid-row:span 1;display:flex;flex-direction:column;justify-content:center;gap:12px;border-color:var(--border-2);background:radial-gradient(200px 120px at 50% 0,var(--lo),transparent),var(--surface)}
+  .c-cta h4{font-family:var(--disp);font-weight:800;font-size:18px;letter-spacing:-.5px}
+  .tip{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-family:var(--disp);font-weight:700;font-size:14px;padding:11px 18px;border-radius:12px;box-shadow:0 6px 20px var(--glow);cursor:pointer;transition:.15s;align-self:flex-start}
+  .tip:hover{transform:translateY(-2px)}.tip small{font-weight:400;opacity:.85;font-family:var(--mono);font-size:11px}
+  .c-note{display:flex;align-items:flex-end}
+  .c-note p{font-family:var(--mono);font-size:11px;color:var(--t3);line-height:1.5}
+
+  footer{border-top:1px solid var(--border);padding:26px 0;color:var(--t3);font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}.c-brand{grid-column:span 2}.c-say{grid-column:span 2}.c-steps{grid-column:span 2}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr;grid-auto-rows:auto}.cell{min-height:150px}.c-brand,.c-say,.c-steps{grid-column:span 1}.c-steps{flex-direction:column}.c-steps .st{border-right:none;border-bottom:1px solid var(--border);width:100%}}
+</style>
+</head>
+<body>
+<span class="mock">Mockup · Bento grid</span>
+<nav>
+  <a class="brand" href="index.html"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><span class="wm"><span class="i">Idea</span>Blueprint</span></a>
+  <a class="navcta" href="index.html">← ALL CONCEPTS</a>
+</nav>
+<div class="lead-line"><span>DWG-001</span><span>IDEA→PLAN</span><span>VOICE → AI WORKFLOW</span><span>REV 2026.07</span></div>
+
+<main class="wrap">
+  <section class="bento">
+    <div class="cell c-brand">
+      <div class="big"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg></div>
+      <div><h1><span class="i">Idea</span>Blueprint</h1></div>
+      <div class="pf">// "The blueprint behind every idea."</div>
+    </div>
+    <div class="cell c-say"><p>Turn a spoken idea into a build-ready blueprint — steps, tools, and prompts, drafted.</p></div>
+    <div class="cell c-val"><span class="tag">01</span><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><h3>Voice capture</h3><p>Speak the idea. Zero forms.</p></div>
+    <div class="cell c-val"><span class="tag">02</span><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><h3>Tool schematic</h3><p>The right tool, per step.</p></div>
+    <div class="cell c-stat"><span class="tag">SCALE</span><span class="k">3–5</span><span class="l">steps per blueprint, no filler</span></div>
+    <div class="cell c-val"><span class="tag">03</span><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><h3>Drafted prompts</h3><p>Role, context, constraints.</p></div>
+    <div class="cell c-steps">
+      <div class="st"><div class="n">STEP 01</div><h4>Speak</h4><p>Raw idea, your words.</p></div>
+      <div class="st"><div class="n">STEP 02</div><h4>Classify</h4><p>Creative archetype.</p></div>
+      <div class="st"><div class="n">STEP 03</div><h4>Schematic</h4><p>Multi-tool workflow.</p></div>
+      <div class="st"><div class="n">STEP 04</div><h4>Build</h4><p>Copy & execute.</p></div>
+    </div>
+    <div class="cell c-cta"><h4>Fund the next revision</h4><button class="tip">✦ Support&nbsp; <small>€5 · one-off</small></button></div>
+    <div class="cell c-note"><p>bring-your-own-key<br>client-only<br>no subscription</p></div>
+  </section>
+</main>
+<footer class="wrap"><span>IDEABLUEPRINT — NAMING MOCKUP · RFS-DESIGN 2026</span><span>CONCEPT EXPLORATION</span></footer>
+</body>
+</html>

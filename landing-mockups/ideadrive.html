@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IdeaDrive — Drive every idea to done</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B;--surface:#111113;--surface-2:#18181C;--border:#222228;--border-2:#2E2E36;
+    --malva:#a06fa2;--peri:#7b84d8;--malva-lt:#d888ae;--indigo:#303d8b;
+    --glow:rgba(160,111,162,.28);--grad:linear-gradient(135deg,#303d8b 0%,#a06fa2 100%);
+    --t1:#EEEEED;--t2:#88888F;--t3:#44444A;
+    --disp:'Syne',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--t1);font-family:var(--body);line-height:1.4;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  .brand{display:flex;align-items:center;gap:9px}
+  .brand .mk{width:30px;height:30px;flex-shrink:0;filter:drop-shadow(0 0 10px var(--glow))}
+  .brand .wm{font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.3px;color:var(--t1)}
+  .brand .wm .i{color:var(--t2)}
+  .mock{position:fixed;bottom:12px;left:12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2);border:1px solid var(--border-2);border-radius:20px;padding:5px 12px;background:rgba(10,10,11,.72);backdrop-filter:blur(8px);z-index:40}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:26px 40px;max-width:1280px;margin:0 auto}
+  .navcta{font-size:14px;color:var(--t2);border:1px solid var(--border-2);padding:9px 16px;border-radius:8px;transition:.15s}
+  .navcta:hover{color:var(--t1);border-color:var(--malva)}
+
+  /* ── TYPE-DRIVEN ── */
+  .hero{padding:40px 0 50px}
+  .tag{font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--malva-lt);margin-bottom:10px}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(80px,21vw,320px);line-height:.8;letter-spacing:-7px;text-transform:uppercase;margin:0}
+  h1 .i{color:var(--t3);display:block;font-size:.42em;letter-spacing:-2px;-webkit-text-fill-color:var(--t3)}
+  h1 .w{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .payoff{font-family:var(--disp);font-weight:700;font-size:clamp(24px,4.6vw,60px);letter-spacing:-1.5px;margin:20px 0 0;line-height:1;font-style:italic}
+  .undr{height:6px;background:var(--grad);width:100%;margin:36px 0 0;border-radius:6px}
+  .lede{font-size:clamp(18px,2.2vw,28px);color:var(--t2);max-width:24ch;margin:34px 0 40px;line-height:1.25}
+  .lede b{color:var(--t1);font-weight:600}
+  .btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{font-family:var(--disp);font-weight:800;font-size:17px;padding:18px 40px;border-radius:12px;cursor:pointer;border:none;transition:.15s;text-transform:uppercase;letter-spacing:.5px}
+  .btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 30px var(--glow)}
+  .btn-p:hover{transform:translateY(-2px)}
+  .btn-s{background:transparent;color:var(--t1);border:1px solid var(--border-2)}
+  .btn-s:hover{border-color:var(--malva)}
+
+  /* big value statements */
+  .statements{border-top:1px solid var(--border);margin-top:80px}
+  .stmt{display:grid;grid-template-columns:80px 1fr;gap:30px;padding:44px 0;border-bottom:1px solid var(--border);align-items:baseline}
+  .stmt .k{font-family:var(--disp);font-weight:800;font-size:26px;color:var(--malva-lt)}
+  .stmt p{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4.4vw,54px);letter-spacing:-1.5px;line-height:1.02}
+  .stmt p span{color:var(--t2)}
+
+  /* how — giant numbered lines */
+  .how{padding:70px 0 30px}
+  .how-h{font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:20px}
+  .line{display:flex;align-items:baseline;gap:26px;padding:18px 0;border-bottom:1px solid var(--border);transition:.15s}
+  .line:hover{padding-left:12px}
+  .line .n{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4vw,58px);color:var(--surface);-webkit-text-stroke:1.5px var(--border-2);min-width:1.6ch}
+  .line:hover .n{-webkit-text-stroke:1.5px var(--malva-lt);color:transparent}
+  .line .t{font-family:var(--disp);font-weight:800;font-size:clamp(26px,3.4vw,48px);letter-spacing:-1px}
+  .line .d{margin-left:auto;color:var(--t2);font-size:15px;max-width:28ch;text-align:right}
+
+  .support{padding:80px 0;border-top:6px solid transparent;border-image:var(--grad) 1;margin-top:30px}
+  .support h2{font-family:var(--disp);font-weight:800;font-size:clamp(40px,8vw,110px);letter-spacing:-3px;line-height:.9;text-transform:uppercase;margin-bottom:24px}
+  .support p{font-size:clamp(16px,2vw,22px);color:var(--t2);max-width:40ch;margin-bottom:32px}
+  .tip{display:inline-flex;align-items:center;gap:12px;background:var(--grad);color:#fff;font-family:var(--disp);font-weight:800;font-size:19px;padding:20px 42px;border-radius:14px;box-shadow:0 8px 30px var(--glow);cursor:pointer;transition:.15s;text-transform:uppercase;letter-spacing:.5px}
+  .tip:hover{transform:translateY(-2px)}.tip small{font-weight:500;opacity:.85;font-family:var(--body);font-size:14px;text-transform:none;letter-spacing:0}
+  .note{margin-top:18px;font-size:14px;color:var(--t3)}
+  footer{border-top:1px solid var(--border);padding:30px 0;color:var(--t3);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media(max-width:720px){.stmt{grid-template-columns:1fr;gap:8px}.line .d{display:none}}
+</style>
+</head>
+<body>
+<span class="mock">Mockup · Type-driven</span>
+<nav>
+  <a class="brand" href="index.html"><svg class="mk" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="112" fill="#14121c"/><circle cx="255.1" cy="99.2" r="27.3" fill="#7b84d8"/><g fill="none" stroke-linecap="round"><line x1="256.8" y1="192.3" x2="256.8" y2="322.6" stroke="#7b84d8" stroke-width="40"/><line x1="187.9" y1="145.4" x2="187.9" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="112.5" y1="205.1" x2="112.5" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="47.2" y1="229.6" x2="47.2" y2="299" stroke="#d888ae" stroke-width="40"/><line x1="331.8" y1="145.4" x2="331.8" y2="393.8" stroke="#7b84d8" stroke-width="38"/><line x1="406.8" y1="205.1" x2="406.8" y2="328.7" stroke="#a06fa2" stroke-width="38"/><line x1="469.7" y1="229.6" x2="469.7" y2="299" stroke="#d888ae" stroke-width="40"/></g></svg><span class="wm"><span class="i">Idea</span>Drive</span></a>
+  <a class="navcta" href="index.html">← All concepts</a>
+</nav>
+
+<header class="wrap hero">
+  <div class="tag">Voice → AI workflow</div>
+  <h1><span class="i">Idea</span><span class="w">Drive</span></h1>
+  <div class="undr"></div>
+  <p class="payoff">"Drive every idea to done."</p>
+  <p class="lede">Speak it. IdeaDrive puts your idea <b>in gear</b> — the right tools, sequenced, prompts ready to fire.</p>
+  <div class="btns"><button class="btn btn-p">Floor it</button><button class="btn btn-s">How it works</button></div>
+</header>
+
+<main class="wrap">
+  <section class="statements">
+    <div class="stmt"><div class="k">A.</div><p>Voice in, <span>plan out.</span></p></div>
+    <div class="stmt"><div class="k">B.</div><p>Many tools, <span>one drivetrain.</span></p></div>
+    <div class="stmt"><div class="k">C.</div><p>Prompts, <span>pre-loaded.</span></p></div>
+  </section>
+
+  <section class="how">
+    <div class="how-h">Four gears to done</div>
+    <div class="line"><span class="n">1</span><span class="t">Speak</span><span class="d">Say the raw idea out loud.</span></div>
+    <div class="line"><span class="n">2</span><span class="t">Classify</span><span class="d">The engine reads the archetype.</span></div>
+    <div class="line"><span class="n">3</span><span class="t">Route</span><span class="d">A multi-tool workflow, sequenced.</span></div>
+    <div class="line"><span class="n">4</span><span class="t">Execute</span><span class="d">Copy the prompts and drive.</span></div>
+  </section>
+
+  <section class="support">
+    <h2>Keep it<br>running</h2>
+    <p>Your own Gemini key powers it — nothing to pay to drive. A small one-off tip keeps the maker building the next gears.</p>
+    <button class="tip">✦ Support&nbsp; <small>€5 · one-off</small></button>
+    <p class="note">Bring-your-own-key · client-only · no subscription</p>
+  </section>
+</main>
+<footer class="wrap"><span>IdeaDrive — naming mockup · rfs-design 2026</span><span>Concept exploration, not a final brand</span></footer>
+</body>
+</html>

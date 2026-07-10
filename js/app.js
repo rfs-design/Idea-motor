@@ -400,6 +400,30 @@ async function handleImportFile(e) {
   }
 }
 
+// ── Backup info modal (mini-guida) ───────────────────────────────────────────
+function deviceKind() {
+  const ua = navigator.userAgent;
+  const isIOS = /iP(hone|od|ad)/.test(ua)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) return 'ios';
+  if (/Android/i.test(ua)) return 'android';
+  return 'desktop';
+}
+
+function openBackupInfo() {
+  const kind = deviceKind();
+  document.getElementById('info-note-ios').hidden     = kind !== 'ios';
+  document.getElementById('info-note-android').hidden = kind !== 'android';
+  document.getElementById('info-note-desktop').hidden = kind !== 'desktop';
+  document.getElementById('info-modal').classList.add('open');
+  document.getElementById('info-overlay').classList.add('visible');
+}
+
+function closeBackupInfo() {
+  document.getElementById('info-modal').classList.remove('open');
+  document.getElementById('info-overlay').classList.remove('visible');
+}
+
 // ── Event bindings ─────────────────────────────────────────────────────────
 function bindEvents() {
   // List view
@@ -464,6 +488,11 @@ function bindEvents() {
   document.getElementById('btn-export').addEventListener('click', handleExport);
   document.getElementById('btn-import').addEventListener('click', () => importFile.click());
   importFile.addEventListener('change', handleImportFile);
+
+  // Backup info modal
+  document.getElementById('btn-backup-info').addEventListener('click', openBackupInfo);
+  document.getElementById('btn-info-close').addEventListener('click', closeBackupInfo);
+  document.getElementById('info-overlay').addEventListener('click', closeBackupInfo);
 
   // Show/hide key buttons
   document.querySelectorAll('.show-key-btn').forEach(btn => {
