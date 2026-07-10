@@ -960,17 +960,19 @@ body {
 .install-hint strong { color: var(--text-1); font-weight: 500; }
 
 /* ── Backup info (mini-guida) ── */
-.settings-title-row { display: flex; align-items: center; gap: 8px; }
+.settings-title-row { display: flex; align-items: center; gap: 6px; }
+.settings-title-row .settings-section-title { margin: 0; }
 .info-btn {
   background: none;
   border: none;
-  color: var(--text-2);
-  padding: 2px;
+  color: var(--success);
+  padding: 0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  line-height: 0;
 }
-.info-btn:active { color: var(--text-1); }
+.info-btn:active { opacity: 0.7; }
 
 .info-overlay {
   position: fixed;
