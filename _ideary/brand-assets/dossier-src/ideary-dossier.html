@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Ideary — Brand Build Dossier</title>
+<style>
+@font-face{font-family:'Syne';src:url('fonts/Syne-400.woff2') format('woff2');font-weight:400;font-style:normal;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-500.woff2') format('woff2');font-weight:500;font-style:normal;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-600.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-700.woff2') format('woff2');font-weight:700;font-style:normal;}
+@font-face{font-family:'Syne';src:url('fonts/Syne-800.woff2') format('woff2');font-weight:800;font-style:normal;}
+@font-face{font-family:'DM Sans';src:url('fonts/DMSans-400.woff2') format('woff2');font-weight:400;font-style:normal;}
+@font-face{font-family:'DM Sans';src:url('fonts/DMSans-500.woff2') format('woff2');font-weight:500;font-style:normal;}
+@font-face{font-family:'DM Sans';src:url('fonts/DMSans-600.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'DM Sans';src:url('fonts/DMSans-700.woff2') format('woff2');font-weight:700;font-style:normal;}
+@font-face{font-family:'Fraunces';src:url('fonts/Fraunces-600.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'Fraunces';src:url('fonts/Fraunces-700.woff2') format('woff2');font-weight:700;font-style:normal;}
+
+:root{
+  --disp:'Syne'; --head:'Fraunces';
+  --ink:#1c1e2e; --muted:#5b5c72; --indigo:#303d8b; --malva:#a06fa2;
+  --malva-l:#d888ae; --peri:#8b93d9; --dark:#14162e; --dark2:#20233f;
+  --line:#e4dfec; --soft:#f5f2f8; --soft2:#efeaf4; --paper:#ffffff;
+}
+*{box-sizing:border-box;}
+@page{
+  size:A4; margin:20mm 17mm 18mm 17mm;
+  @top-left{content:"IDEARY · BRAND BUILD DOSSIER"; font-family:'Syne'; font-weight:700; font-size:7pt; letter-spacing:1.4px; color:#b9b2c6;}
+  @top-right{content:"rfs-design · 2026"; font-family:'DM Sans'; font-size:7pt; letter-spacing:.5px; color:#b9b2c6;}
+  @bottom-left{content:"Where ideas take shape."; font-family:'Syne'; font-weight:600; font-size:7.5pt; color:#a99fbb;}
+  @bottom-right{content:"Pag. " counter(page); font-family:'DM Sans'; font-size:7.5pt; color:#a99fbb;}
+}
+@page cover{ margin:0; @top-left{content:none;} @top-right{content:none;} @bottom-left{content:none;} @bottom-right{content:none;} }
+@page sec{ @top-left{content:none;} @top-right{content:none;} @bottom-left{content:none;} @bottom-right{content:none;} }
+
+html{font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); font-size:10.2pt; line-height:1.5;}
+h1,h2,h3,h4{font-family:var(--head),Georgia,serif;}
+.disp{font-family:var(--disp),sans-serif;}
+p{margin:0 0 7pt;}
+strong{font-weight:600;color:var(--ink);}
+em{color:var(--indigo);font-style:italic;}
+a{color:var(--indigo);text-decoration:none;}
+
+.cover{page:cover; position:relative; height:297mm; width:210mm; background:
+  radial-gradient(120% 80% at 78% 12%, #2a2d54 0%, #14162e 55%, #0f1124 100%);
+  color:#fff; padding:34mm 24mm; overflow:hidden;}
+.cover .wave{position:absolute; right:6mm; top:26mm; opacity:.95;}
+.cover .kicker{font-family:'Syne';font-weight:700;letter-spacing:3px;font-size:9pt;text-transform:uppercase;color:var(--malva-l);}
+.cover h1{font-family:var(--disp),sans-serif;font-weight:800; font-size:74pt; line-height:.92; margin:8mm 0 4mm; letter-spacing:-1px;}
+.cover .sub{font-family:'Syne';font-weight:600;font-size:15pt;color:var(--peri);margin-bottom:20mm;}
+.cover .lead{max-width:120mm;color:#d4d0e4;font-size:11pt;line-height:1.55;}
+.cover .foot{position:absolute;left:24mm;bottom:22mm;font-size:9pt;color:#9d99b8;line-height:1.6;}
+.cover .foot b{color:#fff;font-weight:600;}
+.cover .tag{position:absolute;right:24mm;bottom:22mm;text-align:right;font-family:'Syne';font-weight:600;font-size:9.5pt;color:var(--malva-l);}
+
+.secdiv{page-break-before:always; page:sec; height:297mm; background:linear-gradient(135deg,#1a1d3a,#14162e); color:#fff; position:relative;}
+.secdiv .inner{position:absolute; left:20mm; bottom:34mm;}
+.secdiv .n{font-family:var(--head);font-weight:800;font-size:120pt;line-height:1;color:rgba(216,136,174,.22);position:absolute;top:34mm;left:16mm;}
+.secdiv .label{font-family:var(--head);font-weight:700;letter-spacing:3px;font-size:9pt;text-transform:uppercase;color:var(--malva-l);}
+.secdiv h2{font-family:var(--head);font-weight:800;font-size:34pt;line-height:1.05;margin:5mm 0 5mm;color:#fff;max-width:150mm;}
+.secdiv .prompts span{display:inline-block;border:1px solid rgba(216,136,174,.4);border-radius:20px;padding:2px 10px;margin:3px 4px 3px 0;color:var(--peri);font-family:var(--head);font-weight:600;font-size:8pt;}
+
+.block{page-break-inside:auto;}
+h2.pt{font-weight:800;font-size:19pt;color:var(--indigo);margin:0 0 1mm;letter-spacing:-.3px;}
+.ptmeta{font-family:var(--head);font-weight:600;font-size:8pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--malva);margin-bottom:4mm;}
+h3{font-weight:700;font-size:12.5pt;color:var(--ink);margin:6mm 0 2mm;}
+h4{font-weight:600;font-size:10.5pt;color:var(--indigo);margin:4mm 0 1.5mm;}
+.rule{height:2.5px;width:40px;background:var(--malva-l);border-radius:2px;margin:0 0 4mm;}
+
+.card{background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:5mm 6mm;margin:3mm 0;page-break-inside:avoid;}
+.card.accent{background:linear-gradient(180deg,#f6eef4,#f3edf7);border-color:#e6d5e6;}
+.statement{border-left:3px solid var(--malva);padding:2mm 0 2mm 6mm;margin:3mm 0;font-size:11pt;color:var(--ink);}
+.statement .lab{font-family:var(--head);font-weight:700;font-size:8pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--malva);display:block;margin-bottom:1.5mm;}
+.note{font-size:8.6pt;color:var(--muted);font-style:italic;}
+.tag-fact{font-family:'Syne';font-weight:700;font-size:7pt;color:#2f7d4f;background:#e7f5ec;border-radius:4px;padding:1px 5px;}
+.tag-est{font-family:'Syne';font-weight:700;font-size:7pt;color:#a6702a;background:#fbf0e0;border-radius:4px;padding:1px 5px;}
+
+table{width:100%;border-collapse:collapse;margin:3mm 0;font-size:8.9pt;page-break-inside:avoid;}
+th{background:var(--indigo);color:#fff;font-family:var(--head);font-weight:600;text-align:left;padding:2.6mm 3mm;font-size:8.4pt;letter-spacing:.3px;}
+td{border-bottom:1px solid var(--line);padding:2.4mm 3mm;vertical-align:top;}
+tr:nth-child(even) td{background:#faf8fc;}
+.tc{text-align:center;}
+.sc{font-family:'Syne';font-weight:700;color:var(--indigo);}
+
+ul.clean{margin:2mm 0 3mm;padding-left:5mm;}
+ul.clean li{margin-bottom:1.6mm;}
+ul.clean li::marker{color:var(--malva);}
+.pill{display:inline-block;background:var(--dark);color:#fff;font-family:var(--head);font-weight:600;font-size:7.5pt;border-radius:20px;padding:2px 9px;margin:2px 3px 2px 0;}
+.g{color:#2f7d4f;font-weight:700;}.a{color:#c58a2a;font-weight:700;}.r{color:#c0392b;font-weight:700;}
+
+.two{display:flex;gap:6mm;}
+.two>div{flex:1;}
+
+.logo-grid{display:flex;flex-wrap:wrap;gap:4mm;margin:3mm 0;}
+.logo-card{flex:1 1 45%;background:var(--dark);border-radius:10px;overflow:hidden;border:1px solid #2a2d4a;page-break-inside:avoid;}
+.logo-card img{width:100%;display:block;}
+.logo-card .cap{padding:2.5mm 4mm;font-size:8pt;color:#c9c5de;font-family:var(--head);font-weight:600;background:#191c36;}
+.dirlab{font-family:var(--head);font-weight:800;font-size:9pt;color:var(--malva);letter-spacing:1px;text-transform:uppercase;}
+
+.house{border:1.5px solid var(--indigo);border-radius:10px;overflow:hidden;margin:3mm 0;page-break-inside:avoid;}
+.house .roof{background:var(--indigo);color:#fff;text-align:center;padding:3mm;font-family:var(--head);font-weight:700;font-size:10.5pt;}
+.house .pil{display:flex;}
+.house .pil>div{flex:1;padding:3mm 4mm;border-right:1px solid var(--line);}
+.house .pil>div:last-child{border-right:none;}
+.house .pil h5{font-family:var(--head);font-weight:700;color:var(--malva);margin:0 0 1.5mm;font-size:9.5pt;}
+.house .base{background:var(--soft2);padding:3mm 4mm;font-size:8.6pt;color:var(--muted);border-top:1px solid var(--line);}
+small{font-size:8.4pt;color:var(--muted);}
+.kv{font-family:'Syne';font-weight:600;color:var(--indigo);}
+
+/* --- glyph replacements (no DejaVu fallback) --- */
+.gxs{display:inline-block;height:.58em;width:1.05em;vertical-align:0;margin:0 .12em;}
+.gxs2{display:inline-block;height:.58em;width:1.3em;vertical-align:0;margin:0 .12em;}
+.gx-box{display:inline-block;width:.72em;height:.72em;border:1.5px solid var(--indigo);border-radius:2px;vertical-align:-.05em;margin-right:.18em;}
+.gx-cn{display:inline-block;min-width:1.15em;height:1.15em;line-height:1.05em;text-align:center;border:1.3px solid currentColor;border-radius:50%;font-size:.78em;font-weight:700;vertical-align:.06em;box-sizing:border-box;padding:0 .05em;}
+.gx-chk{display:inline-block;width:.4em;height:.72em;border-right:2px solid #2f7d4f;border-bottom:2px solid #2f7d4f;transform:rotate(42deg);vertical-align:.05em;margin:0 .2em 0 .04em;}
+.gx-mk{display:inline-block;width:.48em;height:.48em;background:currentColor;transform:rotate(45deg);vertical-align:.0em;margin-right:.34em;}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <svg class="wave" width="220" height="150" viewBox="0 0 220 150">
+    <rect x="0"   y="60" width="7" height="30" rx="3.5" fill="#8b93d9" opacity=".7"/>
+    <rect x="14"  y="48" width="7" height="54" rx="3.5" fill="#8b93d9" opacity=".8"/>
+    <rect x="28"  y="34" width="7" height="82" rx="3.5" fill="#a06fa2"/>
+    <rect x="42"  y="20" width="7" height="110" rx="3.5" fill="#c07fa8"/>
+    <rect x="56"  y="6"  width="7" height="138" rx="3.5" fill="#d888ae"/>
+    <rect x="70"  y="20" width="7" height="110" rx="3.5" fill="#c07fa8"/>
+    <rect x="84"  y="34" width="7" height="82" rx="3.5" fill="#a06fa2"/>
+    <rect x="98"  y="48" width="7" height="54" rx="3.5" fill="#8b93d9" opacity=".8"/>
+    <rect x="112" y="60" width="7" height="30" rx="3.5" fill="#8b93d9" opacity=".7"/>
+  </svg>
+  <div class="kicker">Brand Build Dossier · Deep Dive</div>
+  <h1>Ideary</h1>
+  <div class="sub">Where ideas take shape.</div>
+  <p class="lead">Il brand build completo di Ideary — lo strumento AI voice-first che trasforma un'idea detta in un workflow eseguibile. Diciotto prompt della branding library, eseguiti in pipeline concatenata dal naming alla governance, con le direzioni di logo generate.</p>
+  <div class="foot">
+    <b>Ideary</b> — da IdeaMotor · progetto personale di Riccardo Sofia<br>
+    Brand <b>rfs-design</b> · Documento di lavoro · uso interno<br>
+    11 luglio 2026
+  </div>
+  <div class="tag">Speak the spark.<br>Ship the plan.</div>
+</section>
+
+<section>
+  <h2 class="pt">Come leggere questo dossier</h2>
+  <div class="ptmeta">Metodo · pipeline della library</div>
+  <div class="rule"></div>
+  <p>Questo documento esegue in <strong>deep dive</strong> tutti e diciotto i prompt della <em>branding prompt library</em>, nella sequenza logica delle otto sezioni, applicandoli al brand <strong>Ideary</strong>. Ogni prompt usa come input gli output dei prompt precedenti — è una pipeline concatenata, non una raccolta di esercizi isolati — e parte dal <em>Naming Decision Dossier</em> già prodotto, di cui questo lavoro è la naturale continuazione ed espansione.</p>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Il punto di partenza (già deciso)</h4>
+    <p style="margin-bottom:0"><strong>Nome:</strong> Ideary — conio trasparente che mantiene "idea", internazionale, con <span class="kv">.ai</span> e <span class="kv">.com</span> entrambi liberi. <strong>Payoff:</strong> "Where ideas take shape." · umbrella "Speak the spark. Ship the plan." <strong>Prodotto:</strong> tool AI voice-first per direttori creativi e piccoli studi — idea vocale <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> archetipo <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> workflow multi-tool con prompt pronti. <strong>Brand:</strong> rfs-design. <strong>Vincolo tecnico:</strong> il rebrand tocca ~15–20 stringhe user-facing; DB <span class="kv">ideamotor-db</span>, SALT, repo e URL restano invariati.</p>
+  </div>
+
+  <h3>Le otto sezioni</h3>
+  <table>
+    <tr><th style="width:22mm">Sezione</th><th>Prompt eseguiti</th><th style="width:58mm">Cosa produce</th></tr>
+    <tr><td><strong>1 · Naming</strong></td><td>BN-01 · BN-01b · BN-02 · BN-03</td><td>Shortlist ragionata, gate di difendibilità, raffinamento, architettura dei nomi</td></tr>
+    <tr><td><strong>2 · Strategia</strong></td><td>BP-01 · BP-02 · BP-03 · BP-04</td><td>Positioning, scelta, audit &amp; insight, piattaforma di marca</td></tr>
+    <tr><td><strong>3 · Logo/Visual</strong></td><td>BL-01 · BL-02 · BL-03</td><td>3 direzioni logo (con immagini generate), audit, sistema visivo</td></tr>
+    <tr><td><strong>4 · Verbal</strong></td><td>BV-01 · BV-02 · BV-03</td><td>Tono di voce, tagline &amp; payoff, localizzazione</td></tr>
+    <tr><td><strong>5 · Messaging</strong></td><td>BM-01 · BM-02</td><td>Messaging house, narrative system</td></tr>
+    <tr><td><strong>6 · Experience</strong></td><td>BX-01</td><td>Driver esperienziali e signature moments</td></tr>
+    <tr><td><strong>7 · Launch</strong></td><td>GL-01</td><td>Toolkit di lancio e asset</td></tr>
+    <tr><td><strong>8 · Governance</strong></td><td>GV-01</td><td>Brand book, RACI, guardrail, processi</td></tr>
+  </table>
+  <p class="note">Convenzione evidenze, ereditata dal metodo brand-intelligence: <span class="tag-fact">FATTO</span> = verificato su registro/fonte primaria · <span class="tag-est">STIMA</span> = giudizio su ricerca pubblica o inferenza strategica. Le valutazioni di rischio marchi sono qualitative e non sostituiscono una clearance legale formale.</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">01</div>
+  <div class="inner">
+    <div class="label">Sezione uno</div>
+    <h2>Brand naming</h2>
+    <div class="prompts">
+      <span>BN-01 · generazione &amp; scoring</span>
+      <span>BN-01b · naming gate</span>
+      <span>BN-02 · refinement</span>
+      <span>BN-03 · naming architecture</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BN-01 · Naming — generazione, scoring e rischi</h2>
+  <div class="ptmeta">Sezione 1 · naming strategist</div>
+  <div class="rule"></div>
+  <p>Ricostruiamo la fase generativa che ha portato a <strong>Ideary</strong>, formalizzandola nel formato del prompt: brief, pool di nomi, top-10 con scoring, top-5 con rischi e tagline, tabella finalisti. Serve a rendere <em>tracciabile</em> la decisione, non a rimetterla in discussione.</p>
+
+  <div class="card">
+    <h4 style="margin-top:0">Brief (come inserito nel prompt)</h4>
+    <table style="margin:0">
+      <tr><td style="width:42mm"><strong>Settore</strong></td><td>Software / AI creativa — productivity voice-first</td></tr>
+      <tr><td><strong>Prodotto</strong></td><td>App che trasforma un'idea detta a voce in un workflow AI multi-tool, con prompt pronti da incollare</td></tr>
+      <tr><td><strong>Pubblico</strong></td><td>Direttori creativi, piccoli studi, freelance senior della creatività</td></tr>
+      <tr><td><strong>Brand vibe</strong></td><td>curato · sicuro · caldo · preciso · lievemente letterario</td></tr>
+      <tr><td><strong>Stile nome</strong></td><td>coniato / ibrido trasparente (mantiene una radice comprensibile)</td></tr>
+      <tr><td><strong>Mercati</strong></td><td>IT + internazionale (EN come lingua-vetrina)</td></tr>
+      <tr><td><strong>Da evitare</strong></td><td>lessici saturi: <em>wave / flow / synth / audio / pulse / spark</em>; suffissi "-ly / -ify" da SaaS generico; deriva mind-mapping</td></tr>
+      <tr><td><strong>Competitor</strong></td><td>Swell AI, Riffusion, Synthflow, Sparqo; note apps (Otter, Voice Memos); idea-board (Milanote, Miro, Mural); chatbot singoli (ChatGPT)</td></tr>
+    </table>
+  </div>
+
+  <h3>Il pool generato — nomi per territorio</h3>
+  <table>
+    <tr><th style="width:34mm">Territorio</th><th>Candidati</th></tr>
+    <tr><td><strong>Idea + luogo/fucina</strong></td><td>Ideary, Idearium, Ideaforge, Ideabarn, Ideahouse, Notionary, Ideary Studio</td></tr>
+    <tr><td><strong>Voce <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> forma</strong></td><td>Spokenform, Sayshape, Vocari, Utterframe, Dictaform, Speakcraft</td></tr>
+    <tr><td><strong>Idea <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> rotta/piano</strong></td><td>Prow, Abbrivio, Cardine, Estro, Throughline, Runway, Vane</td></tr>
+    <tr><td><strong>Conii corti "tech"</strong></td><td>Crux, Deft, Rune, Brio, Praxo, Prompto, Krft, Orra</td></tr>
+    <tr><td><strong>Artigiano / atelier</strong></td><td>Atelio, Formary, Craftway, Studioline, Makery, Forgeline</td></tr>
+  </table>
+
+  <h3>Top-10 con scoring (1–10)</h3>
+  <table>
+    <tr><th>Nome</th><th class="tc">Mem.</th><th class="tc">Chiar.</th><th class="tc">Unic.</th><th class="tc">Pron.</th><th class="tc">Vibe</th><th class="tc">Tot</th><th>Perché funziona</th></tr>
+    <tr><td><strong>Ideary</strong></td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">44</td><td>Mantiene "idea", suffisso -ary = luogo; conio raro e trasparente</td></tr>
+    <tr><td>Estro</td><td class="tc">8</td><td class="tc">6</td><td class="tc">9</td><td class="tc">8</td><td class="tc">8</td><td class="tc sc">39</td><td>Ownable, ma "troppo italiano" per l'ambizione EN</td></tr>
+    <tr><td>Idearium</td><td class="tc">8</td><td class="tc">7</td><td class="tc">7</td><td class="tc">7</td><td class="tc">8</td><td class="tc sc">37</td><td>Bello ma vira su "archivio/erbario" <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> deriva mind-map</td></tr>
+    <tr><td>Ideaforge</td><td class="tc">7</td><td class="tc">8</td><td class="tc">5</td><td class="tc">8</td><td class="tc">7</td><td class="tc sc">35</td><td>Chiaro ma "forge" è cliché e affollato</td></tr>
+    <tr><td>Throughline</td><td class="tc">7</td><td class="tc">8</td><td class="tc">6</td><td class="tc">7</td><td class="tc">7</td><td class="tc sc">35</td><td>Concetto giusto (dal caos al filo) ma lungo e già usato</td></tr>
+    <tr><td>Sayshape</td><td class="tc">7</td><td class="tc">8</td><td class="tc">6</td><td class="tc">8</td><td class="tc">6</td><td class="tc sc">35</td><td>Dice "voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>forma" ma suona gadget, poco premium</td></tr>
+    <tr><td>Abbrivio</td><td class="tc">7</td><td class="tc">5</td><td class="tc">9</td><td class="tc">6</td><td class="tc">8</td><td class="tc sc">35</td><td>Splendida metafora di slancio, ma opaca fuori dall'IT</td></tr>
+    <tr><td>Vocari</td><td class="tc">7</td><td class="tc">6</td><td class="tc">7</td><td class="tc">7</td><td class="tc">7</td><td class="tc sc">34</td><td>Radice "voce" chiara, ma sa di plugin, poco caldo</td></tr>
+    <tr><td>Brio</td><td class="tc">7</td><td class="tc">5</td><td class="tc">6</td><td class="tc">8</td><td class="tc">7</td><td class="tc sc">33</td><td>Energia sì, ma già startup .ai e generico</td></tr>
+    <tr><td>Prow</td><td class="tc">6</td><td class="tc">5</td><td class="tc">7</td><td class="tc">6</td><td class="tc">6</td><td class="tc sc">30</td><td>Corto e nautico, ma già .ai occupato e opaco</td></tr>
+  </table>
+
+  <h3>Top-5 · rischi e tagline</h3>
+  <table>
+    <tr><th style="width:24mm">Nome</th><th>3 rischi principali</th><th style="width:44mm">Tagline (&lt;7 parole)</th></tr>
+    <tr><td><strong>Ideary</strong></td><td><span class="gx-cn">1</span> omonimi in altri settori (Ideary Works web-dev, Cosmetics, Coatings); <span class="gx-cn">2</span> "ideario" ES = insieme di idee; <span class="gx-cn">3</span> possibile lettura "diario di idee"</td><td>Where ideas take shape.</td></tr>
+    <tr><td>Estro</td><td><span class="gx-cn">1</span> percezione troppo italiana; <span class="gx-cn">2</span> falso aggancio "estrogeno"; <span class="gx-cn">3</span> .ai/.com incerti</td><td>Dì l'estro, spedisci il piano.</td></tr>
+    <tr><td>Idearium</td><td><span class="gx-cn">1</span> deriva erbario/archivio; <span class="gx-cn">2</span> nome lungo; <span class="gx-cn">3</span> affollato in wellness/edu</td><td>L'officina delle idee.</td></tr>
+    <tr><td>Throughline</td><td><span class="gx-cn">1</span> già termine di storytelling; <span class="gx-cn">2</span> lungo; <span class="gx-cn">3</span> dominio occupato</td><td>From spark to throughline.</td></tr>
+    <tr><td>Sayshape</td><td><span class="gx-cn">1</span> tono gadget; <span class="gx-cn">2</span> compound EN piatto; <span class="gx-cn">3</span> poco difendibile</td><td>Say it. Shape it.</td></tr>
+  </table>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Tabella finalisti</h4>
+    <table style="margin:0">
+      <tr><th>Nome</th><th class="tc">Punteggio</th><th>Rischio principale</th><th>Tagline</th></tr>
+      <tr><td><strong>Ideary</strong> <span class="gx-chk"></span></td><td class="tc sc">44</td><td>Omonimi in settori adiacenti (Ideary Works)</td><td>Where ideas take shape.</td></tr>
+      <tr><td>Estro</td><td class="tc">39</td><td>Percezione troppo italiana</td><td>Dì l'estro, spedisci il piano.</td></tr>
+      <tr><td>Idearium</td><td class="tc">37</td><td>Deriva "archivio di idee"</td><td>L'officina delle idee.</td></tr>
+      <tr><td>Throughline</td><td class="tc">35</td><td>Termine già in uso + dominio</td><td>From spark to throughline.</td></tr>
+      <tr><td>Sayshape</td><td class="tc">35</td><td>Tono gadget, poco premium</td><td>Say it. Shape it.</td></tr>
+    </table>
+  </div>
+  <p class="note">Esito: <strong>Ideary</strong> vince nettamente — unico finalista con entrambi i domini liberi, punteggio più alto, e la metafora giusta ("casa/fucina dove l'idea prende forma", non "archivio").</p>
+</section>
+
+<section class="block">
+  <h2 class="pt">BN-01b · Naming gate — dominio, marchio, clash, SEO</h2>
+  <div class="ptmeta">Sezione 1 · due-diligence di naming</div>
+  <div class="rule"></div>
+  <p>Prima di affezionarsi o depositare, la shortlist passa il <strong>gate di difendibilità</strong>: dominio, marchio (classi Nizza 9 e 42, adiacenti 35/41), clash di prodotto/brand, e mindshare SEO. Non è consulenza legale: la clearance definitiva richiede registro ufficiale o consulente. Sotto, il pre-check su Ideary e i due follower più seri.</p>
+
+  <div class="card">
+    <h4 style="margin-top:0">Input del gate</h4>
+    <p style="margin-bottom:0"><strong>Nomi:</strong> Ideary, Estro, Idearium · <strong>Settore:</strong> software/AI (classi 9, 42; adiacenti 35, 41) · <strong>Vicini da evitare:</strong> grandi suite creative e note-app affermate · <strong>TLD:</strong> .ai (primario), .com, .app, .io</p>
+  </div>
+
+  <h3>Tabella di sintesi (semaforo)</h3>
+  <table>
+    <tr><th>Nome</th><th class="tc">Marchio</th><th class="tc">Prodotti</th><th class="tc">Dominio</th><th class="tc">SEO</th><th class="tc">Rischio</th><th>Verdetto</th></tr>
+    <tr><td><strong>Ideary</strong></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="g">verde</span></td><td class="tc"><span class="g">verde</span></td><td class="tc"><span class="g">basso-mod.</span></td><td><strong>GO condizionato</strong> — acquisto domini subito, marchio da confermare</td></tr>
+    <tr><td>Estro</td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="r">rosso</span></td><td class="tc"><span class="r">rosso</span></td><td class="tc"><span class="a">moderato-alto</span></td><td>NO-GO — domini e SERP presidiati, parola comune IT</td></tr>
+    <tr><td>Idearium</td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">giallo</span></td><td class="tc"><span class="a">moderato</span></td><td>HOLD — praticabile ma deriva semantica "archivio"</td></tr>
+  </table>
+
+  <h3>Scheda — Ideary</h3>
+  <div class="card">
+    <ul class="clean">
+      <li><strong>Dominio.</strong> <span class="kv">ideary.ai</span> e <span class="kv">ideary.com</span> senza sito attivo su root/www <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> probabilmente disponibili. <span class="tag-est">STIMA</span> — da confermare al registrar (RDAP/whois).</li>
+      <li><strong>Marchio 9/42.</strong> Nessun marchio identico emerso in ricerca pubblica nelle classi software; <em>non</em> è una ricerca legale formale. <span class="tag-est">STIMA</span></li>
+      <li><strong>Clash di prodotto.</strong> Nessun prodotto AI/SaaS omonimo. Omonimi in <em>altri</em> settori: <strong>Ideary Works</strong> (web dev, US — adiacente alla 42, realtà piccola, nome diverso), Ideary Cosmetics, Ideary Coatings (UK). <span class="tag-fact">FATTO</span></li>
+      <li><strong>SEO / mindshare.</strong> Termine coniato e raro <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> SERP non presidiata: possibile diventare l'attore dominante sul proprio nome in tempi ragionevoli. <span class="tag-est">STIMA</span></li>
+      <li><strong>Nota lingua.</strong> "Ideario" (ES) = insieme di idee: da controllare nei marchi ES, ma gioca a favore della comprensibilità latina.</li>
+    </ul>
+  </div>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Query per la ricerca marchi formale (9 e 42)</h4>
+    <p style="margin-bottom:0"><strong>Livello 1 — esatta:</strong> <span class="kv">Ideary</span> · <span class="kv">Idea ry</span> — <strong>Livello 2 — contiene:</strong> <span class="kv">*ideary*</span> · <span class="kv">ideary works</span> — <strong>Livello 3 — jolly:</strong> <span class="kv">idea*ry</span> · <span class="kv">ideary*</span> — <strong>Livello 4 — fonetica:</strong> ideari, idearie, ideario[ES], idearia. Su TMview (EUIPO+UIBM+nazionali+WIPO), poi eSearch plus e USPTO; stato registrato+pending; territorio EUTM+IT+internazionali. Attenzione a "Ideary Works".</p>
+  </div>
+  <p class="note">Regola del gate: nessun nome è "libero" senza aver controllato marchio <strong>+</strong> dominio <strong>+</strong> clash. Qui: rischio complessivo <strong>basso-moderato</strong>, unico punto da sciogliere in sede formale è Ideary Works.</p>
+</section>
+
+<section class="block">
+  <h2 class="pt">BN-02 · Naming — valutazione e raffinamento shortlist</h2>
+  <div class="ptmeta">Sezione 1 · consulente di naming</div>
+  <div class="rule"></div>
+  <p>Passata la shortlist al setaccio "premium", raffiniamo con un secondo scoring (memorabilità, chiarezza, unicità, pronuncia, <em>premium feel</em>) e, per i primi tre, cinque varianti che tengono il mood ma semplificano spelling e pronuncia. Chiude con i rischi culturali per mercato.</p>
+
+  <h3>Ranking premium (1–10)</h3>
+  <table>
+    <tr><th>Nome</th><th class="tc">Mem.</th><th class="tc">Chiar.</th><th class="tc">Unic.</th><th class="tc">Pron.</th><th class="tc">Premium</th><th class="tc">Tot</th><th>Motivazione (1 riga)</th></tr>
+    <tr><td><strong>Ideary</strong></td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">44</td><td>Suona come un atelier di idee: caldo, colto, internazionale</td></tr>
+    <tr><td>Estro</td><td class="tc">8</td><td class="tc">6</td><td class="tc">9</td><td class="tc">8</td><td class="tc">7</td><td class="tc sc">38</td><td>Carattere forte ma legato al gusto italiano</td></tr>
+    <tr><td>Idearium</td><td class="tc">8</td><td class="tc">7</td><td class="tc">7</td><td class="tc">7</td><td class="tc">8</td><td class="tc sc">37</td><td>Elegante, latineggiante, ma un filo museale</td></tr>
+    <tr><td>Vocari</td><td class="tc">7</td><td class="tc">6</td><td class="tc">7</td><td class="tc">7</td><td class="tc">7</td><td class="tc sc">34</td><td>Premium ma freddo, dice "voce" più che "idea"</td></tr>
+    <tr><td>Sayshape</td><td class="tc">7</td><td class="tc">8</td><td class="tc">6</td><td class="tc">8</td><td class="tc">5</td><td class="tc sc">34</td><td>Chiaro ma consumer, poco da studio</td></tr>
+  </table>
+
+  <h3>Varianti dei top-3 (stesso mood, spelling più semplice)</h3>
+  <div class="two">
+    <div>
+      <h4>Ideary (vincitore)</h4>
+      <ul class="clean">
+        <li><strong>Ideary</strong> — forma canonica <span class="gx-chk"></span></li>
+        <li>Ideara — chiusura più morbida, femminile</li>
+        <li>Idery — contratto, più tech (perde "idea" esplicito)</li>
+        <li>Idearie — plurale poetico, rischia ES</li>
+        <li>Idearly — vira su avverbio, meno luogo</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Estro</h4>
+      <ul class="clean">
+        <li>Estro — canonico</li>
+        <li>Estra · Estary · Estrio · Estrom</li>
+        <li class="note">Nota: nessuna variante scioglie l'"italianità"; confermato il retro-piano.</li>
+      </ul>
+      <h4>Idearium</h4>
+      <ul class="clean">
+        <li>Idearium — canonico</li>
+        <li>Idearia · Idearo · Idorium · Idearix</li>
+        <li class="note">Nota: tutte scivolano verso "collezione/archivio".</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Rischi culturali per mercato</h3>
+  <table>
+    <tr><th style="width:26mm">Mercato</th><th>Lettura / rischio di "Ideary"</th></tr>
+    <tr><td><strong>Italia</strong></td><td>Neutro-positivo: "idea" trasparente; nessuna assonanza negativa. Ottima pronuncia.</td></tr>
+    <tr><td><strong>UK / US</strong></td><td>Legge come "idea + -ry" (come <em>library, gallery</em>): connota un luogo/collezione. Rischio lieve "diary". Positivo overall.</td></tr>
+    <tr><td><strong>Spagna / LATAM</strong></td><td>"Ideario" esiste (insieme di idee/ideologia): vantaggio di comprensibilità, ma da controllare nei marchi ES.</td></tr>
+    <tr><td><strong>DACH / FR</strong></td><td>Radice latina riconoscibile; pronuncia stabile; nessun falso amico noto.</td></tr>
+  </table>
+</section>
+
+<section class="block">
+  <h2 class="pt">BN-03 · Naming architecture — gerarchia, feature, legacy</h2>
+  <div class="ptmeta">Sezione 1 · brand architect</div>
+  <div class="rule"></div>
+  <p>Con il nome madre fissato, definiamo come si relazionano prodotto, feature, eventuali sotto-brand e — punto delicato — gli asset legacy tecnici (repo, DB, URL) che non cambiano. Il principio guida: <strong>meno sotto-brand possibile</strong>, ogni nuovo nome deve guadagnarsi il diritto di esistere.</p>
+
+  <div class="card">
+    <h4 style="margin-top:0">Modello raccomandato: <span style="color:var(--malva)">monolitico (branded house)</span></h4>
+    <p style="margin-bottom:0">Un solo brand — <strong>Ideary</strong> — con lockup "by rfs-design". Con risorse da progetto singolo e una sola proposta di valore, un modello endorsed o house-of-brands diluirebbe senza motivo. Tutto vive sotto Ideary; le sezioni restano <em>funzionali</em>, non diventano mini-brand.</p>
+  </div>
+
+  <h3>Gerarchia</h3>
+  <table>
+    <tr><th style="width:34mm">Livello</th><th>Elemento</th><th>Criterio di naming</th></tr>
+    <tr><td><strong>Master brand</strong></td><td>Ideary</td><td>Coniato evocativo — l'unico nome "di marca"</td></tr>
+    <tr><td><strong>Endorsement</strong></td><td>by rfs-design</td><td>Firma dell'autore, lockup fisso, mai brand a sé</td></tr>
+    <tr><td><strong>Prodotto</strong></td><td>Ideary (l'app)</td><td>Coincide col master: un solo prodotto</td></tr>
+    <tr><td><strong>Sezioni/feature</strong></td><td>Cattura · Workflow · Progetti · Impostazioni · Le mie tecnologie</td><td>Descrittivi funzionali, registro caldo-artigiano, niente vezzi</td></tr>
+    <tr><td><strong>Momenti-firma</strong></td><td>es. "lo Spark" (l'atto di dettare)</td><td>Ammesso <em>solo</em> se guadagna valore narrativo; resta lessico, non sotto-brand</td></tr>
+  </table>
+
+  <h3>Convivenza col legacy (regole)</h3>
+  <table>
+    <tr><th style="width:44mm">Asset</th><th class="tc" style="width:24mm">Azione</th><th>Perché</th></tr>
+    <tr><td>Stringhe user-facing (~15–20)</td><td class="tc"><span class="g">rinomina</span></td><td>manifest name/short_name, title, logo-text, welcome, system prompt, share</td></tr>
+    <tr><td>DB IndexedDB <span class="kv">ideamotor-db</span></td><td class="tc"><span class="r">invariato</span></td><td>rinominarlo orfanerebbe lo storico progetti degli utenti</td></tr>
+    <tr><td><span class="kv">SALT</span> in settings.js</td><td class="tc"><span class="r">invariato</span></td><td>cifra le API key salvate; cambiarlo le rende illeggibili</td></tr>
+    <tr><td>Repo / cartella / URL Pages</td><td class="tc"><span class="r">invariato</span></td><td>break di link e deploy; nessun beneficio user-facing</td></tr>
+  </table>
+  <p class="note">"Ideary" è etichetta di brand: separazione netta tra ciò che l'utente <em>legge</em> (cambia) e ciò che il sistema <em>usa</em> (resta). Coerente con DECISIONS.md.</p>
+
+  <h3>Convenzione dei nomi (pattern &amp; do/don't)</h3>
+  <div class="two">
+    <div><h4>Do</h4><ul class="clean">
+      <li>Sezioni con verbi/nomi concreti: "Cattura", "Workflow".</li>
+      <li>Un solo nome di marca (Ideary) in tutta la UI.</li>
+      <li>Lockup "Ideary — by rfs-design" nei punti di firma.</li>
+    </ul></div>
+    <div><h4>Don't</h4><ul class="clean">
+      <li>Niente "Ideary Pro / Studio / AI" come sub-brand.</li>
+      <li>Niente nomi in codice esposti all'utente (ideamotor-db).</li>
+      <li>Niente feature "brandizzate" senza valore narrativo reale.</li>
+    </ul></div>
+  </div>
+
+  <h3>Dominio / social</h3>
+  <p><strong>Dominio principale:</strong> <span class="kv">ideary.ai</span> · <strong>redirect:</strong> <span class="kv">ideary.com</span> <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> .ai · <strong>handle:</strong> @ideary o @ideary.app dove libero, @getideary come fallback. Coerenza dell'handle prima dell'originalità; il sito vetrina resta separato dall'URL tecnico di GitHub Pages (che non cambia).</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">02</div>
+  <div class="inner">
+    <div class="label">Sezione due</div>
+    <h2>Posizionamento<br>&amp; strategia</h2>
+    <div class="prompts">
+      <span>BP-01 · positioning</span>
+      <span>BP-02 · scelta</span>
+      <span>BP-03 · audit &amp; insight</span>
+      <span>BP-04 · piattaforma di marca</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BP-01 · Positioning — statement, varianti, messaggi</h2>
+  <div class="ptmeta">Sezione 2 · brand strategist senior</div>
+  <div class="rule"></div>
+  <p>Il posizionamento fissa il posto di Ideary nella mente del pubblico: un <em>esecutore</em> tra l'idea e la produzione, non l'ennesima app di cattura o board. Statement canonico, tre registri, la griglia "chi siamo / chi non siamo", cinque messaggi per canale.</p>
+
+  <div class="statement">
+    <span class="lab">Statement (formato canonico)</span>
+    Per <strong>direttori creativi e piccoli studi</strong>, <strong>Ideary</strong> è lo strumento AI che trasforma un'idea detta in un <strong>workflow eseguibile e specifico per strumento</strong> — a differenza delle app di note vocali che si limitano a catturare, o delle idea-board che si limitano ad archiviare, perché ti consegna gli <strong>strumenti AI giusti e i prompt pronti da incollare</strong> per ogni passo.
+  </div>
+
+  <h3>Tre varianti di registro</h3>
+  <table>
+    <tr><th style="width:26mm">Registro</th><th>Formulazione</th></tr>
+    <tr><td><strong>Strategico</strong></td><td>Ideary è il <em>layer di esecuzione</em> tra un'idea creativa e la sua produzione: voce in ingresso, workflow multi-tool orchestrato in uscita.</td></tr>
+    <tr><td><strong>Emotivo</strong></td><td>Dì la scintilla. Ideary dà a ogni idea una casa e una rotta — da ciò che hai appena detto a ciò che realizzerai.</td></tr>
+    <tr><td><strong>Diretto / vendita</strong></td><td>Parla la tua idea. Ottieni un workflow AI passo-passo con i prompt già scritti. Gratis con la tua chiave.</td></tr>
+  </table>
+
+  <h3>Chi siamo / Chi non siamo</h3>
+  <table>
+    <tr><th>Ideary È</th><th>Ideary NON è</th></tr>
+    <tr><td>Un esecutore: idea <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> piano realizzato</td><td>Un archivio/quaderno di idee</td></tr>
+    <tr><td>Voice-first, a bassissimo attrito</td><td>Un'altra dashboard o modulo da compilare</td></tr>
+    <tr><td>Orchestratore multi-tool (Perplexity, Claude, Midjourney…)</td><td>Un singolo chatbot mono-modello</td></tr>
+    <tr><td>Per direttori creativi e studi</td><td>Innovation-management enterprise</td></tr>
+    <tr><td>Bring-your-own-key, privato, a sostegno</td><td>SaaS in abbonamento che monetizza i dati</td></tr>
+    <tr><td>Opinionato e curato</td><td>Genericamente "AI"</td></tr>
+  </table>
+
+  <h3>5 messaggi-chiave per canale</h3>
+  <table>
+    <tr><th style="width:30mm">Canale</th><th>Messaggio</th></tr>
+    <tr><td><strong>Hero (sito)</strong></td><td>"Speak your idea. Get the workflow." — Ideary trasforma un'idea detta in un workflow AI pronto: gli strumenti giusti, i prompt già scritti.</td></tr>
+    <tr><td><strong>Bio Instagram</strong></td><td>Voice <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> AI workflow per creativi. Parla la scintilla, spedisci il piano. · by rfs-design</td></tr>
+    <tr><td><strong>Elevator pitch (30s)</strong></td><td>Ideary è uno strumento voice-first per direttori creativi: premi il mic e dici l'idea; riconosce il tipo di progetto, sceglie i tool AI giusti — Perplexity, Claude, Midjourney — e ti dà un workflow passo-passo con prompt densi e pronti. Gira sulla tua chiave, quindi è di fatto gratis, e resta sul tuo dispositivo.</td></tr>
+    <tr><td><strong>Email B2B (freddo)</strong></td><td>Oggetto: "Da idea detta a workflow, in 30 secondi". Corpo: mostri il flusso voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>archetipo<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>prompt su un caso reale del destinatario, chiudi con demo di 5 minuti.</td></tr>
+    <tr><td><strong>Adv breve (&lt;90 char)</strong></td><td>"Speak your idea. Ideary writes the AI workflow — free with your own key." (71 caratteri)</td></tr>
+  </table>
+</section>
+
+<section class="block">
+  <h2 class="pt">BP-02 · Scelta del posizionamento</h2>
+  <div class="ptmeta">Sezione 2 · consulente di posizionamento</div>
+  <div class="rule"></div>
+  <p>Le tre varianti di BP-01 valutate rispetto all'obiettivo del brand (<em>far capire e adottare</em> un prodotto di categoria nuova) e sintetizzate in un mix per canale.</p>
+
+  <table>
+    <tr><th>Opzione</th><th class="tc">Chiar.</th><th class="tc">Differ.</th><th class="tc">Credib.</th><th class="tc">Fit target</th><th class="tc">Tot</th><th>Nota</th></tr>
+    <tr><td><strong>Strategico</strong></td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">7</td><td class="tc sc">8</td><td class="tc sc">32</td><td>Preciso ma un filo freddo per il pubblico creativo</td></tr>
+    <tr><td><strong>Emotivo</strong></td><td class="tc sc">9</td><td class="tc sc">7</td><td class="tc sc">9</td><td class="tc sc">8</td><td class="tc sc">33</td><td>Il più on-brand: "casa + rotta" cattura l'anima del prodotto</td></tr>
+    <tr><td><strong>Diretto</strong></td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">6</td><td class="tc sc">9</td><td class="tc sc">32</td><td>Ottimo per adv/conversione, meno per la narrazione di marca</td></tr>
+  </table>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Sintesi consigliata (mix)</h4>
+    <p style="margin-bottom:0">Guida <strong>emotiva</strong> per la marca ("Give every idea a home and a path"), spina dorsale <strong>strategica</strong> per il sito (il "layer di esecuzione"), taglio <strong>diretto</strong> per adv e onboarding. Un'unica frase-ombrello che le tiene insieme: <strong>"Speak the spark. Ship the plan."</strong></p>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BP-03 · Brand audit &amp; insight</h2>
+  <div class="ptmeta">Sezione 2 · analista di categoria</div>
+  <div class="rule"></div>
+  <p>Il quadro strategico che sostiene il posizionamento: contesto di categoria, mappa competitor su due assi, insight sul target, SWOT e piste di differenziazione. Nessuna conclusione senza il dato che la regge; le ipotesi sono segnate.</p>
+
+  <h3>Contesto di categoria</h3>
+  <p>La categoria "AI creativa/produttività" nel 2025–26 è affollata di due archetipi opposti: da un lato i <strong>chatbot generalisti</strong> (una casella, un modello, mille usi), dall'altro le <strong>board/note-app</strong> che catturano ma non eseguono. Convenzioni ricorrenti: interfacce a chat, onboarding "scrivi qui", naming su <em>wave/flow/synth</em>, promesse di "10× produttività". Il cliché dominante è la <em>cattura</em>: tutti aiutano a raccogliere, pochi a <em>fare il passo dopo</em>. <span class="tag-est">STIMA</span> di categoria, basata su ricerca competitiva precedente (IdeaMotor Competitive Landscape).</p>
+
+  <h3>Mappa competitor (2 assi)</h3>
+  <p class="note">Asse X: <strong>cattura <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> esecuzione</strong> · Asse Y: <strong>mono-tool <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> orchestrazione multi-tool</strong></p>
+  <table>
+    <tr><th>Attore</th><th class="tc">Cattura<svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg>Esec.</th><th class="tc">Mono<svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg>Multi</th><th>Territorio</th></tr>
+    <tr><td>Voice Memos / Otter</td><td class="tc">cattura</td><td class="tc">mono</td><td>Trascrizione pura, nessun passo dopo</td></tr>
+    <tr><td>Milanote / Miro / Mural</td><td class="tc">archivio</td><td class="tc">mono</td><td>Board visive, richiedono lavoro manuale</td></tr>
+    <tr><td>ChatGPT / Claude (diretti)</td><td class="tc">medio</td><td class="tc">mono</td><td>Potenti ma una-casella, nessuna orchestrazione</td></tr>
+    <tr><td>Synthflow / Sparqo</td><td class="tc">medio</td><td class="tc">mono</td><td>Voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>azione ma verticali (agenti/call)</td></tr>
+    <tr><td><strong>Ideary</strong></td><td class="tc"><strong>esecuzione</strong></td><td class="tc"><strong>multi</strong></td><td><strong>White space:</strong> voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow orchestrato multi-tool</td></tr>
+  </table>
+  <p><strong>Spazio vuoto:</strong> l'angolo "esecuzione + multi-tool a partire dalla voce" è sostanzialmente disabitato. È lì che vive Ideary.</p>
+
+  <h3>Insight sul target</h3>
+  <ul class="clean">
+    <li><strong>Bisogno.</strong> Il direttore creativo ha idee più veloci di quanto riesca a strutturarle in un piano operativo; l'attrito è tra "la scintilla" e "il primo passo concreto con i tool giusti". <span class="tag-est">STIMA</span></li>
+    <li><strong>Tensione.</strong> Detesta le dashboard-da-compilare e il context-switch tra dieci strumenti AI; vuole restare nel flusso creativo. <span class="tag-est">STIMA</span></li>
+    <li><strong>Linguaggio.</strong> Parla di "brief", "direzione", "moodboard", "deliverable" — non di "prompt engineering". Il valore va detto nel suo lessico.</li>
+    <li><strong>Barriera.</strong> Diffidenza verso l'ennesimo tool AI e verso chi monetizza i dati; sensibile a privacy e a "gratis con la mia chiave".</li>
+  </ul>
+
+  <h3>SWOT del brand</h3>
+  <table>
+    <tr><th style="width:50%">Forze (interne)</th><th>Debolezze (interne)</th></tr>
+    <tr><td>Categoria propria (voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow); privacy/BYOK; curatela dei prompt; equity visiva (waveform)</td><td>Progetto singolo, risorse limitate; dipendenza dal free tier Gemini; notorietà nulla</td></tr>
+    <tr><th>Opportunità (esterne)</th><th>Minacce (esterne)</th></tr>
+    <tr><td>White space non presidiato; onda "voice-first"; creativi stanchi dei chatbot generalisti</td><td>Big suite che aggiungono la feature; restringimento free tier; omonimo Ideary Works</td></tr>
+  </table>
+
+  <h3>Piste di differenziazione</h3>
+  <table>
+    <tr><th style="width:44mm">Pista</th><th>Perché ora</th><th style="width:36mm">Rischio</th></tr>
+    <tr><td><strong>L'esecutore</strong> (voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow)</td><td>Nessuno presidia l'esecuzione multi-tool: è la promessa più difendibile</td><td>Va spiegata: categoria nuova</td></tr>
+    <tr><td><strong>Il curatore</strong> (prompt opinionati)</td><td>Il valore non è l'AI ma la <em>ricetta</em> giusta; contro il "genericamente AI"</td><td>Richiede mantenere la qualità nel tempo</td></tr>
+    <tr><td><strong>Il privato</strong> (BYOK, on-device)</td><td>Sensibilità privacy alta; "gratis con la tua chiave" è prova, non claim</td><td>Meno leva di monetizzazione</td></tr>
+  </table>
+  <p class="note">Pista guida scelta: <strong>l'esecutore</strong>, sostenuta dal <strong>curatore</strong>. Il "privato" è reason-to-believe, non headline.</p>
+</section>
+
+<section class="block">
+  <h2 class="pt">BP-04 · Piattaforma di marca</h2>
+  <div class="ptmeta">Sezione 2 · nucleo strategico riusabile</div>
+  <div class="rule"></div>
+  <p>Il nucleo che tiene insieme tutte le espressioni del brand: purpose, valori operativi, archetipo, personalità, promise, brand story. Ogni elemento è azionabile e distintivo — non intercambiabile con un competitor.</p>
+
+  <table>
+    <tr><th style="width:34mm">Elemento</th><th>Contenuto</th><th style="width:34mm">Nota d'uso</th></tr>
+    <tr><td><strong>Purpose</strong></td><td>Dare a ogni idea creativa una casa e una rotta: dal momento in cui la dici, al piano che la realizza.</td><td>Bussola, non claim di sito</td></tr>
+    <tr><td><strong>Mission</strong></td><td>Trasformare un'idea detta a voce nel workflow AI più giusto e specifico, con i prompt pronti da usare.</td><td>Cosa facciamo, oggi</td></tr>
+    <tr><td><strong>Vision</strong></td><td>Un mondo dove i creativi restano nel flusso: parlano, e la parte operativa si organizza da sola.</td><td>Dove andiamo</td></tr>
+    <tr><td><strong>Valore 1 · Cura</strong></td><td>Prompt opinionati e testati, non output generici. <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> In pratica: ogni archetipo ha ricette rifinite, non template vuoti.</td><td>Comportamento</td></tr>
+    <tr><td><strong>Valore 2 · Attrito zero</strong></td><td>La voce prima della tastiera. <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> In pratica: dall'idea al workflow in un gesto, mai un modulo da compilare.</td><td>Comportamento</td></tr>
+    <tr><td><strong>Valore 3 · Rispetto</strong></td><td>I tuoi dati restano tuoi. <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> In pratica: BYOK, on-device, nessuna monetizzazione dei contenuti.</td><td>Comportamento</td></tr>
+    <tr><td><strong>Valore 4 · Concretezza</strong></td><td>Consegniamo passi, non ispirazione. <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> In pratica: ogni output è incollabile e finito.</td><td>Comportamento</td></tr>
+    <tr><td><strong>Archetipo</strong></td><td><strong>Creator</strong> (dominante) + <strong>Magician</strong> (secondario): dà forma alle cose e trasforma la voce in piano.</td><td>Guida tono e visual</td></tr>
+    <tr><td><strong>Personalità</strong></td><td>Curato · sicuro · caldo · preciso · lievemente letterario.</td><td>5 tratti, dal dossier verbal</td></tr>
+    <tr><td><strong>Brand promise</strong></td><td>Parla la scintilla: ti diamo la rotta e gli strumenti per realizzarla.</td><td>Una frase, verificabile</td></tr>
+  </table>
+
+  <h3>Brand story</h3>
+  <div class="card">
+    <p style="margin-bottom:0">Ideary nasce da un fastidio quotidiano: le idee migliori arrivano quando meno puoi fermarti a scriverle — sotto la doccia, in metro, tra due riunioni. E quando finalmente ti siedi, la scintilla è già fredda, oppure ti perdi tra dieci strumenti AI cercando "da dove comincio". IdeaMotor era la prima risposta: dì l'idea, ottieni un piano. Ma il nome parlava di macchine, non di creatività. Così è diventato <strong>Ideary</strong> — il luogo dove l'idea prende forma, come una <em>library</em> o una <em>gallery</em>, ma di cose ancora da fare. Premi il microfono, parli; Ideary riconosce che tipo di progetto è, sceglie gli strumenti giusti e ti restituisce un workflow con i prompt già scritti. Gratis, con la tua chiave, sul tuo dispositivo. Non un altro posto dove archiviare idee: il posto dove diventano piani. <em>Where ideas take shape.</em></p>
+  </div>
+  <p class="note">Coerenza verificata: purpose ("casa + rotta") <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> valori (cura, attrito, rispetto, concretezza) <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> promise ("scintilla <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> rotta + strumenti") <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> story. Nessun elemento è un placeholder.</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">03</div>
+  <div class="inner">
+    <div class="label">Sezione tre</div>
+    <h2>Logo &amp;<br>identità visiva</h2>
+    <div class="prompts">
+      <span>BL-01 · 3 direzioni logo</span>
+      <span>BL-02 · audit logo</span>
+      <span>BL-03 · sistema visivo</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BL-01 · Logo e identità — 3 direzioni creative</h2>
+  <div class="ptmeta">Sezione 3 · brand designer &amp; art director</div>
+  <div class="rule"></div>
+  <p>Tre direzioni di logo per Ideary, coerenti con la personalità (curato · sicuro · caldo · preciso · lievemente letterario) e con la palette già in equity. Per ciascuna: stile, tipografia, palette con significato, metafora, i prompt usati per il generatore di immagini, e le <strong>immagini effettivamente generate</strong>. Almeno una direzione sfida il cliché "onda audio" del settore voice-AI.</p>
+
+  <div class="card">
+    <h4 style="margin-top:0">Brief visivo</h4>
+    <p style="margin-bottom:0"><strong>Posizionamento (1 frase):</strong> il layer di esecuzione tra idea detta e produzione. <strong>Personalità:</strong> curato, sicuro, caldo, preciso, letterario. <strong>Riferimenti:</strong> atelier tipografico, strumenti pro audio, editoria colta. <strong>Da evitare:</strong> microfoni ovvi, fumetti "lampadina-idea", gradient arcobaleno AI, glow al neon. <strong>Touchpoint:</strong> PWA/app icon, favicon, sito, social, firma email.</p>
+  </div>
+
+  <!-- DIREZIONE 1 -->
+  <h3><span class="dirlab">Direzione 1</span> · Wordmark puro</h3>
+  <p><strong>Stile:</strong> minimal, geometrico, contemporaneo. Il nome fa tutto il lavoro. <strong>Tipografia:</strong> Syne ExtraBold — grottesca geometrica larga, un po' "art gallery", perfetta per il tono colto-caldo. <strong>Palette:</strong> gradiente periwinkle<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>malva su fondo indigo-carbone. <strong>Significato:</strong> il malva dice creatività e premium senza gridare; l'indigo dà fiducia e profondità; il gradiente suggerisce la trasformazione (voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>forma). <strong>Metafora:</strong> nessuna icona — la parola "Ideary" è già un luogo (come <em>library</em>, <em>gallery</em>).</p>
+  <div class="logo-grid">
+    <div class="logo-card"><img src="logos/dir1_wordmark_dark.png"><div class="cap">Wordmark · fondo scuro (primario)</div></div>
+    <div class="logo-card"><img src="logos/dir1_wordmark_light.png" style="background:#f5f2f8"><div class="cap">Wordmark · fondo chiaro (indigo)</div></div>
+  </div>
+  <div class="card">
+    <h4 style="margin-top:0">Prompt per generatore immagini (usati)</h4>
+    <p><small><strong>Prompt A:</strong> "Minimal flat vector wordmark logo, the word 'Ideary' in a wide geometric contemporary sans-serif similar to Syne, extra-bold, letters filled periwinkle-to-mauve (#8b93d9 <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> #d888ae), deep indigo-charcoal background #14162e, the dot of the 'a' hints a tiny spark, premium and calm, crisp vector, no 3D, no photoreal."</small></p>
+    <p style="margin-bottom:0"><small><strong>Prompt B (negativi):</strong> "…same wordmark, single-weight, high legibility; exclude: microphone icon, lightbulb, rainbow gradient, neon glow, drop shadow, background texture."</small></p>
+  </div>
+
+  <!-- DIREZIONE 2 -->
+  <h3><span class="dirlab">Direzione 2</span> · Wordmark + icona figurativa (consigliata)</h3>
+  <p><strong>Stile:</strong> lockup orizzontale, simbolo + parola. <strong>Simbolo:</strong> la waveform simmetrica che cresce dal centro — già signature dell'app — con la lettura doppia "onda della voce" + "luogo che accoglie" (le barre come una piccola volta/nido, eco del suffisso -ary = luogo). <strong>Tipografia:</strong> Syne Bold. <strong>Palette:</strong> barre da malva al centro a periwinkle/indigo ai bordi. <strong>Significato:</strong> continuità con l'equity visiva accumulata; il centro caldo (la scintilla) che si struttura verso l'esterno.</p>
+  <div class="logo-grid">
+    <div class="logo-card" style="flex:1 1 100%"><img src="logos/dir2_lockup_dark.png"><div class="cap">Lockup orizzontale · waveform + wordmark (direzione consigliata)</div></div>
+  </div>
+  <div class="card">
+    <h4 style="margin-top:0">Prompt per generatore immagini (usati)</h4>
+    <p style="margin-bottom:0"><small><strong>Prompt A:</strong> "Flat vector logo lockup: symmetric audio waveform of rounded vertical bars growing taller from the center outward, the silhouette subtly suggesting a nest/home — a place where a voice takes shape — next to the wordmark 'Ideary' in a Syne-like bold sans; bars mauve #d888ae at center to periwinkle #8b93d9 at edges; deep indigo background #14162e; crisp, premium, no 3D." · <strong>Prompt B (negativi):</strong> "…exclude realistic microphone, equalizer clichés, neon glow, gradient mesh, drop shadow."</small></p>
+  </div>
+
+  <!-- DIREZIONE 3 -->
+  <h3><span class="dirlab">Direzione 3</span> · Marchio astratto (sfida il cliché)</h3>
+  <p><strong>Stile:</strong> simbolo astratto, senza onda audio — la direzione che rompe col cliché del settore. <strong>Concept:</strong> una scintilla detta che prende struttura — un punto centrale (la voce/idea) da cui si dipartono linee ordinate che si assestano in una forma (l'idea che diventa piano). <strong>Tipografia (in lockup):</strong> Syne. <strong>Palette:</strong> malva al cuore, periwinkle/indigo nelle diramazioni. <strong>Significato:</strong> "idea <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> forma" reso senza appoggiarsi all'audio; più concettuale, adatto se in futuro si vuole smarcarsi dalla waveform.</p>
+  <div class="logo-grid">
+    <div class="logo-card"><img src="logos/dir3_mark_dark.png"><div class="cap">Marchio astratto · scintilla <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> struttura (scuro)</div></div>
+    <div class="logo-card"><img src="logos/dir3_mark_light.png" style="background:#f5f2f8"><div class="cap">Marchio astratto · versione chiara</div></div>
+  </div>
+  <div class="card">
+    <h4 style="margin-top:0">Prompt per generatore immagini (usati)</h4>
+    <p style="margin-bottom:0"><small><strong>Prompt A:</strong> "Abstract flat vector logo symbol: a small central spark/dot that unfolds into an ordered geometric structure (lines assembling into a neat shape), 'idea becoming a plan', palette mauve #d888ae + periwinkle #8b93d9 + indigo #303d8b on #14162e, iconic app-icon-ready, no text." · <strong>Prompt B (negativi):</strong> "…exclude waveform, microphone, lightbulb, brain, photorealism, 3D, neon."</small></p>
+  </div>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Test di versatilità</h4>
+    <div class="two">
+      <div>
+        <p style="margin-bottom:1mm"><strong>Monocromatico</strong> — il wordmark e la waveform reggono in una sola tinta (bianco su scuro / indigo su chiaro).</p>
+        <img src="logos/dir1_wordmark_mono.png" style="width:100%;border-radius:6px">
+      </div>
+      <div>
+        <p style="margin-bottom:1mm"><strong>App icon &amp; favicon</strong> — la waveform, ridotta a tile con safe-zone, resta leggibile anche a 16px.</p>
+        <div style="display:flex;gap:4mm;align-items:center">
+          <img src="logos/appicon.png" style="width:34mm;border-radius:10px">
+          <img src="logos/favicon_mono.png" style="width:14mm;border-radius:5px">
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin:3mm 0 0">Prova su fondo chiaro, scuro e fotografico: usare sempre la versione con contrasto adeguato (mono su foto). Direzione raccomandata: <strong>D2 (lockup)</strong> come primario, <strong>D1</strong> come wordmark di servizio, <strong>D3</strong> come esplorazione per un eventuale futuro smarcamento dall'onda.</p>
+  </div>
+  <p class="note">Nota di metodo: le direzioni qui presentate sono state rese come <strong>asset vettoriali (SVG+PNG) prodotti su misura</strong> in palette e tipografia esatte, e salvati nella cartella del progetto (<span class="kv">brand-assets/logos/</span>). In parallelo sono state generate esplorazioni raster con il modello di image-generation, mostrate a parte.</p>
+</section>
+
+<section class="block">
+  <h2 class="pt">BL-02 · Audit del logo esistente</h2>
+  <div class="ptmeta">Sezione 3 · consulente di identità visiva</div>
+  <div class="rule"></div>
+  <p>Oggetto: la waveform simmetrica (malva/indigo/periwinkle su tile scuro) già in uso, valutata rispetto al nuovo nome e posizionamento di Ideary.</p>
+  <div class="two">
+    <div>
+      <h4>5 elementi che funzionano (preservare)</h4>
+      <ul class="clean">
+        <li>Waveform simmetrica distintiva (cresce dal centro): signature riconoscibile.</li>
+        <li>Lega alla voce (onda audio): coerente col voice-first.</li>
+        <li>Palette malva+indigo+periwinkle: premium e ownable.</li>
+        <li>Forma semplice <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> scala bene (favicon <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> app icon).</li>
+        <li>Già coerente su app/icone/PWA: equity accumulata.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>5 elementi da migliorare</h4>
+      <ul class="clean">
+        <li>Serve il wordmark "Ideary" in Syne accanto al simbolo (lockup).</li>
+        <li>Versione monocromatica e su fondo chiaro (oggi pensato per dark).</li>
+        <li>Safe-zone maskable: i trattini esterni rischiano il taglio.</li>
+        <li>Leggibilità del wordmark alle dimensioni minime.</li>
+        <li>Narrazione: l'onda dice "audio"; va sostenuta la storia "voce <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> forma".</li>
+      </ul>
+    </div>
+  </div>
+  <h3>3 direzioni di restyle</h3>
+  <table>
+    <tr><th style="width:34mm">Direzione</th><th>Cosa cambia</th></tr>
+    <tr><td><strong>Soft (consigliata)</strong></td><td>Tieni la waveform, aggiungi il wordmark "Ideary" in Syne; rifinisci safe-zone e versione mono. Rischio minimo, massima continuità. <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> È la <strong>Direzione 2</strong> di BL-01.</td></tr>
+    <tr><td><strong>Media</strong></td><td>La waveform evolve verso un motivo di "nido/casa/crescita" (eco del suffisso -ary = luogo), senza perdere l'onda.</td></tr>
+    <tr><td><strong>Radicale</strong></td><td>Nuovo simbolo attorno a "idea <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> forma" (la scintilla che si struttura). <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> È la <strong>Direzione 3</strong> di BL-01. Solo se si vuole tagliare col passato.</td></tr>
+  </table>
+  <div class="card">
+    <h4 style="margin-top:0">Micro-guida (brand book, 5 bullet)</h4>
+    <ul class="clean" style="margin-bottom:0">
+      <li><strong>Varianti ammesse:</strong> simbolo, lockup orizzontale, mono.</li>
+      <li><strong>Spazio di rispetto:</strong> altezza di un trattino della waveform su ogni lato.</li>
+      <li><strong>Fondi:</strong> scuro (primario), chiaro (mono).</li>
+      <li><strong>Dimensione minima wordmark:</strong> 16px.</li>
+      <li><strong>Errori:</strong> non distorcere l'onda, non ricolorare fuori palette, non affollare la safe-zone.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BL-03 · Sistema visivo &amp; mini brand book</h2>
+  <div class="ptmeta">Sezione 3 · art director</div>
+  <div class="rule"></div>
+  <p>Il sistema visivo essenziale oltre al logo, riassunto in una guideline operativa da una pagina. Ogni scelta è legata alla personalità del brand; l'accessibilità (contrasto) è requisito, non optional.</p>
+
+  <h3>Palette</h3>
+  <table>
+    <tr><th>Colore</th><th>HEX</th><th>Ruolo</th><th>Contrasto / accessibilità</th></tr>
+    <tr><td>Indigo carbone</td><td class="kv">#14162e</td><td>Sfondo primario (dark)</td><td>Base; testo bianco AAA sopra</td></tr>
+    <tr><td>Indigo</td><td class="kv">#303d8b</td><td>Colore istituzionale, titoli su chiaro</td><td>AA su bianco (testo >=16px)</td></tr>
+    <tr><td>Malva</td><td class="kv">#a06fa2</td><td>Accento primario, dettagli</td><td>Usare per accenti, non per testo lungo su bianco</td></tr>
+    <tr><td>Malva chiaro</td><td class="kv">#d888ae</td><td>Accento caldo, highlight, centro onda</td><td>Solo decorativo / testo grande su scuro</td></tr>
+    <tr><td>Periwinkle</td><td class="kv">#8b93d9</td><td>Secondario freddo, bordi onda</td><td>Decorativo; su scuro ok</td></tr>
+    <tr><td>Off-white / grigio</td><td class="kv">#f5f2f8</td><td>Sfondo chiaro, superfici</td><td>Base chiara; testo indigo/ink sopra</td></tr>
+  </table>
+
+  <h3>Tipografia</h3>
+  <table>
+    <tr><th>Ruolo</th><th>Carattere</th><th>Feeling &amp; uso</th></tr>
+    <tr><td><strong>Display</strong></td><td>Syne (700/800)</td><td>Grottesca geometrica larga; titoli, wordmark, numeri. Colto, caldo, distintivo. Uppercase per kicker/label.</td></tr>
+    <tr><td><strong>Testo</strong></td><td>DM Sans (400/500/600)</td><td>Sans neutro, ottima leggibilità a corpo piccolo; body, tabelle, UI.</td></tr>
+    <tr><td><strong>Scala</strong></td><td>—</td><td>Display 34/19pt · H3 12.5pt · body 10pt · nota 8.5pt. Interlinea generosa (1.5) sul corpo.</td></tr>
+  </table>
+
+  <h3>Immagine / iconografia</h3>
+  <p><strong>Stile:</strong> flat, geometrico, poche forme; icone lineari coerenti con lo spessore della waveform. <strong>Trattamento:</strong> tinte piatte dalla palette, niente ombre né glow. <strong>Foto (quando servono):</strong> desaturate verso indigo/malva, mai stock "business handshake". <strong>Da evitare:</strong> microfoni fotografici, lampadine, cervelli, gradient arcobaleno AI.</p>
+
+  <h3>Layout &amp; spazi</h3>
+  <p>Griglia arieggiata, margini ampi, molto respiro attorno al testo (registro "editoriale colto", non "dashboard densa"). Blocchi in card con angoli morbidi (8–10px), bordi tenui malva/linea. Un solo accento caldo per vista: la pagina non deve mai sembrare un arcobaleno.</p>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Mini brand guideline (1 pagina) — 8 regole</h4>
+    <ul class="clean" style="margin-bottom:0">
+      <li>Un solo accento caldo (malva) per vista; l'indigo è la base.</li>
+      <li>Syne solo per display/wordmark; mai per il body.</li>
+      <li>Contrasto AA minimo su ogni testo: malva chiaro e periwinkle sono decorativi.</li>
+      <li>La waveform è sacra: non distorcere, non ricolorare fuori palette.</li>
+      <li>Respiro &gt; densità: preferisci lo spazio bianco al riempimento.</li>
+      <li>Icone lineari coerenti con lo spessore dell'onda.</li>
+      <li>Firma "Ideary — where ideas take shape." + lockup "by rfs-design".</li>
+      <li>Errori da evitare: glow neon, ombre pesanti, stock generico, gradient arcobaleno.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="secdiv">
+  <div class="n">04</div>
+  <div class="inner">
+    <div class="label">Sezione quattro</div>
+    <h2>Verbal identity<br>&amp; tono di voce</h2>
+    <div class="prompts">
+      <span>BV-01 · tono di voce</span>
+      <span>BV-02 · tagline &amp; payoff</span>
+      <span>BV-03 · localizzazione</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BV-01 · Tono di voce — principi, spettro, lessico</h2>
+  <div class="ptmeta">Sezione 4 · verbal identity strategist</div>
+  <div class="rule"></div>
+  <p>Come "suona" Ideary a parole, in modo coerente su tutti i canali. Colma il gap segnalato nel Naming Dossier (la library non aveva un prompt verbal dedicato: qui è pieno). Personalità di riferimento: curato · sicuro · caldo · preciso · lievemente letterario.</p>
+
+  <h3>Principi di voce</h3>
+  <table>
+    <tr><th style="width:30mm">Principio</th><th>Questo sì</th><th>Questo no</th><th>Esempio on-brand</th></tr>
+    <tr><td><strong>Concreto, non ispirazionale</strong></td><td>Verbi del fare, passi, strumenti nominati</td><td>Motivazionale vago, "sblocca il tuo potenziale"</td><td>"Dì l'idea: ti diamo i tre passi e i prompt pronti."</td></tr>
+    <tr><td><strong>Caldo, non tecnico</strong></td><td>Parola umana, ritmo breve</td><td>Gergo AI, sigle, "leverage synergies"</td><td>"Parla, e la parte noiosa si organizza da sola."</td></tr>
+    <tr><td><strong>Sicuro, non hype</strong></td><td>Affermazioni asciutte, prova</td><td>"Rivoluzionario", "10× produttività", superlativi</td><td>"Non archivia le idee. Le mette in produzione."</td></tr>
+    <tr><td><strong>Colto ma leggibile</strong></td><td>Un'immagine letteraria ben piazzata</td><td>Barocco, frasi lunghe, autocompiacimento</td><td>"Ogni idea merita una casa e una rotta."</td></tr>
+  </table>
+
+  <h3>Spettro (assi)</h3>
+  <table>
+    <tr><th>Asse</th><th>Posizione di Ideary</th><th>Perché</th></tr>
+    <tr><td>Formale <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> Informale</td><td>medio-informale (dà del "tu")</td><td>Parla a pari a un creativo, non a un buyer enterprise</td></tr>
+    <tr><td>Serio <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> Ironico</td><td>serio con sorriso</td><td>Sicurezza calda; ironia rara e mai a spese dell'utente</td></tr>
+    <tr><td>Sobrio <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> Espressivo</td><td>sobrio-espressivo</td><td>Poche parole, ma scelte; un'immagine per volta</td></tr>
+    <tr><td>Neutro <svg class="gxs2" viewBox="0 0 32 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="6" x2="27" y2="6"/><polyline points="9,1.8 4,6 9,10.2"/><polyline points="23,1.8 28,6 23,10.2"/></svg> Opinionato</td><td>opinionato</td><td>Il valore è la curatela: Ideary ha una posizione sui tool giusti</td></tr>
+  </table>
+
+  <h3>Lessico</h3>
+  <div class="two">
+    <div><h4>Parole da usare</h4><p><small>scintilla · idea · rotta · casa · forma · piano · workflow · passo · prompt pronto · strumento giusto · dì / parla / spedisci · curato · tuo (dati)</small></p></div>
+    <div><h4>Parole da evitare</h4><p><small>rivoluzionario · disruptive · AI-powered (come claim) · sinergia · sbloccare il potenziale · game-changer · "il futuro di…" · potenziamento · leva</small></p></div>
+  </div>
+  <p><small><strong>Tic/cliché vietati:</strong> emoji a raffica, esclamativi multipli, «razzi», frasi che iniziano con "Immagina di…", claim comparativi diretti sui competitor.</small></p>
+
+  <h3>Microcopy</h3>
+  <table>
+    <tr><th style="width:28mm">Contesto</th><th>Regola</th><th>Esempio</th></tr>
+    <tr><td><strong>CTA</strong></td><td>Verbo + esito, mai "Invia"</td><td>"Parla la tua idea" · "Ottieni il workflow"</td></tr>
+    <tr><td><strong>Errore</strong></td><td>Umano, senza colpa, con via d'uscita</td><td>"Non ho afferrato bene. Riprova a dirlo, con calma."</td></tr>
+    <tr><td><strong>Empty state</strong></td><td>Invito caldo, non vuoto freddo</td><td>"Ancora niente qui. Premi il mic e dì la prima idea."</td></tr>
+    <tr><td><strong>Onboarding</strong></td><td>Rassicura su privacy + un solo gesto</td><td>"La tua chiave resta sul tuo dispositivo. Dicci l'idea, al resto pensiamo noi."</td></tr>
+  </table>
+
+  <h3>Esempi per canale (stessa idea)</h3>
+  <table>
+    <tr><th style="width:26mm">Canale</th><th>Resa</th></tr>
+    <tr><td><strong>Hero sito</strong></td><td>Speak your idea. Get the workflow.</td></tr>
+    <tr><td><strong>Social</strong></td><td>La tua idea migliore è arrivata in metro. Diglielo. Ideary la trasforma in un piano prima che scenda.</td></tr>
+    <tr><td><strong>Email</strong></td><td>Oggetto: "Da idea detta a workflow, in 30 secondi." Corpo asciutto, un caso reale, una CTA.</td></tr>
+    <tr><td><strong>Push</strong></td><td>Nuova idea in testa? Dilla adesso — ci pensa Ideary.</td></tr>
+    <tr><td><strong>Adv breve</strong></td><td>Speak the spark. Ship the plan.</td></tr>
+  </table>
+</section>
+
+<section class="block">
+  <h2 class="pt">BV-02 · Tagline &amp; payoff — generazione, test, selezione</h2>
+  <div class="ptmeta">Sezione 4 · tagline specialist</div>
+  <div class="rule"></div>
+  <p>Genera, testa e seleziona il payoff che accompagna il nome. Beneficio: dall'idea detta al piano eseguibile. Tensione: la scintilla che si spegne / il caos degli strumenti. Vincolo: &lt;7 parole, niente claim comparativi, deve funzionare accanto a "Ideary".</p>
+
+  <h3>15 tagline (mix di registri)</h3>
+  <table>
+    <tr><th style="width:50%">Funzionale / diretto</th><th>Emotivo / evocativo</th></tr>
+    <tr><td>Speak your idea. Get the workflow.</td><td>Where ideas take shape.</td></tr>
+    <tr><td>From voice to workflow.</td><td>Speak the spark. Ship the plan.</td></tr>
+    <tr><td>Say it. Ship it.</td><td>Give every idea a home and a path.</td></tr>
+    <tr><td>Your idea, executed.</td><td>The place ideas become plans.</td></tr>
+    <tr><td>The workflow behind your idea.</td><td>Dì la scintilla.</td></tr>
+    <tr><td>Prompts ready. Idea shipped.</td><td>Ogni idea, una rotta.</td></tr>
+    <tr><td>From spark to steps.</td><td>Parla. Prende forma.</td></tr>
+    <tr><td>Talk. We'll map the tools.</td><td>—</td></tr>
+  </table>
+
+  <h3>Top 5 · scoring e rischi</h3>
+  <table>
+    <tr><th>Tagline</th><th class="tc">Chiar.</th><th class="tc">Distint.</th><th class="tc">Memor.</th><th class="tc">Fit tono</th><th class="tc">Tot</th><th>Rischio</th></tr>
+    <tr><td><strong>Where ideas take shape.</strong></td><td class="tc sc">9</td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">35</td><td>Generico se isolato; brilla accanto a "Ideary"</td></tr>
+    <tr><td><strong>Speak the spark. Ship the plan.</strong></td><td class="tc sc">8</td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">9</td><td class="tc sc">35</td><td>Allitterazione forte; verificare traduzione IT</td></tr>
+    <tr><td>Speak your idea. Get the workflow.</td><td class="tc sc">10</td><td class="tc sc">7</td><td class="tc sc">7</td><td class="tc sc">8</td><td class="tc sc">32</td><td>Chiarissima ma poco "marca", più adv</td></tr>
+    <tr><td>Give every idea a home and a path.</td><td class="tc sc">8</td><td class="tc sc">8</td><td class="tc sc">7</td><td class="tc sc">9</td><td class="tc sc">32</td><td>Bella ma lunga (7 parole)</td></tr>
+    <tr><td>From voice to workflow.</td><td class="tc sc">9</td><td class="tc sc">6</td><td class="tc sc">7</td><td class="tc sc">7</td><td class="tc sc">29</td><td>Descrittiva, poca emozione</td></tr>
+  </table>
+
+  <h3>Varianti IT / EN (top 5)</h3>
+  <table>
+    <tr><th>EN</th><th>IT (transcreata)</th></tr>
+    <tr><td>Where ideas take shape.</td><td>Dove le idee prendono forma.</td></tr>
+    <tr><td>Speak the spark. Ship the plan.</td><td>Dì la scintilla. Spedisci il piano.</td></tr>
+    <tr><td>Speak your idea. Get the workflow.</td><td>Parla la tua idea. Ottieni il workflow.</td></tr>
+    <tr><td>Give every idea a home and a path.</td><td>A ogni idea, una casa e una rotta.</td></tr>
+    <tr><td>From voice to workflow.</td><td>Dalla voce al workflow.</td></tr>
+  </table>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Raccomandazione</h4>
+    <p style="margin-bottom:0"><strong>Payoff principale:</strong> "Where ideas take shape." — istituzionale, sotto il logo, firma. <strong>Riserva 1 (campagna/adv):</strong> "Speak the spark. Ship the plan." — l'umbrella energica. <strong>Riserva 2 (spiegazione/hero):</strong> "Speak your idea. Get the workflow." Letti ad alta voce accanto al nome: "Ideary — where ideas take shape" scorre; "Ideary — speak the spark, ship the plan" ha ritmo. Entrambi tengono.</p>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BV-03 · Localizzazione del tono di voce</h2>
+  <div class="ptmeta">Sezione 4 · transcreator</div>
+  <div class="rule"></div>
+  <p>Portare la voce di Ideary tra IT (origine) e EN (vetrina internazionale), e verso ES/DACH, mantenendo l'identità. Transcreazione, non traduzione: si adatta l'effetto, non le parole.</p>
+
+  <h3>Invarianti vs adattabili</h3>
+  <table>
+    <tr><th style="width:50%">Non cambia mai (invariante)</th><th>Si adatta (per mercato)</th></tr>
+    <tr><td>Personalità (curato/sicuro/caldo/preciso/letterario); i 4 principi; il "tu"; concretezza; no-hype</td><td>Registro fine, riferimenti culturali, grado di ironia, idiomi, lunghezza delle frasi</td></tr>
+  </table>
+
+  <h3>Schede per mercato</h3>
+  <table>
+    <tr><th style="width:22mm">Mercato</th><th>Registro &amp; sensibilità</th><th>Come si sposta la voce</th></tr>
+    <tr><td><strong>IT</strong></td><td>Caldo, un po' letterario, "tu" naturale</td><td>Origine: massima libertà espressiva; l'immagine letteraria è a casa</td></tr>
+    <tr><td><strong>EN (UK/US)</strong></td><td>Più asciutto, verbo-primo, meno aggettivi</td><td>Frasi più corte; l'allitterazione funziona ("spark/ship"); evitare il lirismo IT tradotto</td></tr>
+    <tr><td><strong>ES/LATAM</strong></td><td>Caloroso, "tú", "ideario" è un vantaggio</td><td>Sfruttare la trasparenza latina; attenzione a "diario"; tono cordiale</td></tr>
+    <tr><td><strong>DACH</strong></td><td>Preciso, sobrio, prova concreta apprezzata</td><td>Ridurre il calore lirico; enfatizzare privacy/BYOK e affidabilità</td></tr>
+  </table>
+
+  <h3>Equivalenza lessicale (non letterale)</h3>
+  <table>
+    <tr><th>Concetto</th><th>IT</th><th>EN</th><th>Nota</th></tr>
+    <tr><td>la scintilla</td><td>la scintilla</td><td>the spark</td><td>ok in entrambe; centrale nel brand</td></tr>
+    <tr><td>casa + rotta</td><td>una casa e una rotta</td><td>a home and a path</td><td>tenere la coppia, è la metafora-chiave</td></tr>
+    <tr><td>prompt pronti</td><td>prompt pronti (da incollare)</td><td>ready-to-paste prompts</td><td>concretezza, non "AI magic"</td></tr>
+    <tr><td>spedisci</td><td>spedisci / porta a casa</td><td>ship</td><td>"ship" è idiomatico tech in EN; in IT "spedisci" regge il gioco</td></tr>
+  </table>
+
+  <h3>Esempi comparativi (stessa frase-brand)</h3>
+  <table>
+    <tr><th>IT</th><th>EN</th></tr>
+    <tr><td>Dì la scintilla. Spedisci il piano.</td><td>Speak the spark. Ship the plan.</td></tr>
+    <tr><td>Non archivia le tue idee: le mette in produzione.</td><td>It doesn't file your ideas away. It puts them into production.</td></tr>
+  </table>
+  <div class="two">
+    <div><h4>Do</h4><ul class="clean"><li>Adatta l'effetto, misura il calore sul mercato.</li><li>Verifica falsi amici ("ideario/diario").</li></ul></div>
+    <div><h4>Don't</h4><ul class="clean"><li>Non tradurre il lirismo IT parola-per-parola in EN.</li><li>Non perdere mai concretezza e no-hype.</li></ul></div>
+  </div>
+</section>
+
+<section class="secdiv">
+  <div class="n">05</div>
+  <div class="inner">
+    <div class="label">Sezione cinque</div>
+    <h2>Messaging</h2>
+    <div class="prompts">
+      <span>BM-01 · messaging house</span>
+      <span>BM-02 · narrative system</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BM-01 · Messaging house — value prop, pilastri, proof</h2>
+  <div class="ptmeta">Sezione 5 · messaging architect</div>
+  <div class="rule"></div>
+  <p>La casa di messaggi che trasforma posizionamento e benefici in argomenti coerenti e riutilizzabili. Ogni pilastro poggia su un <em>proof point reale</em>, mai su un claim nudo; si parte dai bisogni del target, non dal catalogo feature.</p>
+
+  <div class="house">
+    <div class="roof">Value proposition — Ideary trasforma un'idea detta in un workflow AI eseguibile, con gli strumenti giusti e i prompt pronti: dalla scintilla al piano, in un gesto.</div>
+    <div class="pil">
+      <div>
+        <h5>1 · Voice-first, attrito zero</h5>
+        <p><small>Parli, non compili. L'idea entra come voce, esce come piano.</small></p>
+        <p><small><strong>Proof:</strong> input vocale nativo; nessun form; dall'idea al workflow in un tocco.</small></p>
+      </div>
+      <div>
+        <h5>2 · Orchestrazione multi-tool</h5>
+        <p><small>Non un chatbot solo: gli strumenti AI giusti per ogni passo.</small></p>
+        <p><small><strong>Proof:</strong> riconosce l'archetipo di progetto e monta un flusso su Perplexity, Claude, Midjourney… con prompt densi già scritti.</small></p>
+      </div>
+      <div>
+        <h5>3 · Tuo e privato</h5>
+        <p><small>Gira sulla tua chiave, resta sul tuo dispositivo.</small></p>
+        <p><small><strong>Proof:</strong> BYOK (Gemini free tier) <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> di fatto gratis; dati in locale (IndexedDB), nessuna monetizzazione dei contenuti.</small></p>
+      </div>
+    </div>
+    <div class="base"><strong>Base di prove:</strong> categoria propria (voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow) · curatela dei prompt per archetipo · privacy by design · equity visiva (waveform) · zero costo per-utente</div>
+  </div>
+
+  <h3>Gestione obiezioni (reframe, non difesa)</h3>
+  <table>
+    <tr><th style="width:44mm">Obiezione</th><th>Risposta di messaggio</th></tr>
+    <tr><td>"È l'ennesimo tool AI."</td><td>Non è un modello in più: è ciò che decide <em>quali</em> usare e <em>come</em>, con i prompt pronti. Orchestrazione, non un'altra casella.</td></tr>
+    <tr><td>"Posso già farlo con ChatGPT."</td><td>Puoi — se sai già il flusso e scrivi tu ogni prompt. Ideary ti dà il flusso giusto in 30 secondi, a voce.</td></tr>
+    <tr><td>"Non voglio dare i miei dati."</td><td>Non li prendiamo. La chiave è tua, i progetti restano sul tuo dispositivo.</td></tr>
+    <tr><td>"Perché dovrei pagarlo?"</td><td>Non paghi l'uso (è gratis con la tua chiave). Un piccolo sostegno tiene viva la curatela.</td></tr>
+  </table>
+
+  <h3>Ladder (1 riga / 3 righe / paragrafo)</h3>
+  <div class="card">
+    <p><strong>1 riga:</strong> Dì l'idea, ottieni il workflow AI pronto.</p>
+    <p><strong>3 righe:</strong> Ideary è lo strumento voice-first per direttori creativi. Premi il mic e dici l'idea: riconosce il tipo di progetto, sceglie i tool AI giusti e ti dà un workflow passo-passo con i prompt già scritti. Gratis con la tua chiave, privato sul tuo dispositivo.</p>
+    <p style="margin-bottom:0"><strong>Paragrafo (elevator):</strong> Le idee migliori arrivano quando non puoi fermarti a strutturarle. Ideary le raccoglie a voce e le trasforma subito in un piano operativo: capisce che tipo di progetto è, orchestra gli strumenti AI adatti — Perplexity, Claude, Midjourney — e ti consegna un workflow con prompt densi e pronti da incollare. Non un archivio di idee: il posto dove diventano piani. E poiché gira sulla tua chiave e resta sul tuo dispositivo, è di fatto gratis e privato.</p>
+  </div>
+
+  <h3>Pilastri × canali</h3>
+  <table>
+    <tr><th>Canale</th><th>Pilastro primario</th><th>Taglio</th></tr>
+    <tr><td>Sito (hero)</td><td>Voice-first</td><td>Beneficio immediato + demo</td></tr>
+    <tr><td>Sales / email</td><td>Orchestrazione</td><td>Caso reale, dimostrazione</td></tr>
+    <tr><td>Social</td><td>Voice-first + curatela</td><td>Momenti "idea in metro"</td></tr>
+    <tr><td>Adv</td><td>Voice-first</td><td>Payoff + "free with your key"</td></tr>
+    <tr><td>Community / privacy-aware</td><td>Tuo e privato</td><td>BYOK, on-device</td></tr>
+  </table>
+</section>
+
+<section class="block">
+  <h2 class="pt">BM-02 · Narrative system — matrice messaggi</h2>
+  <div class="ptmeta">Sezione 5 · messaging strategist</div>
+  <div class="rule"></div>
+  <p>La messaging house diventa una matrice operativa: audience × canale × obiettivo <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> key message + proof + formato. Distingue i <em>must-carry</em> (invarianti) dai <em>flex</em> (contestuali).</p>
+
+  <h3>Matrice (combinazioni rilevanti)</h3>
+  <table>
+    <tr><th style="width:26mm">Audience</th><th>Canale</th><th>Obiettivo</th><th>Key message</th><th>Formato</th></tr>
+    <tr><td><strong>Direttore creativo</strong></td><td>Sito</td><td>Awareness</td><td>Speak your idea. Get the workflow.</td><td>Hero + demo 20s</td></tr>
+    <tr><td>Direttore creativo</td><td>Social</td><td>Considerazione</td><td>La tua idea migliore è arrivata in metro — dilla.</td><td>Reel / carosello</td></tr>
+    <tr><td><strong>Piccolo studio</strong></td><td>Email</td><td>Conversione</td><td>Da idea detta a workflow, sul vostro prossimo brief.</td><td>Email + caso reale</td></tr>
+    <tr><td>Piccolo studio</td><td>Sito/pricing</td><td>Conversione</td><td>Gratis con la vostra chiave. Un sostegno, non un abbonamento.</td><td>Pagina prodotto + CTA €5</td></tr>
+    <tr><td><strong>Creativo privacy-aware</strong></td><td>Community</td><td>Retention/trust</td><td>La tua chiave, il tuo device, i tuoi progetti.</td><td>Post tecnico / FAQ</td></tr>
+    <tr><td>Early adopter</td><td>Product Hunt</td><td>Awareness</td><td>Voice <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> AI workflow, multi-tool, BYOK.</td><td>Launch post + GIF</td></tr>
+  </table>
+
+  <h3>Must-carry vs flex</h3>
+  <table>
+    <tr><th style="width:50%">Must-carry (sempre)</th><th>Flex (contestuale)</th></tr>
+    <tr><td>Voice-first · orchestrazione multi-tool · prompt pronti · gratis con la tua chiave / privato · "where ideas take shape"</td><td>Il caso d'uso specifico · l'archetipo mostrato · la leva emotiva ("idea in metro") · il canale-formato · l'accento IT vs EN</td></tr>
+  </table>
+
+  <h3>Esempi multi-canale (stesso messaggio, formati diversi)</h3>
+  <table>
+    <tr><th style="width:26mm">Formato</th><th>Resa di "voce <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> workflow"</th></tr>
+    <tr><td><strong>Hero</strong></td><td>Speak your idea. Get the workflow. <small>(+ pulsante mic animato)</small></td></tr>
+    <tr><td><strong>Social</strong></td><td>3 secondi per dirla, 30 per averla in piano. <small>(reel)</small></td></tr>
+    <tr><td><strong>Email</strong></td><td>Oggetto: "La tua idea, già in workflow." Corpo: flusso voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>archetipo<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>prompt su un caso loro.</td></tr>
+    <tr><td><strong>Adv</strong></td><td>Speak the spark. Ship the plan. — free with your own key.</td></tr>
+  </table>
+  <p class="note"><strong>Regole di coerenza:</strong> ogni messaggio porta almeno un must-carry e un proof; il formato si adatta al canale (mai copincolla); un solo call-to-action per pezzo.</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">06</div>
+  <div class="inner">
+    <div class="label">Sezione sei</div>
+    <h2>Brand<br>experience</h2>
+    <div class="prompts"><span>BX-01 · driver &amp; signature moments</span></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">BX-01 · Brand experience — driver e touchpoint</h2>
+  <div class="ptmeta">Sezione 6 · service design lead</div>
+  <div class="rule"></div>
+  <p>Come Ideary <em>si comporta e si sente</em> lungo il journey. L'esperienza deve incarnare i valori (attrito zero, cura, rispetto, concretezza), non solo comunicarli. Priorità ai momenti ad alto impatto.</p>
+
+  <h3>Driver esperienziali</h3>
+  <table>
+    <tr><th style="width:38mm">Driver</th><th>Cosa rende riconoscibile l'esperienza</th></tr>
+    <tr><td><strong>Un gesto, non un modulo</strong></td><td>Ogni interazione parte dalla voce; la tastiera è l'eccezione, non la regola.</td></tr>
+    <tr><td><strong>Consegna, non suggerimenti</strong></td><td>L'utente riceve passi finiti e prompt incollabili, non "ispirazione".</td></tr>
+    <tr><td><strong>Rispetto silenzioso</strong></td><td>Privacy visibile ma non ansiogena: rassicura una volta, poi sparisce.</td></tr>
+    <tr><td><strong>Calore curato</strong></td><td>Microcopy caldo, ritmo breve, un'immagine per volta; mai freddo né hype.</td></tr>
+  </table>
+
+  <h3>Griglia journey × touchpoint</h3>
+  <table>
+    <tr><th style="width:26mm">Touchpoint</th><th>Obiettivo</th><th>Principi / tono</th><th>Messaggio chiave</th></tr>
+    <tr><td><strong>Primo avvio</strong></td><td>Capire in 10s + dare la chiave</td><td>Caldo, rassicurante, un gesto</td><td>"La tua chiave resta con te. Dicci l'idea."</td></tr>
+    <tr><td><strong>Cattura vocale</strong></td><td>Ridurre l'attrito a zero</td><td>Immediato, silenzioso, reattivo</td><td>Pulsante mic vivo; feedback d'onda</td></tr>
+    <tr><td><strong>Riconoscimento archetipo</strong></td><td>Dare fiducia sulla comprensione</td><td>Sicuro, trasparente</td><td>"Ho capito: è un progetto di [tipo]."</td></tr>
+    <tr><td><strong>Workflow consegnato</strong></td><td>Far percepire il valore</td><td>Concreto, ordinato</td><td>Passi numerati + prompt pronti da copiare</td></tr>
+    <tr><td><strong>Ritorno / storico</strong></td><td>Continuità e apprendimento</td><td>Familiare, curato</td><td>"Bentornato. Riprendiamo da dove eri."</td></tr>
+    <tr><td><strong>Sostegno (€5)</strong></td><td>Chiedere senza pressione</td><td>Onesto, leggero</td><td>"Se ti è utile, un caffè tiene viva la cura."</td></tr>
+  </table>
+
+  <h3>Signature moments</h3>
+  <ul class="clean">
+    <li><strong>Lo Spark.</strong> L'istante in cui premi il mic e l'onda prende vita: il gesto-firma del brand. Progettarlo come momento tattile e sonoro (micro-animazione della waveform).</li>
+    <li><strong>Il "l'ho capito".</strong> Il momento in cui Ideary nomina l'archetipo del progetto: piccola magia di comprensione <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> costruisce fiducia.</li>
+    <li><strong>Il primo copia-incolla.</strong> Quando l'utente incolla il primo prompt pronto e funziona: è la prova del valore, va reso fluido e soddisfacente.</li>
+  </ul>
+
+  <div class="two">
+    <div><h4>Do</h4><ul class="clean"><li>Aprire sempre con la voce.</li><li>Confermare la comprensione prima di consegnare.</li><li>Rendere ogni output copiabile in un tap.</li></ul></div>
+    <div><h4>Don't</h4><ul class="clean"><li>Non chiedere dati non necessari.</li><li>Non riempire di opzioni la prima schermata.</li><li>Non interrompere il flusso con upsell.</li></ul></div>
+  </div>
+  <p class="note"><strong>Metriche suggerite:</strong> time-to-first-workflow (obiettivo &lt;30s) · tasso di copia dei prompt · progetti ripresi (ritorno) · rating "centrato/eccellente" per archetipo · % onboarding completati con chiave.</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">07</div>
+  <div class="inner">
+    <div class="label">Sezione sette</div>
+    <h2>Launch /<br>go-to-market</h2>
+    <div class="prompts"><span>GL-01 · brand launch toolkit</span></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">GL-01 · Brand launch toolkit</h2>
+  <div class="ptmeta">Sezione 7 · go-to-market lead</div>
+  <div class="rule"></div>
+  <p>Il piano per lanciare il rebrand Ideary (da IdeaMotor) e la pagina prodotto. Si parte dagli obiettivi, non dagli asset; must-have separati da nice-to-have per proteggere la data.</p>
+
+  <h3>Obiettivi &amp; KPI</h3>
+  <table>
+    <tr><th>Obiettivo</th><th>KPI</th></tr>
+    <tr><td>Far conoscere Ideary come categoria nuova</td><td>Visite pagina prodotto; menzioni; iscritti/attivazioni</td></tr>
+    <tr><td>Attivare i primi utenti reali (con chiave)</td><td>% onboarding completati; time-to-first-workflow</td></tr>
+    <tr><td>Validare la disponibilità al sostegno</td><td>N. sostegni €5; tasso su utenti attivi</td></tr>
+  </table>
+
+  <h3>Story arc</h3>
+  <table>
+    <tr><th style="width:26mm">Fase</th><th>Idea narrativa</th></tr>
+    <tr><td><strong>Teasing</strong></td><td>"IdeaMotor sta diventando qualcosa." Anticipa il nome e l'onda: dì la scintilla…</td></tr>
+    <tr><td><strong>Reveal</strong></td><td>Ideary — where ideas take shape. Il nuovo nome, il perché, la demo voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow.</td></tr>
+    <tr><td><strong>Proof</strong></td><td>Casi reali per archetipo; "guarda un brief diventare workflow in 30s".</td></tr>
+    <tr><td><strong>Sustain</strong></td><td>Serie "idea della settimana"; ricette-prompt; testimonianze; note di privacy.</td></tr>
+  </table>
+
+  <h3>Fasi × canali</h3>
+  <table>
+    <tr><th>Fase</th><th>Canale</th><th>Asset</th><th>Messaggio</th></tr>
+    <tr><td>Teasing</td><td>Social, mailing</td><td>Teaser onda animata</td><td>Sta prendendo forma.</td></tr>
+    <tr><td>Reveal</td><td>Pagina prodotto, Product Hunt, social</td><td>Landing, GIF demo, post launch</td><td>Ideary — speak the spark, ship the plan.</td></tr>
+    <tr><td>Proof</td><td>Blog/note, email</td><td>Casi per archetipo, video 30s</td><td>Dal brief al workflow, davvero.</td></tr>
+    <tr><td>Sustain</td><td>Social, newsletter</td><td>Serie ricette-prompt</td><td>Una scintilla alla settimana.</td></tr>
+  </table>
+
+  <div class="two">
+    <div>
+      <h4>Asset must-have</h4>
+      <ul class="clean">
+        <li>Pagina prodotto (racconto + come funziona + CTA sostegno).</li>
+        <li>Rebrand delle ~15–20 stringhe user-facing.</li>
+        <li>Logo lockup + app icon + favicon (varianti mono).</li>
+        <li>Demo GIF/video voce<svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg>workflow (30s).</li>
+        <li>Payoff e messaggi hero definitivi.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nice-to-have</h4>
+      <ul class="clean">
+        <li>Post Product Hunt curato.</li>
+        <li>Serie social "idea della settimana".</li>
+        <li>Casi per ciascun archetipo.</li>
+        <li>Pagina FAQ privacy/BYOK.</li>
+        <li>Shortcut iOS per action button.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Timeline sintetica &amp; readiness</h3>
+  <table>
+    <tr><th style="width:30mm">Quando</th><th>Cosa</th></tr>
+    <tr><td><strong>Pre (settimana −2/−1)</strong></td><td>Domini registrati; ricerca marchi 9/42 avviata; rebrand stringhe pronto in staging; logo/asset finalizzati; teaser online.</td></tr>
+    <tr><td><strong>Reveal (giorno 0)</strong></td><td>Deploy rebrand (bump cache); pagina prodotto live; post reveal + demo; CTA sostegno attiva.</td></tr>
+    <tr><td><strong>Post (settimana +1/+4)</strong></td><td>Proof e sustain; raccolta feedback/rating; iterazione copy.</td></tr>
+  </table>
+  <p class="note"><strong>Checklist readiness pre-lancio:</strong> <span class="gx-box"></span> domini live <span class="gx-box"></span> marchi verificati (occhio a Ideary Works) <span class="gx-box"></span> stringhe rebrandate senza toccare DB/SALT/URL <span class="gx-box"></span> cache bumpata <span class="gx-box"></span> logo mono+favicon ok <span class="gx-box"></span> payoff bloccato <span class="gx-box"></span> link sostegno testato <span class="gx-box"></span> demo registrata.</p>
+</section>
+
+<section class="secdiv">
+  <div class="n">08</div>
+  <div class="inner">
+    <div class="label">Sezione otto</div>
+    <h2>Governance</h2>
+    <div class="prompts"><span>GV-01 · brand book, RACI, guardrail</span></div>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">GV-01 · Brand governance</h2>
+  <div class="ptmeta">Sezione 8 · brand ops lead</div>
+  <div class="rule"></div>
+  <p>Come Ideary resta coerente nel tempo. In un progetto singolo, la governance è leggera ma reale: pochi guardrail forti, documentazione trovabile, un processo minimo. Pochi guardrail rispettati valgono più di mille regole ignorate.</p>
+
+  <h3>Brand book modulare (indice)</h3>
+  <table>
+    <tr><th style="width:34mm">Modulo</th><th>Contenuto · fonte in questo dossier</th></tr>
+    <tr><td><strong>00 · Fondamenta</strong></td><td>Nome, naming architecture, piattaforma di marca <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 1, 2</td></tr>
+    <tr><td><strong>01 · Logo</strong></td><td>Lockup, varianti, safe-zone, misuse <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 3 (BL-01/02)</td></tr>
+    <tr><td><strong>02 · Visual</strong></td><td>Palette, tipografia, iconografia, layout <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 3 (BL-03)</td></tr>
+    <tr><td><strong>03 · Verbal</strong></td><td>Tono, lessico, microcopy, tagline, localizzazione <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 4</td></tr>
+    <tr><td><strong>04 · Messaging</strong></td><td>Messaging house, narrative system <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 5</td></tr>
+    <tr><td><strong>05 · Experience</strong></td><td>Driver, signature moments, do/don't <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> Sez. 6</td></tr>
+  </table>
+
+  <h3>RACI leggero</h3>
+  <table>
+    <tr><th>Attività</th><th class="tc">Decide (A)</th><th class="tc">Esegue (R)</th><th class="tc">Consultato (C)</th></tr>
+    <tr><td>Identità, payoff, palette</td><td class="tc">Riccardo</td><td class="tc">Riccardo</td><td class="tc">questo dossier</td></tr>
+    <tr><td>Copy user-facing</td><td class="tc">Riccardo</td><td class="tc">Riccardo / AI</td><td class="tc">guardrail verbal</td></tr>
+    <tr><td>Asset visivi / social</td><td class="tc">Riccardo</td><td class="tc">Riccardo / freelance</td><td class="tc">brand book</td></tr>
+    <tr><td>Modifiche tecniche user-facing</td><td class="tc">Riccardo</td><td class="tc">Riccardo</td><td class="tc">DECISIONS.md</td></tr>
+  </table>
+
+  <h3>Guardrail (non negoziabili)</h3>
+  <table>
+    <tr><th style="width:24mm">Ambito</th><th>Regola</th></tr>
+    <tr><td><strong>Visual</strong></td><td>Palette esatta (malva/indigo/periwinkle); Syne solo display; waveform mai distorta; un accento caldo per vista.</td></tr>
+    <tr><td><strong>Verbal</strong></td><td>No hype ("rivoluzionario", "AI-powered" come claim); "tu"; concretezza; payoff bloccato.</td></tr>
+    <tr><td><strong>Messaging</strong></td><td>Ogni claim ha un proof; "gratis con la tua chiave / privato" sempre onesto; niente claim comparativi.</td></tr>
+    <tr><td><strong>Tecnico</strong></td><td>"Ideary" è etichetta di brand: mai rinominare DB <span class="kv">ideamotor-db</span>, SALT, repo, URL.</td></tr>
+  </table>
+
+  <h3>Processi</h3>
+  <ul class="clean">
+    <li><strong>Onboarding creator/freelance:</strong> consegna brand book (questo dossier) + palette/font + logo pack; 1 esempio on-brand e 1 off-brand.</li>
+    <li><strong>Approval:</strong> self-check con la checklist sotto <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> ok Riccardo per pezzi pubblici.</li>
+    <li><strong>Audit periodico:</strong> ogni trimestre, verifica coerenza sito/social/app vs guardrail; aggiorna DECISIONS.md.</li>
+  </ul>
+
+  <div class="card accent">
+    <h4 style="margin-top:0">Checklist per creator (self-check prima di pubblicare)</h4>
+    <ul class="clean" style="margin-bottom:0">
+      <li><span class="gx-box"></span> Palette e Syne corretti? Un solo accento caldo?</li>
+      <li><span class="gx-box"></span> Logo/lockup nella variante giusta, safe-zone rispettata?</li>
+      <li><span class="gx-box"></span> Tono: niente hype, "tu", concreto? Payoff corretto?</li>
+      <li><span class="gx-box"></span> Ogni claim ha un proof? Privacy detta onestamente?</li>
+      <li><span class="gx-box"></span> Nessun nome tecnico esposto (ideamotor-db)?</li>
+      <li><span class="gx-box"></span> Una sola CTA chiara?</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <h2 class="pt">Chiusura &amp; metodo</h2>
+  <div class="ptmeta">nota finale</div>
+  <div class="rule"></div>
+  <p>Questo dossier ha eseguito in pipeline concatenata tutti e diciotto i prompt della branding library applicati a <strong>Ideary</strong>: dal naming (BN-01 <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> BN-03) alla strategia (BP-01 <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> BP-04), dal logo e sistema visivo (BL-01 <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> BL-03, con le direzioni di logo generate e salvate in <span class="kv">brand-assets/logos/</span>) alla verbal identity (BV-01 <svg class="gxs" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="1.5" y1="6" x2="22" y2="6"/><polyline points="17,1.8 23,6 17,10.2"/></svg> BV-03), dal messaging (BM-01, BM-02) fino a experience, lancio e governance (BX-01, GL-01, GV-01). Ogni sezione ha usato come input gli output delle precedenti e il <em>Naming Decision Dossier</em> esistente.</p>
+  <p>I prossimi passi operativi restano quelli della checklist di chiusura del naming: registrare i domini, completare la ricerca marchi formale nelle classi 9/42 (attenzione a <em>Ideary Works</em>), applicare il rebrand alle stringhe user-facing senza toccare DB/SALT/URL, finalizzare il logo lockup con la versione mono, e aggiornare <span class="kv">DECISIONS.md</span>.</p>
+  <p class="note">Metodo: project branding-prompt-library (18 prompt, 8 sezioni). Etichette-evidenza <span class="tag-fact">FATTO</span>/<span class="tag-est">STIMA</span> dal metodo brand-intelligence. Le valutazioni di rischio sono qualitative; la clearance marchi definitiva richiede registro ufficiale o consulente. Loghi in-documento resi come asset vettoriali su misura; esplorazioni raster generate a parte con modello di image-generation.</p>
+</section>
+
+</body>
+</html>

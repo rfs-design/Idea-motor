@@ -70,6 +70,73 @@
 
 ***
 
+### 1.1b Prompt “gate di verifica” (dominio, marchio, clash)
+
+**Titolo voce libreria:** `BN-01b · Naming gate – dominio, marchio, clash di brand e SEO`
+**Use case:** hai una shortlist e vuoi scartare i nomi non difendibili **prima** di affezionarti o depositare. Ponte tra la generazione (BN-01) e il raffinamento (BN-02).
+
+**Prompt IT**
+
+> Agisci come **consulente di naming e brand due-diligence**.
+> Ti fornisco una shortlist di nomi già generati e il contesto del brand. Fai un **pre-check di disponibilità e rischio** (non è consulenza legale).
+>
+> **Input**
+> - Nomi da verificare: [lista_nomi]
+> - Settore / prodotto: [settore_prodotto]
+> - Mercati / lingue: [mercati]
+> - Classi di Nizza rilevanti: [classi] (default software/app: 9 e 42; adiacenti 35, 41)
+> - “Vicini” da cui stare lontani (brand grandi o adiacenti): [competitor_da_evitare]
+> - TLD di interesse: [tld] (default: .com, .app, .io, .studio)
+>
+> **Cosa devi fare — per OGNI nome**
+> 1. **Dominio**: stato dei TLD di interesse (attivo con sito / parcheggiato / in vendita con prezzo / apparentemente libero) e alternative (get___, ___app, ___hq).
+> 2. **Marchio**: cerca anteriorità in EUIPO eSearch plus, TMview, UIBM e USPTO nelle classi indicate; segnala marchi identici o simili con titolare, classi e stato.
+> 3. **Clash di prodotto/brand**: aziende o prodotti esistenti con lo stesso nome o radice, con priorità agli **adiacenti** (stesso settore) e ai marchi noti (rischio reputazione/diluizione, art. 8(5) EUTMR).
+> 4. **SEO / mindshare**: chi domina la SERP per il termine (quanto sarà difficile esistere sui propri termini).
+> 5. **Punteggio semaforo** (verde/giallo/rosso) su Marchio, Prodotti, Dominio, SEO e un **rischio complessivo pesato**.
+>
+> **Output**
+> 1. Una **tabella di sintesi** (Nome · Marchio · Prodotti · Dominio · SEO · Rischio · Verdetto), ordinata dal rischio più basso al più alto.
+> 2. Una **scheda breve** per ogni nome con le evidenze principali e le fonti (URL).
+> 3. Distingui SEMPRE **[fatto]** (verificato da registro/fonte primaria) da **[stima]** (giudizio su ricerca pubblica).
+>
+> **Regole**
+> - Non dichiarare un nome “libero” senza aver controllato marchio + dominio + clash.
+> - Dichiara i limiti del metodo: la ricerca marchi pubblica **non** sostituisce un parere legale; RDAP/whois vanno confermati al registrar.
+> - Se mancano input critici (classi, mercati), chiedi **prima** i chiarimenti indispensabili, poi procedi.
+
+**Prompt EN**
+
+> Act as a **naming and brand due-diligence consultant**.
+> I will give you a shortlist of already-generated names plus brand context. Run an **availability and risk pre-check** (this is not legal advice).
+>
+> **Input**
+> - Names to check: [name_list]
+> - Industry / product: [industry_product]
+> - Markets / languages: [markets]
+> - Relevant Nice classes: [classes] (default for software/apps: 9 and 42; adjacent 35, 41)
+> - “Neighbours” to stay away from (large or adjacent brands): [competitors_to_avoid]
+> - TLDs of interest: [tld] (default: .com, .app, .io, .studio)
+>
+> **For EACH name**
+> 1. **Domain**: status of the TLDs (live site / parked / for sale with price / apparently free) and alternatives (get___, ___app, ___hq).
+> 2. **Trademark**: search prior marks in EUIPO eSearch plus, TMview, UIBM and USPTO in the given classes; flag identical or similar marks with owner, classes and status.
+> 3. **Product/brand clash**: existing companies or products with the same name or root, prioritising **adjacent** ones (same field) and well-known marks (reputation/dilution risk).
+> 4. **SEO / mindshare**: who dominates the SERP for the term (how hard it will be to rank on your own name).
+> 5. **Traffic-light score** (green/amber/red) on Trademark, Products, Domain, SEO, plus a **weighted overall risk**.
+>
+> **Output**
+> 1. A **summary table** (Name · Trademark · Products · Domain · SEO · Risk · Verdict), sorted from lowest to highest risk.
+> 2. A **short card** per name with key evidence and sources (URLs).
+> 3. ALWAYS distinguish **[fact]** (verified via register/primary source) from **[estimate]** (judgement on public research).
+>
+> **Rules**
+> - Never call a name “free” without checking trademark + domain + clash.
+> - State the method’s limits: public trademark search does **not** replace a legal opinion; RDAP/whois must be confirmed with the registrar.
+> - If critical inputs are missing (classes, markets), ask the essential clarifying questions **first**, then proceed.
+
+***
+
 ### 1.2 Prompt “refiner” per shortlist di nomi
 
 **Titolo voce libreria:** `BN-02 · Naming – valutazione e raffinamento shortlist`  
@@ -111,7 +178,74 @@
 
 ***
 
-## 2. Sezione – Posizionamento di brand
+### 1.3 Prompt “naming architecture”
+
+**Titolo voce libreria:** `BN-03 · Naming architecture – gerarchia brand, prodotti, feature e legacy`
+**Use case:** hai (o stai per avere) un nome madre e devi decidere come si relazionano prodotti, feature, sotto-brand ed eventuali nomi/asset preesistenti.
+
+**Prompt IT**
+
+> Agisci come **naming strategist e brand architect**.
+> Devi definire l’**architettura di naming** di un brand: relazione tra nome madre, prodotti, feature ed eventuali sotto-brand, e convivenza con nomi/asset preesistenti.
+>
+> **Input**
+> - Nome madre (master brand): [master_brand]
+> - Prodotti/servizi attuali e previsti: [lista_prodotti]
+> - Feature/moduli da nominare: [lista_feature]
+> - Nomi/asset legacy da preservare o migrare: [legacy] (repo, DB, URL, prodotti storici)
+> - Mercati/lingue: [mercati]
+> - Endorsement desiderato: [monolitico / endorsed / house of brands]
+>
+> **Cosa devi fare**
+> 1. Raccomanda il **modello di architettura** più adatto (monolitico / endorsed / house of brands), motivandolo rispetto a risorse, ambizione e coerenza.
+> 2. Disegna la **gerarchia** master brand → linee/prodotti → feature, con il criterio di naming per ogni livello (quando descrittivo, quando evocativo, quando coniare, quando restare funzionali).
+> 3. Definisci le **regole di convivenza col legacy**: cosa si rinomina user-facing, cosa resta invariato per motivi tecnici, come gestire la transizione.
+> 4. Proponi una **convenzione dei nomi** riutilizzabile (pattern, do/don’t, esempi coerenti e nomi da evitare).
+> 5. Indica la **strategia dominio/social** coerente (dominio principale, redirect, handle).
+>
+> **Regole**
+> - Meno sotto-brand possibile: ogni nuovo nome deve guadagnarsi il diritto di esistere.
+> - Le feature di norma restano funzionali, non diventano mini-brand, salvo chiaro valore.
+> - Coerenza cross-lingua e non-ambiguità prima dell’originalità.
+>
+> **Formato output**
+> - Uno **schema gerarchico** (albero o tabella per livelli).
+> - Una **tabella** “elemento · tipo di nome · regola · esempio”.
+> - Un paragrafo “**convivenza col legacy**” e uno “**dominio/social**”.
+
+**Prompt EN**
+
+> Act as a **naming strategist and brand architect**.
+> Define the **naming architecture** of a brand: how the master brand, products, features and any sub-brands relate, and how it coexists with pre-existing names/assets.
+>
+> **Input**
+> - Master brand: [master_brand]
+> - Current and planned products/services: [product_list]
+> - Features/modules to name: [feature_list]
+> - Legacy names/assets to preserve or migrate: [legacy] (repo, DB, URLs, legacy products)
+> - Markets/languages: [markets]
+> - Desired endorsement: [monolithic / endorsed / house of brands]
+>
+> **Your tasks**
+> 1. Recommend the best **architecture model** (monolithic / endorsed / house of brands) and justify it against resources, ambition and coherence.
+> 2. Draw the **hierarchy** master brand → lines/products → features, with the naming rule for each level (descriptive vs evocative, when to coin, when to stay functional).
+> 3. Define **legacy coexistence rules**: what gets renamed user-facing, what stays fixed for technical reasons, how to handle the transition.
+> 4. Propose a reusable **naming convention** (pattern, do/don’t, coherent examples and names to avoid).
+> 5. Specify a coherent **domain/social strategy** (primary domain, redirects, handles).
+>
+> **Rules**
+> - As few sub-brands as possible: every new name must earn the right to exist.
+> - Features usually stay functional, not mini-brands, unless there is clear value.
+> - Cross-language coherence and non-ambiguity before originality.
+>
+> **Output format**
+> - A **hierarchy diagram** (tree or level table).
+> - A **table** “element · name type · rule · example”.
+> - A “**legacy coexistence**” paragraph and a “**domain/social**” paragraph.
+
+***
+
+## 2. Sezione – Posizionamento & strategia di marca
 
 ### 2.1 Prompt per posizionamento completo + messaggi chiave
 
@@ -221,6 +355,128 @@
 > 2. Describe strengths and weaknesses of each option in **3–4 sentences**.  
 > 3. Recommend which option to choose given the objective, and explain why.  
 > 4. Propose a **“combined” positioning** that merges the best elements of all three and explain your reasoning.[7][8][1]
+
+***
+
+### 2.3 Prompt “brand audit & insight”
+
+**Titolo voce libreria:** `BP-03 · Brand audit & insight – contesto, percezioni e opportunità`
+**Use case:** ricostruire il quadro strategico (categoria, competitor, target, SWOT, opportunità) prima di posizionare o rinominare.
+
+**Prompt IT**
+
+> Agisci come **brand strategist e analista di categoria**.
+> Devi ricostruire il **quadro strategico** di un brand come base per posizionamento e decisioni creative.
+>
+> **Brief**
+> - Brand/prodotto: [brand_prodotto] (es. Ideary — tool voce→workflow AI per direttori creativi)
+> - Categoria e sottocategoria: [categoria]
+> - Target principale (persona) + job-to-be-done: [target_jtbd]
+> - Competitor noti: [competitor]
+> - Materiali disponibili (sito, social, recensioni, dati): [materiali]
+> - Obiettivo di business: [obiettivo]
+>
+> **Cosa devi fare**
+> 1. **Contesto di categoria**: dinamiche, trend, convenzioni e cliché del settore (cosa fanno tutti uguale).
+> 2. **Mappa competitor**: 5–8 attori posizionati su 2 assi rilevanti; nota i territori affollati e gli spazi vuoti.
+> 3. **Insight sul target**: bisogni, tensioni, linguaggio, barriere — con evidenze, non supposizioni.
+> 4. **SWOT del brand attuale** (forze/debolezze interne, opportunità/minacce esterne).
+> 5. **3–5 piste di posizionamento/differenziazione**, ognuna con il “perché ora” e il rischio.
+>
+> **Regole**
+> - Parti dalle evidenze; segnala chiaramente quando un’affermazione è ipotesi.
+> - Cerca lo spazio vuoto, non il “me too”.
+> - Nessuna conclusione senza il dato che la sostiene.
+>
+> **Formato output**
+> - Paragrafo contesto; mappa competitor (tabella o 2 assi descritti); bullet insight target; tabella SWOT; elenco piste con razionale e rischio.
+
+**Prompt EN**
+
+> Act as a **brand strategist and category analyst**.
+> Reconstruct a brand’s **strategic picture** as the basis for positioning and creative decisions.
+>
+> **Brief**
+> - Brand/product: [brand_product] (e.g. Ideary — a voice→AI-workflow tool for creative directors)
+> - Category and sub-category: [category]
+> - Primary target (persona) + job-to-be-done: [target_jtbd]
+> - Known competitors: [competitors]
+> - Available materials (site, social, reviews, data): [materials]
+> - Business objective: [objective]
+>
+> **Your tasks**
+> 1. **Category context**: dynamics, trends, conventions and clichés (what everyone does the same).
+> 2. **Competitor map**: 5–8 players plotted on 2 relevant axes; note crowded territories and white space.
+> 3. **Target insight**: needs, tensions, language, barriers — evidence-based, not assumptions.
+> 4. **SWOT of the current brand** (internal strengths/weaknesses, external opportunities/threats).
+> 5. **3–5 positioning/differentiation routes**, each with the “why now” and the risk.
+>
+> **Rules**
+> - Start from evidence; flag clearly when a statement is a hypothesis.
+> - Look for white space, not “me too”.
+> - No conclusion without the data that supports it.
+>
+> **Output format**
+> - Context paragraph; competitor map (table or 2 described axes); target-insight bullets; SWOT table; routes list with rationale and risk.
+
+***
+
+### 2.4 Prompt “piattaforma di marca”
+
+**Titolo voce libreria:** `BP-04 · Piattaforma di marca – purpose, valori, personalità e brand story`
+**Use case:** definire il nucleo strategico riusabile (purpose, valori, archetipo, personalità, promise, story) che tiene insieme tutte le espressioni del brand.
+
+**Prompt IT**
+
+> Agisci come **brand strategist senior**.
+> Devi definire la **piattaforma di marca**: il nucleo che tiene insieme tutte le espressioni del brand.
+>
+> **Brief**
+> - Brand + posizionamento (se già definito): [brand_posizionamento]
+> - Audit/insight disponibili: [insight]
+> - Fondatore e valori personali rilevanti: [valori_fondatore]
+> - Ambizione a 3 anni: [ambizione]
+> - Tono desiderato: [tono]
+>
+> **Cosa devi fare**
+> 1. **Purpose / mission / vision** (perché esistiamo, cosa facciamo, dove andiamo).
+> 2. **3–5 valori operativi**, ognuno con “cosa significa in pratica” (comportamento, non slogan).
+> 3. **Archetipo** dominante (+ eventuale secondario) con motivazione.
+> 4. **Personalità** (3–5 tratti) e **brand promise** in una frase.
+> 5. **Brand story** (120–160 parole): origine, tensione, svolta, visione.
+>
+> **Regole**
+> - Ogni elemento dev’essere azionabile e distintivo, non intercambiabile con un competitor.
+> - Coerenza verificabile tra purpose, valori e promise.
+>
+> **Formato output**
+> - **Tabella piattaforma** riusabile (elemento · contenuto · nota d’uso) + la brand story in prosa.
+
+**Prompt EN**
+
+> Act as a **senior brand strategist**.
+> Define the **brand platform**: the core that holds all brand expressions together.
+>
+> **Brief**
+> - Brand + positioning (if already defined): [brand_positioning]
+> - Available audit/insight: [insight]
+> - Founder and relevant personal values: [founder_values]
+> - 3-year ambition: [ambition]
+> - Desired tone: [tone]
+>
+> **Your tasks**
+> 1. **Purpose / mission / vision** (why we exist, what we do, where we’re going).
+> 2. **3–5 operating values**, each with “what it means in practice” (behaviour, not slogan).
+> 3. Dominant **archetype** (+ optional secondary) with rationale.
+> 4. **Personality** (3–5 traits) and **brand promise** in one sentence.
+> 5. **Brand story** (120–160 words): origin, tension, turn, vision.
+>
+> **Rules**
+> - Every element must be actionable and distinctive, not interchangeable with a competitor’s.
+> - Verifiable coherence between purpose, values and promise.
+>
+> **Output format**
+> - Reusable **platform table** (element · content · usage note) + the brand story in prose.
 
 ***
 
@@ -360,5 +616,548 @@
 >    - recommended/avoided backgrounds  
 >    - minimum sizes  
 >    - common misuse to avoid.[12][15][16][9]
+
+***
+
+### 3.3 Prompt “sistema visivo & mini brand guidelines”
+
+**Titolo voce libreria:** `BL-03 · Sistema visivo – palette, tipografia, immagine, mini brand book`
+**Use case:** definire il sistema visivo essenziale oltre al logo e riassumerlo in una guideline operativa da 1 pagina.
+
+**Prompt IT**
+
+> Agisci come **art director e brand designer**.
+> Devi definire il **sistema visivo** essenziale di un brand (oltre al logo) e riassumerlo in una mini brand guideline operativa.
+>
+> **Brief**
+> - Nome brand: [nome_brand]
+> - Posizionamento sintetico + personalità: [posizionamento_personalità]
+> - Logo/asset esistenti: [asset]
+> - Touchpoint principali: [touchpoint]
+> - Vincoli (accessibilità, dark/light, canali): [vincoli]
+>
+> **Cosa devi fare**
+> 1. **Palette**: colori primari + secondari con valori HEX, ruolo di ciascuno e nota di contrasto/accessibilità (WCAG).
+> 2. **Tipografia**: caratteri display + testo (tipo e feeling), scala tipografica e regole d’uso.
+> 3. **Immagine/iconografia**: stile fotografico/illustrativo, trattamento, cosa evitare.
+> 4. **Layout & spazi**: griglia, spaziature, tono compositivo (denso vs arioso).
+> 5. **Mini brand guideline** (max 1 pagina): 6–8 regole d’uso + errori da evitare.
+>
+> **Regole**
+> - Sistema minimo e applicabile, non un manuale infinito.
+> - Ogni scelta legata alla personalità del brand, non estetica fine a sé.
+> - Accessibilità (contrasto) come requisito, non optional.
+>
+> **Formato output**
+> - Tabelle per palette e tipografia; elenco puntato per le regole; nota accessibilità.
+
+**Prompt EN**
+
+> Act as an **art director and brand designer**.
+> Define the essential **visual system** of a brand (beyond the logo) and summarise it in an operational one-page guideline.
+>
+> **Brief**
+> - Brand name: [brand_name]
+> - Short positioning + personality: [positioning_personality]
+> - Existing logo/assets: [assets]
+> - Main touchpoints: [touchpoints]
+> - Constraints (accessibility, dark/light, channels): [constraints]
+>
+> **Your tasks**
+> 1. **Palette**: primary + secondary colors with HEX values, the role of each, and a contrast/accessibility note (WCAG).
+> 2. **Typography**: display + body typefaces (type and feel), type scale and usage rules.
+> 3. **Imagery/iconography**: photographic/illustrative style, treatment, what to avoid.
+> 4. **Layout & spacing**: grid, spacing, compositional tone (dense vs airy).
+> 5. **Mini brand guideline** (max 1 page): 6–8 usage rules + misuse to avoid.
+>
+> **Rules**
+> - Minimal, applicable system — not an endless manual.
+> - Every choice tied to brand personality, not aesthetics for their own sake.
+> - Accessibility (contrast) is a requirement, not optional.
+>
+> **Output format**
+> - Tables for palette and typography; bullet list for rules; accessibility note.
+
+***
+
+## 4. Sezione – Verbal identity / tono di voce
+
+### 4.1 Prompt “tono di voce / verbal identity”
+
+**Titolo voce libreria:** `BV-01 · Tono di voce – principi, spettro, lessico, applicazione per canale`
+**Use case:** definire come “suona” il brand a parole, in modo coerente e applicabile su tutti i canali.
+
+**Prompt IT**
+
+> Agisci come **verbal identity strategist / copy lead**.
+> Devi definire il **tono di voce** di un brand: principi, spettro, lessico e applicazione per canale.
+>
+> **Brief**
+> - Nome brand + posizionamento: [nome_posizionamento]
+> - Pubblico e contesto d’uso: [pubblico]
+> - Personalità del brand (3–5 aggettivi): [personalità]
+> - Riferimenti di voce (brand/persone) e anti-riferimenti: [riferimenti]
+> - Mercati/lingue: [mercati]
+>
+> **Cosa devi fare**
+> 1. Definisci **3–4 principi di voce**, ognuno con “questo sì / questo no” e una frase-esempio riscritta on-brand.
+> 2. Posiziona la voce su **assi/spettri** (es. formale↔informale, serio↔ironico, sobrio↔espressivo), motivando.
+> 3. Fornisci il **lessico**: parole da usare, parole da evitare, tic/cliché vietati.
+> 4. Regole di **microcopy** (CTA, errori, empty state, onboarding) con esempi concreti.
+> 5. **Esempi per canale**: la stessa idea declinata su hero sito, social, email, notifica push, adv breve.
+>
+> **Regole**
+> - Sempre mostrare, non solo dire: ogni principio ha un esempio riscritto.
+> - Coerenza cross-lingua; niente buzzword né hype.
+>
+> **Formato output**
+> - Tabella principi (“principio · sì · no · esempio”); tabella assi; liste lessico; esempi per canale.
+
+**Prompt EN**
+
+> Act as a **verbal identity strategist / copy lead**.
+> Define a brand’s **tone of voice**: principles, spectrum, lexicon and per-channel application.
+>
+> **Brief**
+> - Brand name + positioning: [name_positioning]
+> - Audience and usage context: [audience]
+> - Brand personality (3–5 adjectives): [personality]
+> - Voice references (brands/people) and anti-references: [references]
+> - Markets/languages: [markets]
+>
+> **Your tasks**
+> 1. Define **3–4 voice principles**, each with “this yes / this no” and an on-brand rewritten example sentence.
+> 2. Place the voice on **axes/spectra** (e.g. formal↔informal, serious↔playful, plain↔expressive), with rationale.
+> 3. Provide the **lexicon**: words to use, words to avoid, banned tics/clichés.
+> 4. **Microcopy** rules (CTAs, errors, empty states, onboarding) with concrete examples.
+> 5. **Per-channel examples**: the same idea rendered for website hero, social, email, push notification, short ad.
+>
+> **Rules**
+> - Always show, don’t just tell: every principle has a rewritten example.
+> - Cross-language coherence; no buzzwords or hype.
+>
+> **Output format**
+> - Principles table (“principle · yes · no · example”); axes table; lexicon lists; per-channel examples.
+
+***
+
+### 4.2 Prompt “tagline & payoff”
+
+**Titolo voce libreria:** `BV-02 · Tagline & payoff – generazione, test e selezione`
+**Use case:** hai un nome e un posizionamento e ti serve la tagline/payoff che lo accompagna.
+
+**Prompt IT**
+
+> Agisci come **copywriter / tagline specialist**.
+> Devi generare, testare e selezionare **tagline/payoff** per un brand.
+>
+> **Brief**
+> - Nome brand + posizionamento: [nome_posizionamento]
+> - Beneficio principale e tensione emotiva: [beneficio_tensione]
+> - Tono di voce: [tono]
+> - Mercati/lingue: [mercati]
+> - Vincoli (lunghezza, no claim comparativi, ecc.): [vincoli]
+>
+> **Cosa devi fare**
+> 1. Genera **15 tagline** (mix di registri: funzionale, emotivo, evocativo, arguto), sotto le 7 parole.
+> 2. Seleziona le **top 5** e per ciascuna: punteggio 1–10 su chiarezza, distintività, memorabilità, fit col tono; +1 riga sul perché.
+> 3. Per le top 5 segnala i **rischi** (ambiguità, cliché, traduzione, claim rischiosi) e proponi una **variante IT** e una **EN**.
+> 4. Raccomanda **1 payoff principale** + 1–2 di riserva, motivando.
+>
+> **Regole**
+> - Niente buzzword (“innovativo”, “AI-powered”) se non giustificate.
+> - Deve funzionare accanto al nome: leggi “Nome — tagline” ad alta voce.
+> - Preferisci verbi concreti e immagini, non aggettivi vuoti.
+>
+> **Formato output**
+> - Elenco 15; tabella top 5 (tagline · punteggio · rischio · IT/EN); riga di raccomandazione finale.
+
+**Prompt EN**
+
+> Act as a **copywriter / tagline specialist**.
+> Generate, test and select **taglines/payoffs** for a brand.
+>
+> **Brief**
+> - Brand name + positioning: [name_positioning]
+> - Main benefit and emotional tension: [benefit_tension]
+> - Tone of voice: [tone]
+> - Markets/languages: [markets]
+> - Constraints (length, no comparative claims, etc.): [constraints]
+>
+> **Your tasks**
+> 1. Generate **15 taglines** (mix of registers: functional, emotional, evocative, witty), under 7 words.
+> 2. Pick the **top 5** and for each: score 1–10 on clarity, distinctiveness, memorability, tone fit; +1 line on why.
+> 3. For the top 5 flag **risks** (ambiguity, cliché, translation, risky claims) and propose an **IT** and an **EN** variant.
+> 4. Recommend **1 primary payoff** + 1–2 backups, with reasoning.
+>
+> **Rules**
+> - No buzzwords (“innovative”, “AI-powered”) unless justified.
+> - It must work next to the name: read “Name — tagline” aloud.
+> - Prefer concrete verbs and images over empty adjectives.
+>
+> **Output format**
+> - List of 15; top-5 table (tagline · score · risk · IT/EN); final recommendation line.
+
+***
+
+### 4.3 Prompt “localizzazione tono di voce”
+
+**Titolo voce libreria:** `BV-03 · Localizzazione tono di voce – adattamento cross-lingua e mercato`
+**Use case:** portare la voce del brand in nuovi mercati/lingue mantenendone l’identità (transcreazione, non traduzione).
+
+**Prompt IT**
+
+> Agisci come **transcreator / verbal identity localizer**.
+> Devi adattare il **tono di voce** del brand a nuovi mercati/lingue senza perderne l’identità.
+>
+> **Brief**
+> - Brand + tono di voce d’origine: [brand_tono]
+> - Lingua/mercato d’origine: [origine]
+> - Mercati/lingue target: [target_mercati]
+> - Sensibilità culturali note: [sensibilità]
+> - Vincoli (lunghezze, legali, canali): [vincoli]
+>
+> **Cosa devi fare**
+> 1. Definisci gli **elementi invarianti** (cosa NON cambia mai: personalità, principi) vs gli **elementi adattabili** (registro, umorismo, riferimenti).
+> 2. Per ogni mercato target: **registro, sensibilità, tabù, convenzioni** e come si sposta la voce.
+> 3. **Tabella di equivalenza lessicale**: termini/idiomi chiave e la resa locale (non traduzione letterale).
+> 4. **Esempi comparativi**: la stessa frase-brand nei mercati target.
+> 5. **Mini-guida do/don’t** per i localizzatori.
+>
+> **Regole**
+> - Transcreazione, non traduzione: si adatta l’effetto, non le parole.
+> - Segnala rischi culturali e falsi amici.
+>
+> **Formato output**
+> - Tabella invarianti/adattabili; scheda per mercato; tabella equivalenza; esempi comparativi; do/don’t.
+
+**Prompt EN**
+
+> Act as a **transcreator / verbal identity localizer**.
+> Adapt the brand’s **tone of voice** to new markets/languages without losing its identity.
+>
+> **Brief**
+> - Brand + source tone of voice: [brand_tone]
+> - Source language/market: [source]
+> - Target markets/languages: [target_markets]
+> - Known cultural sensitivities: [sensitivities]
+> - Constraints (lengths, legal, channels): [constraints]
+>
+> **Your tasks**
+> 1. Define the **invariant elements** (what NEVER changes: personality, principles) vs the **adaptable elements** (register, humour, references).
+> 2. For each target market: **register, sensitivities, taboos, conventions** and how the voice shifts.
+> 3. **Lexical equivalence table**: key terms/idioms and their local rendering (not literal translation).
+> 4. **Comparative examples**: the same brand sentence across target markets.
+> 5. **Do/don’t mini-guide** for localizers.
+>
+> **Rules**
+> - Transcreation, not translation: adapt the effect, not the words.
+> - Flag cultural risks and false friends.
+>
+> **Output format**
+> - Invariant/adaptable table; per-market card; equivalence table; comparative examples; do/don’t.
+
+***
+
+## 5. Sezione – Messaging
+
+### 5.1 Prompt “messaging house / value proposition”
+
+**Titolo voce libreria:** `BM-01 · Messaging house – value proposition, pilastri, proof points`
+**Use case:** trasformare posizionamento e benefici in una casa di messaggi coerente e riutilizzabile su tutti i canali.
+
+**Prompt IT**
+
+> Agisci come **brand strategist / messaging architect**.
+> Devi costruire la **messaging house** di un brand: value proposition, pilastri di messaggio e proof points.
+>
+> **Brief**
+> - Nome brand + posizionamento: [nome_posizionamento]
+> - Target (persona) e job-to-be-done: [target_jtbd]
+> - Benefici (funzionali + emotivi): [benefici]
+> - Prove/differenziatori reali: [proof_points]
+> - Obiezioni tipiche: [obiezioni]
+>
+> **Cosa devi fare**
+> 1. **Value proposition** in una frase (chi, cosa, perché unica).
+> 2. **3 pilastri di messaggio**, ognuno con: headline, 1 frase di supporto, 2–3 proof points.
+> 3. **Gestione obiezioni**: per ogni obiezione principale, la risposta di messaggio (reframe, non difesa).
+> 4. **Ladder**: versione da 1 riga, da 3 righe, da 1 paragrafo (elevator).
+> 5. Mappa i pilastri ai **canali** (sito, sales, social, adv).
+>
+> **Regole**
+> - Ogni pilastro sostenuto da un proof point reale, mai claim nudo.
+> - Parti dai bisogni del target, non dal catalogo di feature.
+> - Linguaggio comprensibile a un non-esperto.
+>
+> **Formato output**
+> - Schema “casa” (tetto = value prop, 3 pilastri, base = proof); tabella obiezioni→risposte; le 3 versioni ladder.
+
+**Prompt EN**
+
+> Act as a **brand strategist / messaging architect**.
+> Build a brand’s **messaging house**: value proposition, message pillars and proof points.
+>
+> **Brief**
+> - Brand name + positioning: [name_positioning]
+> - Target (persona) and job-to-be-done: [target_jtbd]
+> - Benefits (functional + emotional): [benefits]
+> - Real proof/differentiators: [proof_points]
+> - Typical objections: [objections]
+>
+> **Your tasks**
+> 1. **Value proposition** in one sentence (who, what, why unique).
+> 2. **3 message pillars**, each with: headline, one supporting sentence, 2–3 proof points.
+> 3. **Objection handling**: for each main objection, the messaging response (reframe, not defense).
+> 4. **Ladder**: 1-line, 3-line and 1-paragraph (elevator) versions.
+> 5. Map the pillars to **channels** (site, sales, social, ads).
+>
+> **Rules**
+> - Every pillar backed by a real proof point, never a bare claim.
+> - Start from the target’s needs, not the feature catalogue.
+> - Language understandable to a non-expert.
+>
+> **Output format**
+> - “House” diagram (roof = value prop, 3 pillars, base = proof); objection→response table; the 3 ladder versions.
+
+***
+
+### 5.2 Prompt “narrative system”
+
+**Titolo voce libreria:** `BM-02 · Narrative system – matrix di messaggi per canale e audience`
+**Use case:** trasformare la messaging house in una matrice operativa di messaggi per audience × canale × obiettivo.
+
+**Prompt IT**
+
+> Agisci come **messaging strategist**.
+> Devi costruire un **sistema narrativo**: una matrice di messaggi coerenti per audience, canale e obiettivo.
+>
+> **Brief**
+> - Brand + messaging house (se esiste): [brand_messaging]
+> - Audience/segmenti: [audience]
+> - Canali attivi: [canali]
+> - Obiettivi (awareness, considerazione, conversione, retention): [obiettivi]
+> - Must-carry messages (cose che vanno sempre dette): [must_carry]
+>
+> **Cosa devi fare**
+> 1. Definisci gli **assi**: audience × canale × obiettivo.
+> 2. Costruisci la **matrice**: per ogni combinazione rilevante → key message + proof + formato consigliato.
+> 3. Estrai i **must-carry messages** (invarianti) e i **flex messages** (contestuali).
+> 4. Fornisci **mini-esempi multi-canale** di uno stesso messaggio (hero, social, email, adv).
+> 5. Regole di coerenza (cosa tiene insieme tutto il sistema).
+>
+> **Regole**
+> - Ogni messaggio ha un proof; niente claim nudi.
+> - Adatta il formato al canale, non copincollare.
+>
+> **Formato output**
+> - Tabella matrice (audience · canale · obiettivo · key message · proof · formato); elenco must-carry; esempi multi-canale.
+
+**Prompt EN**
+
+> Act as a **messaging strategist**.
+> Build a **narrative system**: a matrix of coherent messages by audience, channel and objective.
+>
+> **Brief**
+> - Brand + messaging house (if any): [brand_messaging]
+> - Audiences/segments: [audience]
+> - Active channels: [channels]
+> - Objectives (awareness, consideration, conversion, retention): [objectives]
+> - Must-carry messages (things that must always be said): [must_carry]
+>
+> **Your tasks**
+> 1. Define the **axes**: audience × channel × objective.
+> 2. Build the **matrix**: for each relevant combination → key message + proof + recommended format.
+> 3. Extract the **must-carry messages** (invariant) and the **flex messages** (contextual).
+> 4. Provide **multi-channel mini-examples** of one message (hero, social, email, ad).
+> 5. Coherence rules (what holds the whole system together).
+>
+> **Rules**
+> - Every message has a proof; no bare claims.
+> - Adapt format to the channel, don’t copy-paste.
+>
+> **Output format**
+> - Matrix table (audience · channel · objective · key message · proof · format); must-carry list; multi-channel examples.
+
+***
+
+## 6. Sezione – Brand experience
+
+### 6.1 Prompt “brand experience”
+
+**Titolo voce libreria:** `BX-01 · Brand experience – principi e linee guida per touchpoint chiave`
+**Use case:** definire come il brand si comporta e “si sente” lungo il journey e i touchpoint chiave.
+
+**Prompt IT**
+
+> Agisci come **brand experience / service design lead**.
+> Devi definire come il brand si **comporta e si sente** attraverso i touchpoint chiave.
+>
+> **Brief**
+> - Brand + personalità/valori: [brand_personalità]
+> - Journey principale dell’utente: [journey]
+> - Touchpoint chiave (digitali e non): [touchpoint]
+> - Momenti critici / di verità: [momenti]
+> - Vincoli (prodotto, risorse): [vincoli]
+>
+> **Cosa devi fare**
+> 1. Definisci **3–5 driver esperienziali** (i principi che rendono l’esperienza riconoscibile).
+> 2. **Griglia journey × touchpoint**: per ogni touchpoint → obiettivo, principi, tono, messaggi chiave.
+> 3. Individua i **signature moments** (i momenti che diventano memoria del brand) e come progettarli.
+> 4. **Checklist do/don’t** per chi progetta i touchpoint.
+> 5. Metriche di esperienza suggerite.
+>
+> **Regole**
+> - L’esperienza deve incarnare i valori, non solo comunicarli.
+> - Priorità ai momenti ad alto impatto, non a tutto.
+>
+> **Formato output**
+> - Elenco driver; griglia journey×touchpoint (tabella); signature moments; checklist do/don’t; metriche.
+
+**Prompt EN**
+
+> Act as a **brand experience / service design lead**.
+> Define how the brand **behaves and feels** across the journey and key touchpoints.
+>
+> **Brief**
+> - Brand + personality/values: [brand_personality]
+> - Main user journey: [journey]
+> - Key touchpoints (digital and not): [touchpoints]
+> - Critical / moments of truth: [moments]
+> - Constraints (product, resources): [constraints]
+>
+> **Your tasks**
+> 1. Define **3–5 experience drivers** (the principles that make the experience recognisable).
+> 2. **Journey × touchpoint grid**: for each touchpoint → objective, principles, tone, key messages.
+> 3. Identify **signature moments** (the moments that become brand memory) and how to design them.
+> 4. **Do/don’t checklist** for whoever designs the touchpoints.
+> 5. Suggested experience metrics.
+>
+> **Rules**
+> - The experience must embody the values, not just communicate them.
+> - Prioritise high-impact moments, not everything.
+>
+> **Output format**
+> - Drivers list; journey×touchpoint grid (table); signature moments; do/don’t checklist; metrics.
+
+***
+
+## 7. Sezione – Launch / Go-to-market
+
+### 7.1 Prompt “brand launch toolkit”
+
+**Titolo voce libreria:** `GL-01 · Brand launch toolkit – piano di lancio e asset operativi`
+**Use case:** pianificare il lancio (o rilancio) di un brand con story arc, fasi, asset e checklist di readiness.
+
+**Prompt IT**
+
+> Agisci come **go-to-market / brand launch lead**.
+> Devi costruire il **piano di lancio** del brand e la lista degli asset operativi.
+>
+> **Brief**
+> - Brand + posizionamento/promise: [brand_promise]
+> - Cosa si lancia (nuovo brand, rebrand, prodotto): [oggetto_lancio]
+> - Pubblico e canali: [pubblico_canali]
+> - Data/finestra e risorse: [tempi_risorse]
+> - Obiettivi e KPI: [obiettivi_kpi]
+>
+> **Cosa devi fare**
+> 1. Definisci **obiettivi e KPI** del lancio.
+> 2. Progetta lo **story arc**: teasing → reveal → proof → sustain.
+> 3. **Tabella fasi × canali**: per ogni fase, canali, asset e messaggi.
+> 4. Elenca gli **asset** must-have vs nice-to-have.
+> 5. **Timeline** sintetica + **checklist di readiness** pre-lancio.
+>
+> **Regole**
+> - Parti dagli obiettivi, non dagli asset.
+> - Distingui must-have da nice-to-have per proteggere la data.
+>
+> **Formato output**
+> - KPI; story arc; tabella fasi×canali (fase · canale · asset · messaggio); lista asset (must/nice); timeline; checklist readiness.
+
+**Prompt EN**
+
+> Act as a **go-to-market / brand launch lead**.
+> Build the brand’s **launch plan** and the list of operational assets.
+>
+> **Brief**
+> - Brand + positioning/promise: [brand_promise]
+> - What’s launching (new brand, rebrand, product): [launch_object]
+> - Audience and channels: [audience_channels]
+> - Date/window and resources: [time_resources]
+> - Objectives and KPIs: [objectives_kpis]
+>
+> **Your tasks**
+> 1. Define launch **objectives and KPIs**.
+> 2. Design the **story arc**: teasing → reveal → proof → sustain.
+> 3. **Phases × channels table**: per phase, channels, assets and messages.
+> 4. List the **assets** must-have vs nice-to-have.
+> 5. Concise **timeline** + pre-launch **readiness checklist**.
+>
+> **Rules**
+> - Start from objectives, not assets.
+> - Separate must-have from nice-to-have to protect the date.
+>
+> **Output format**
+> - KPIs; story arc; phases×channels table (phase · channel · asset · message); asset list (must/nice); timeline; readiness checklist.
+
+***
+
+## 8. Sezione – Governance
+
+### 8.1 Prompt “brand governance”
+
+**Titolo voce libreria:** `GV-01 · Brand governance – brand book, processi e guardrail`
+**Use case:** mantenere il brand coerente nel tempo con documentazione, ruoli, guardrail e processi.
+
+**Prompt IT**
+
+> Agisci come **brand governance / brand ops lead**.
+> Devi definire come il brand resta **coerente nel tempo**: documentazione, ruoli, guardrail e processi.
+>
+> **Brief**
+> - Brand + asset esistenti (identità, tono, messaging): [brand_asset]
+> - Chi crea/usa il brand (team, freelance, partner): [attori]
+> - Canali e volume di produzione: [canali_volume]
+> - Rischi ricorrenti (incoerenze tipiche): [rischi]
+>
+> **Cosa devi fare**
+> 1. Struttura un **brand book modulare** (indice dei moduli: logo, visual, verbal, messaging, experience).
+> 2. Definisci **ruoli e responsabilità** (chi decide, approva, esegue — RACI leggero).
+> 3. Fissa i **guardrail** visual/verbal/messaging (le poche regole non negoziabili).
+> 4. Progetta i **processi**: onboarding nuovi creator, approval, audit periodico.
+> 5. **Checklist per creator** (self-check prima di pubblicare).
+>
+> **Regole**
+> - Pochi guardrail forti valgono più di mille regole ignorate.
+> - Rendi tutto trovabile e azionabile, non un PDF morto.
+>
+> **Formato output**
+> - Indice brand book; tabella RACI; elenco guardrail; elenco/diagramma processi; checklist creator.
+
+**Prompt EN**
+
+> Act as a **brand governance / brand ops lead**.
+> Define how the brand stays **coherent over time**: documentation, roles, guardrails and processes.
+>
+> **Brief**
+> - Brand + existing assets (identity, tone, messaging): [brand_assets]
+> - Who creates/uses the brand (team, freelancers, partners): [actors]
+> - Channels and production volume: [channels_volume]
+> - Recurring risks (typical inconsistencies): [risks]
+>
+> **Your tasks**
+> 1. Structure a **modular brand book** (module index: logo, visual, verbal, messaging, experience).
+> 2. Define **roles and responsibilities** (who decides, approves, executes — light RACI).
+> 3. Set the **guardrails** visual/verbal/messaging (the few non-negotiable rules).
+> 4. Design the **processes**: onboarding new creators, approval, periodic audit.
+> 5. **Creator checklist** (self-check before publishing).
+>
+> **Rules**
+> - A few strong guardrails beat a thousand ignored rules.
+> - Make everything findable and actionable, not a dead PDF.
+>
+> **Output format**
+> - Brand book index; RACI table; guardrails list; process list/diagram; creator checklist.
 
 ***
