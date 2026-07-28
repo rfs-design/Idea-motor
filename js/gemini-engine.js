@@ -1,6 +1,8 @@
-// gemini-engine.js — Core AI intelligence (Gemini 2.5 Flash, free tier)
+// gemini-engine.js — Core AI intelligence (Gemini flash, free tier)
+// Modello via alias `gemini-flash-latest`: segue le rotazioni di Google senza
+// redeploy (2.5-flash è chiuso ai nuovi utenti da lug 2026, shutdown 16 ott 2026).
 
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
 // ── System prompt ──────────────────────────────────────────────────────────
 
